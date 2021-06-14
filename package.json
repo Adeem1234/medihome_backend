@@ -1,0 +1,19 @@
+{
+  "name": "medihome_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cross-env NODE_ENV='development' nodemon index.js async=true await=true"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Adeem1234/medihome_backend.git"
+  },
+  "author": "Mirza Adeem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Adeem1234/medihome_backend/issues"
+  },
+  "homepage": "https://github.com/Adeem1234/medihome_backend#readme"
+}

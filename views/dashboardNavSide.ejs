@@ -1,0 +1,99 @@
+<div id="wrapper" class="d-flex flex-column justify-content-between">
+	<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion h-100" id="accordionSidebar"
+		data-parent="#sidebarToggleTop">
+		<!-- Sidebar - Brand -->
+		<a class="sidebar-brand d-flex align-items-center justify-content-center py-3 h-auto" href="/admin/dashboard">
+			<!-- <img src="/img/Logo.png" alt="" srcset=""> -->
+			<img src="/img/Logo.png" alt="" width='25' height='25' srcset="">
+			<div class="sidebar-brand-text mx-2"><b>Quokka</b></div>
+		</a>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Dashboard-->
+		<li class="nav-item">
+			<a class="nav-link py-2 h-auto" href="/admin/dashboard">
+				<i class="fas fa-fw fa-tachometer-alt"></i>
+				<span>Dashboard</span></a>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed py-2 h-auto" href="#" data-toggle="collapse"
+				data-target="#collapseConvoStarters" aria-expanded="true" aria-controls="collapseConvoStarters">
+				<i class="fas fa-fw fa-poll-h"></i>
+				<span>Convo Starters</span>
+			</a>
+			<div id="collapseConvoStarters" class="collapse" aria-labelledby="headingTwo"
+				data-parent="#accordionSidebar">
+				<div class="bg-white py-1 h-auto collapse-inner rounded">
+					<!-- <h6 class="collapse-header">Custom Components:</h6> -->
+					<a class="collapse-item" href="/admin/convo-starters/add">Add New</a>
+					<a class="collapse-item" href="/admin/convo-starters">View All</a>
+				</div>
+			</div>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed py-2 h-auto" href="#" data-toggle="collapse" data-target="#collapseFeedBack"
+				aria-expanded="true" aria-controls="collapseFeedBack">
+				<i class="far fa-comment-alt"></i>
+				<span>Call Feedbacks</span>
+			</a>
+			<div id="collapseFeedBack" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div class="bg-white py-1 h-auto collapse-inner rounded">
+					<!-- <h6 class="collapse-header">Custom Components:</h6> -->
+					<a class="collapse-item" href="/admin/feedback">FeedBacks</a>
+				</div>
+			</div>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed py-2 h-auto" href="#" data-toggle="collapse"
+				data-target="#collapseFeedBackQuestion" aria-expanded="true" aria-controls="collapseFeedBackQuestion">
+				<i class="far fa-question-circle"></i>
+				<span>FeedBack Questions</span>
+			</a>
+			<div id="collapseFeedBackQuestion" class="collapse" aria-labelledby="headingTwo"
+				data-parent="#accordionSidebar">
+				<div class="bg-white py-1 h-auto collapse-inner rounded">
+					<!-- <h6 class="collapse-header">Custom Components:</h6> -->
+					<a class="collapse-item" href="/admin/feedback-question/add">Add New</a>
+					<a class="collapse-item" href="/admin/feedback-question">View All</a>
+				</div>
+			</div>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link collapsed py-2 h-auto" href="#" data-toggle="collapse" data-target="#collapseUsers"
+				aria-expanded="true" aria-controls="collapseUsers">
+				<i class="fas fa-fw fa-user"></i>
+				<span>Users</span>
+			</a>
+			<div id="collapseUsers" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+				<div class="bg-white py-1 h-auto collapse-inner rounded">
+					<!-- <h6 class="collapse-header">Custom Components:</h6> -->
+					<a class="collapse-item" href="/admin/users/all">All Users</a>
+					<a class="collapse-item" href="/admin/users/all-blocked">Blocked Users</a>
+					<a class="collapse-item" href="/admin/users/all-reported">Reported Users</a>
+				</div>
+			</div>
+		</li>
+		<!-- Divider -->
+		<hr class="sidebar-divider my-1" />
+		<!-- Nav Item - Pages Collapse Menu -->
+		<li class="nav-item">
+			<a class="nav-link py-2 h-auto" href="/admin/settings">
+				<i class="fas fa-cogs"></i>
+				<span>Settings</span>
+			</a>
+		</li>
+		<hr class="sidebar-divider" />
+	</ul>
+</div>
