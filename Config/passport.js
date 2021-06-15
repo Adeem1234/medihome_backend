@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 // Load User Model
 const Admin = require('../model/User');
 const passport = require('passport');
-const admin = require('../controller//web/admin');
+const admin = require('../controller/web/admin/admin');
 // Start a Session and asign aa session id
 
 module.exports = (passport) => {

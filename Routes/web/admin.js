@@ -2,7 +2,7 @@ const Router = require('express-promise-router')();
 const Dashboard = require('../../controller/web/dashboard');
 const {
     ensureAuthenticated
-} = require('../../MiddleWares/auth');
+} = require('../../config/auth');
 
 // Home Page Dashboard Page
 Router.route('/').get(ensureAuthenticated, Dashboard.index);

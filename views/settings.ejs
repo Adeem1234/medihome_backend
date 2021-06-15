@@ -1,0 +1,107 @@
+<head>
+	<title>Projects</title>
+</head>
+<!-- Page Wrapper -->
+<div id="wrapper" class="w-auto">
+	<!-- Sidebar -->
+	<%- include('./partials/dashboardNavSide.ejs') %>
+		<!-- End of Sidebar -->
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<%- include('./partials/Logout.ejs') %>
+					<!-- End of Topbar -->
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
+						<!-- Page Heading -->
+						<form action="/admin/settings" method="POST">
+							<div class="card shadow mb-4">
+								<div class="card-header py-2 bg-gradient-primary">
+									<h6 class="m-0 font-weight-bold text-light">
+										Settings
+									</h6>
+								</div>
+								<div class="card-body py-2">
+									<div class="table-responsive">
+										<div class="d-flex flex-column justify-items-center">
+											<div class="d-flex align-items-center justify-content-between w-100">
+												<span class="mr-3">Enter the max call/day limit
+												</span>
+												<input type="number" name="limit" min="1"
+													class="form-control border border-secondary w-50 m-1 float-right" />
+											</div>
+											<div class="d-flex align-items-center w-100 justify-content-between">
+												<span class="mr-3">Enter the duration between calls
+													(in Minutes)</span>
+												<input type="number" name="duration" min="1"
+													class="form-control border border-secondary w-50 m-1 float-right" />
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="card-footer py-2 bg-light">
+									<button class="btn bg-danger btn-sm text-white px-2 py-1 ml-1 float-right"
+										type="submit">
+										<span> Update </span>
+									</button>
+								</div>
+							</div>
+						</form>
+
+						<div class="card shadow mb-4">
+							<div class="card-header py-2 bg-gradient-primary">
+								<h6 class="m-0 font-weight-bold text-light">
+									Call Limit
+								</h6>
+							</div>
+							<div class="card-body py-2">
+								<div class="table-responsive">
+									<table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th class="w-50 text-align-center">
+													Calls limit
+												</th>
+												<th class="w-50 align-content-center px-4">
+													Duration Between Calls
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<%=settings.limit%>
+												</td>
+												<td>
+													<%=settings.duration%>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+
+						<!-- /.container-fluid -->
+						<!-- End of Main Content -->
+					</div>
+			</div>
+			<div>
+				<!-- Footer -->
+				<%- include('./partials/footer.ejs') %>
+
+					<!-- End of Footer -->
+			</div>
+			<!-- End of Content Wrapper -->
+		</div>
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+	<i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<%- include('./partials/logoutModel.ejs') %>

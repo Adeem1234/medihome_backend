@@ -1,0 +1,112 @@
+<head>
+	<title>Convo Starter</title>
+</head>
+<!-- Page Wrapper -->
+<div id="wrapper" class="w-auto">
+	<!-- Sidebar -->
+	<%- include('./partials/dashboardNavSide.ejs') %>
+		<!-- End of Sidebar -->
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Main Content -->
+			<div id="content">
+				<%- include('./partials/Logout.ejs') %>
+					<!-- End of Topbar -->
+					<!-- Begin Page Content -->
+					<div class="container-fluid">
+						<!-- Page Heading -->
+						<!-- DataTable -->
+						<div class="card shadow mb-4">
+							<div class="card-header py-3 bg-gradient-primary">
+								<h6 class="m-0 font-weight-bold text-light">
+									All Users
+								</h6>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
+										<thead>
+											<tr>
+												<th class="w-0">Profile Image</th>
+												<th class="w-auto text-align-center">
+													User Name
+												</th>
+												<th class="w-auto text-align-center">
+													Name
+												</th>
+												<th class="w-0 text-align-center">
+													Email
+												</th>
+												<th class="w-0 text-align-center">
+													Banned
+												</th>
+												<th class="w-auto align-content-center">
+													Actions
+												</th>
+											</tr>
+										</thead>
+										<tbody>
+											<% for (var user of users){ %>
+												<tr>
+													<% if(user.avatar){%>
+														<td class="p-0">
+															<img class="p-0 m-1" alt="ProfileImage" id='profileImage'
+																width="50" height="50" src=<%=user.avatar %> />
+														</td>
+														<%}else{%>
+															<td></td>
+															<%}%>
+
+																<td>
+																	<%=user.userName%>
+																</td>
+																<td>
+																	<%=user.name%>
+																</td>
+																<td>
+																	<%=user.email%>
+																</td>
+																<td>
+																	<%=user.is_banned%>
+																</td>
+																<td class="align-content-center">
+																	<% if(user.is_banned){%>
+																		<a href="/admin/users/report/<%=user._id%>">
+																			<button class="btn btn-sm btn-primary">
+																				<i class="fas fa-unlock-alt"></i>
+																			</button>
+																		</a>
+																		<%}else {%>
+																			<a href="/admin/users/report/<%=user._id%>">
+																				<button class="btn btn-sm btn-primary">
+																					<i class="fas fa-lock"></i>
+																				</button>
+																			</a>
+																			<%}%>
+																				<a
+																					href="/admin/users/delete/<%=user._id%>">
+																					<button
+																						class="btn btn-sm btn-danger">
+																						<i class="far fa-trash-alt"></i>
+																					</button>
+																				</a>
+																</td>
+												</tr>
+												<%}%>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /.container-fluid -->
+			</div>
+			<!-- End of Main Content -->
+
+			<!-- Footer -->
+			<%- include('./partials/footer.ejs') %>
+
+				<!-- End of Footer -->
+		</div>
+</div>
+<% include('./partials/Logout.ejs')%>

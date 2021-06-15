@@ -1,0 +1,7 @@
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION BEGIN
+PassengerAppRoot "/home/codeqaxu/public_html/codesbinary.website/quokka-back.codesbinary.website"
+PassengerBaseURI "/"
+PassengerNodejs "/home/codeqaxu/nodevenv/public_html/codesbinary.website/quokka-back.codesbinary.website/12/bin/node"
+PassengerAppType node
+PassengerStartupFile app.js
+# DO NOT REMOVE. CLOUDLINUX PASSENGER CONFIGURATION END

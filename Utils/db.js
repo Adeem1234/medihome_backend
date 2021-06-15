@@ -4,7 +4,7 @@ const dbUser = process.env.DB_USER;
 const dbPass = process.env.DB_PASS;
 const dbName = process.env.DB_NAME;
 
-const dbString = `mongodb+srv://${dbUser}:${dbPass}@cluster0.nqrej.mongodb.net/${dbName}?retryWrites=true&w=majority`;
+const dbString = `mongodb+srv://${dbUser}:${dbPass}@cluster0.vvnkj.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
 mongoose.connect(dbString, {
     useNewUrlParser: true,

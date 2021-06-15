@@ -7,5 +7,12 @@
     "prettier.endOfLine": "auto",
     "editor.formatOnSave": true,
     "editor.formatOnPaste": true,
-    "prettier.printWidth": 150
+    "prettier.printWidth": 150,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnType": true,
+    "html.format.contentUnformatted": "pre,code,textarea",
+    "html.format.endWithNewline": true,
+    "html.format.indentInnerHtml": true,
+    "html.format.indentHandlebars": true
 }

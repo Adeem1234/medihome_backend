@@ -7,7 +7,7 @@ const io = require('./utils/socket');
 const hostname = process.env.HOST || 'localhost';
 const port = process.env.PORT || 8000;
 
-async function Server() {
+async function bootstrap() {
     /**
      * Add external services init as async operations (db, redis, etc...)
      * e.g.
@@ -16,7 +16,7 @@ async function Server() {
     return http.createServer(app).listen(port);
 }
 
-Server()
+bootstrap()
     .then(server => {
         io.attach(server, {
             cors: { origin: "*", }

@@ -7,19 +7,7 @@ module.exports = {
             return next();
         }
         req.flash('error_msg', 'Please log in to view that resource');
-        let sessionObj = JSON.parse(req.sessionStore.sessions[req.sessionID])
-        let userId = sessionObj.passport.user;
-        const user = User.findById(userId);
-        if (user.role === 'Admin') {
-            return res.redirect('/admin/login');
-        }
-        if (user.role === 'Pharmacy Manager') {
-            return res.redirect('/admin/login');
-        }
-        if (user.role === 'Laboratory Manager') {
-            return res.redirect('/admin/login');
-        }
-
+        res.redirect('/admin/login');
     },
     forwardAuthenticated: (req, res, next) => {
         if (!req.isAuthenticated()) {
@@ -27,7 +15,6 @@ module.exports = {
         }
         res.redirect('/admin/dashboard');
     },
-
     ClientAuthentication: async (req, res, next) => {
         const token = req.headers.token;
         const user = jwt.verify(token, process.env.TOKEN_SECRET);

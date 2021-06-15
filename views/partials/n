@@ -4,7 +4,7 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 	<!-- Sidebar -->
-	<%- include('./dashboardNavSide.ejs') %>
+	<%- include('./partials/dashboardNavSide.ejs') %>
 	<!-- End of Sidebar -->
 	<!-- Content Wrapper -->
 	<div id="content-wrapper" class="d-flex flex-column">
