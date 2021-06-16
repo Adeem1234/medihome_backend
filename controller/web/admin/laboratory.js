@@ -17,7 +17,7 @@ module.exports = {
     try {
       const oldLaboratories = await Laboratories.findOne({ name: name, location: location });
       if (oldLaboratories) {
-        res.status(400).send('Laboratories already exists');
+        res.status(400).send('Pharmacy already exists');
       } else {
         const laboratory = new Laboratories({ name: name, location: location });
         await laboratory.save();
@@ -40,8 +40,8 @@ module.exports = {
     const { id } = req.params;
     const { name, location } = req.body;
     try {
-      await Laboratories.findByIdAndUpdate(id, { question: question, });
-      return res.status(200).redirect('/admin/convo-starters');
+      await Laboratories.findByIdAndUpdate(id, { name: name, location: location });
+      return res.status(200).redirect('/admin/laboratories');
     } catch (error) {
       // throw error
       res.status(400).send({ data: { message: error } });

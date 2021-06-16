@@ -17,7 +17,7 @@ module.exports = {
         try {
             const oldPharmacies = await Pharmacies.findOne({ name: name, location: location });
             if (oldPharmacies) {
-                res.status(400).send('Pharmacies already exists');
+                res.status(400).send('Pharmacy already exists');
             } else {
                 const pharmacy = new Pharmacies({ name: name, location: location });
                 await pharmacy.save();
@@ -40,8 +40,8 @@ module.exports = {
         const { id } = req.params;
         const { name, location } = req.body;
         try {
-            const convoStarter = await Pharmacies.findByIdAndUpdate(id, { question: question, });
-            return res.status(200).redirect('/admin/convo-starters');
+            await Pharmacies.findByIdAndUpdate(id, { name: name, location: location });
+            return res.status(200).redirect('/admin/pharmacies');
         } catch (error) {
             // throw error
             res.status(400).send({ data: { message: error } });
@@ -50,8 +50,8 @@ module.exports = {
     delete: async (req, res, next) => {
         const { id } = req.params;
         try {
-            const convoStarter = await Pharmacies.findByIdAndRemove(id);
-            res.status(200).redirect('/admin/convo-starters');
+            await Pharmacies.findByIdAndRemove(id);
+            res.status(200).redirect('/admin/pharmacies');
         } catch (error) {
             res.status(400).send({ data: { message: error } });
         }
