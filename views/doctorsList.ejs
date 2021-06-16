@@ -19,7 +19,7 @@
             <div class="card shadow mb-4">
               <div class="card-header py-3 bg-gradient-primary">
                 <h6 class="m-0 font-weight-bold text-light">
-                  Laboratories
+                  Doctors
                 </h6>
               </div>
               <div class="card-body">
@@ -31,7 +31,7 @@
                           Name
                         </th>
                         <th class="w-100 text-align-center">
-                          Location
+                          Phone No.
                         </th>
                         <th class="w-50 align-content-center px-4">
                           Actions
@@ -39,21 +39,21 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% for (var laboratory of laboratories){ %>
+                      <% for (var doctor of doctors){ %>
                         <tr>
                           <td>
-                            <%=laboratory.name%>
+                            <%=doctor.name%>
                           </td>
                           <td>
-                            <%=laboratory.location%>
+                            <%=doctor.phoneNo%>
                           </td>
                           <td class="align-content-center">
-                            <a href="/admin/laboratory/edit/<%=laboratory._id%>">
+                            <a href="/admin/doctor/edit/<%=doctor._id%>">
                               <button class="btn btn-sm btn-warning">
                                 <i class="far fa-edit"></i>
                               </button>
                             </a>
-                            <a href="/admin/laboratory/delete/<%=laboratory._id%>">
+                            <a href="/admin/doctor/delete/<%=doctor._id%>">
                               <button class="btn btn-sm btn-danger">
                                 <i class="far fa-trash-alt"></i>
                               </button>
@@ -67,14 +67,12 @@
               </div>
             </div>
           </div>
-          <!-- /.container-fluid -->
+        <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
-
       <!-- Footer -->
       <%- include('./partials/footer.ejs') %>
-
-        <!-- End of Footer -->
+      <!-- End of Footer -->
     </div>
 </div>
 <% include('./partials/Logout.ejs')%>

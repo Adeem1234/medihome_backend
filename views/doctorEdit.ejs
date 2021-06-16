@@ -16,28 +16,26 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <form action="/admin/laboratory/add" method="POST">
+            <form action="/admin/doctor/edit/<%=doctor._id%>" method="POST">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 bg-gradient-primary">
                   <h6 class="m-0 font-weight-bold text-light">
-                    Add new Laboratory
+                    Update doctor
                   </h6>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <div class="d-flex align-items-center">
-                      <input type="text" name="name" class="form-control border border-secondary w-100 m-1"
-                        placeholder="Enter Name" />
-                    </div>
-                    <div class="d-flex align-items-center">
-                      <input type="text" name="location" class="form-control border border-secondary w-100 m-1"
-                        placeholder="Enter location" />
+                      <input type="text" name="question" class="form-control border border-secondary w-100 m-1"
+                        placeholder="<%=doctor.name%>" />
+                      <input type="text" name="question" class="form-control border border-secondary w-100 m-1"
+                        placeholder="<%=doctor.phoneNo%>" />
                     </div>
                   </div>
                 </div>
                 <div class="card-footer">
                   <button class="btn bg-danger text-white px-3 py-2 float-right" type="submit">
-                    <span> Add </span>
+                    <span> Update </span>
                   </button>
                 </div>
               </div>
