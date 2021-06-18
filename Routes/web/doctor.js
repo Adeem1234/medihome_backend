@@ -1,12 +1,12 @@
 const Router = require('express-promise-router')();
-const LaboratoryController = require('../../controller/web/admin/laboratory');
+const DocotorController = require('../../controller/web/admin/doctor');
 const {
   ensureAuthenticated
 } = require('../../config/auth');
 
-Router.route('/laboratories').get(ensureAuthenticated, LaboratoryController.get);
-Router.route('/laboratory/add').get(ensureAuthenticated, LaboratoryController.show).post(ensureAuthenticated, LaboratoryController.add);
-Router.route('/laboratory/edit/:id').get(ensureAuthenticated, LaboratoryController.edit).post(ensureAuthenticated, LaboratoryController.update);
-Router.route('/laboratory/delete/:id').get(ensureAuthenticated, LaboratoryController.delete);
+Router.route('/doctors').get(ensureAuthenticated, DocotorController.get);
+Router.route('/doctor/add').get(ensureAuthenticated, DocotorController.show).post(ensureAuthenticated, DocotorController.add);
+Router.route('/doctor/edit/:id').get(ensureAuthenticated, DocotorController.edit).post(ensureAuthenticated, DocotorController.update);
+Router.route('/doctor/delete/:id').get(ensureAuthenticated, DocotorController.delete);
 
 module.exports = Router;
