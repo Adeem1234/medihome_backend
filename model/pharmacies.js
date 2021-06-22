@@ -24,7 +24,11 @@ const pharmaciesSchema = new Schema({
 	phoneNumber: {
 		type: String,
 		require: true
-	}
+	},
+	medicines: [{
+		type: SchemaTypes.ObjectId,
+		ref: 'medicines'
+	}]
 });
 
 module.exports = mongoose.model('pharmacies', pharmaciesSchema);

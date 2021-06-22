@@ -2,7 +2,11 @@ const Joi = require('joi');
 
 module.exports = {
     loginValidation: (req, res, next) => {
-        const schema = Joi.object({ email: Joi.email().required(), password: Joi.string().required(), type: Joi.string().required() }).options({ abortEarly: false });
+        const schema = Joi.object({
+            email: Joi.email().required(),
+            password: Joi.string().required(),
+            type: Joi.string().required()
+        }).options({ abortEarly: false });
         const validation = schema.validate(req.body);
         if (validation.error === undefined) {
             next();
