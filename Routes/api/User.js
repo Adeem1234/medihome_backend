@@ -5,10 +5,10 @@ const { userNameValidation, callValidation } = require('../../middlewares/verifi
 
 const verifyToken = require('../../middlewares/verifyToken');
 
-Router.route('/check-username').post(userNameValidation, UserController.checkUserName);
-Router.route('/is-searching/:id').get(verifyToken, UserController.isSearching);
-Router.route('/details').get(verifyToken, UserController.mydetails);
-Router.route('/user/details').post([verifyToken, blockedUserCheck], UserController.userDetails);
-Router.route('/settings').get(UserController.settings);
+// Router.route('/check-username').post(userNameValidation, UserController.checkUserName);
+// Router.route('/is-searching/:id').get(verifyToken, UserController.isSearching);
+// Router.route('/details').get(verifyToken, UserController.mydetails);
+// Router.route('/user/details').post([verifyToken, blockedUserCheck], UserController.userDetails);
+// Router.route('/settings').get(UserController.settings);
 
 module.exports = Router;
