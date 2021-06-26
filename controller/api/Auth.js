@@ -7,30 +7,28 @@ module.exports = {
     login: async (req, res, next) => {
         try {
             console.log(req.body);
-            // const { error } = loginValidation(req.body);
-            // console.log("error" + error);
-            // if (error) {
-            //     return res.status(401).send(error.details[0].message);
-            // }
-            const user = await User.findOne({ email: req.body.email });
-            console.log("user" + user);
-            if (user) {
-                if (user.type === req.body.type) {
+            const error = loginValidation(req.body);
+            if (error) {
+                return res.status(401).send(error.details[0].message);
+            }
+            const savedUser = await User.findOne({ email: req.body.email });
+            // console.log("user" + user);
+            // console.log(req.body)
+            if (savedUser) {
+                if (savedUser.type === req.body.type) {
 
-                    const validPass = await bcrypt.compare(req.body.password, user.password);
-                    console.log("validPass" + validPass);
-                    if (!user) { return res.status(401).send('Email is Incorrect '); }
+                    const validPass = await bcrypt.compare(req.body.password, savedUser.password);
+                    // console.log("validPass" + validPass);
+                    if (!savedUser) { return res.status(401).send('Email is Incorrect '); }
                     if (!validPass) { return res.status(422).send('Password is Incorrect'); }
-                    const token = await jwt.sign({ user: user, type: type }, process.env.TOKEN_SECRET);
-                    console.log("token" + token);
-
-                    await res.send({ user, token });
+                    const authToken = await jwt.sign({ savedUser: savedUser, type: savedUser.type }, process.env.TOKEN_SECRET);
+                    // console.log("authToken " + authToken);
+                    await res.send({ savedUser, authToken });
                 }
                 else {
                     res.status(401).send({ message: 'Incorrect User Type' })
                 }
             }
-
         } catch (err) {
             throw err;
             res.status(401).send({ message: err });
@@ -53,6 +51,9 @@ module.exports = {
                 }
                 else { return res.send(401).send({ data: { msg: 'This Email is Already Registered' } }) }
             } else { return res.status(401).send('no Parameter send in request body'); }
-        } catch (error) { return res.status(401).send({ data: { message: error.message } }); }
+        } catch (error) {
+            throw error;
+            return res.status(401).send({ data: { message: error.message } });
+        }
     }
 };

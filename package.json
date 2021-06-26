@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Medi-home App by Mirza Adeem",
   "main": "index.js",
+  "proxy": "http://localhost:8000",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "agora-access-token": "^2.0.4",
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
@@ -25,14 +27,14 @@
     "jsonwebtoken": "^8.5.1",
     "luxon": "^1.25.0",
     "moment": "^2.29.1",
-    "mongoose": "^5.11.4",
+    "mongoose": "^5.12.14",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "set-tz": "^0.2.0",
     "socket.io": "^2.4.1",
-    "twilio": "^3.54.0",
-    "ws": "^7.4.4"
+    "twilio": "^3.64.0",
+    "ws": "^7.5.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"
