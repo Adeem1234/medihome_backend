@@ -55,22 +55,20 @@ const Login = ({ updateData }) => {
                                     axiosInstance.post('/login', { email, password, type })
                                         .then(async (res) => {
                                             console.log(res.data)
-                                            if (res.status(200)) {
-                                                const { authToken, savedUser } = res.data;
-                                                await setToken(authToken);
-                                                await setUser(savedUser);
-                                                localStorage.setItem('authToken', JSON.stringify(token));
-                                                // localStorage.removeItem('user')
-                                                localStorage.setItem('user', JSON.stringify(savedUser));
-                                                // if (user.location) {
-                                                //     localStorage.setItem('updateProfile', JSON.stringify(user.subscriptionId));
-                                                // } else {
-                                                //     localStorage.setItem('updateProfile', '');
-                                                // }
-                                                await setLoginStatus(true)
-                                                updateData(user, token)
-                                                document.getElementById('updateToken').click();
-                                            };
+                                            const { authToken, savedUser } = res.data;
+                                            await setToken(authToken);
+                                            await setUser(savedUser);
+                                            sessionStorage.setItem('authToken', JSON.stringify(token));
+                                            // localStorage.removeItem('user')
+                                            localStorage.setItem('user', JSON.stringify(savedUser));
+                                            // if (user.location) {
+                                            //     localStorage.setItem('updateProfile', JSON.stringify(user.subscriptionId));
+                                            // } else {
+                                            //     localStorage.setItem('updateProfile', '');
+                                            // }
+                                            await setLoginStatus(true)
+                                            updateData(user, token)
+                                            document.getElementById('updateToken').click();
                                         }).catch((er) => {
                                             if (er.response === 422) {
                                                 let errors = {};
