@@ -1,4 +1,5 @@
 const Pharmacies = require('../../../model/pharmacies');
+const Cities = require('../../../model/cities');
 
 module.exports = {
     get: async (req, res, next) => {
@@ -10,7 +11,8 @@ module.exports = {
         }
     },
     show: async (req, res, next) => {
-        res.render('pharmacyAdd');
+        const cities = await Cities.find({}).populate('areas')
+        res.render('pharmacyAdd', { cities });
     },
     add: async (req, res, next) => {
         const { name, location } = req.body;

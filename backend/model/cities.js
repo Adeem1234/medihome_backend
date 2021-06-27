@@ -8,10 +8,10 @@ const citiesSchema = new Schema({
     type: String,
     required: true
   },
-  area: {
+  area: [{
     type: SchemaTypes.ObjectId,
     ref: 'areas'
-  }
+  }]
 });
 
 module.exports = mongoose.model('cities', citiesSchema);

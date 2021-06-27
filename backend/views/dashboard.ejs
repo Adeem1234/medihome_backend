@@ -27,7 +27,7 @@
 													<div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
 														Users</div>
 													<div class=" h5 mb-0 font-weight-bold text-gray-800">
-														<%= usersCount%>
+														<%= userCount%>
 													</div>
 												</div>
 												<div class="col-auto">
@@ -47,7 +47,7 @@
 														Pharmacies
 													</div>
 													<div class="h5 mb-0 font-weight-bold text-gray-800">
-														<%=bannedUsers%>
+														<%=pharmacies%>
 													</div>
 												</div>
 
@@ -67,7 +67,7 @@
 														Laboratories
 													</div>
 													<div class="h5 mb-0 font-weight-bold text-gray-800">
-														<%= callsToday%>
+														<%= laboratories%>
 													</div>
 												</div>
 												<div class="col-auto">
@@ -87,57 +87,31 @@
 										<table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
 											<thead>
 												<tr>
-													<th class="w-0	 ">Profile Image</th>
-													<th class=" text-align-center"> User Name </th>
 													<th class=" text-align-center"> Name </th>
-													<th class=" text-align-center"> Banned </th>
+													<th class=" text-align-center"> Emial </th>
+													<th class=" text-align-center"> Type </th>
 													<th class="w-0 align-content-center"> Actions </th>
 												</tr>
 											</thead>
 											<tbody>
 												<% for (var user of users){ %>
 													<tr>
-														<% if(user.avatar){%>
-															<td class="py-0 d-flex  justify-content-center ">
-																<img class="m-1" id='profileImage' alt="" height="50" width='50' src=<%=user.avatar%> />
-															</td>
-															<%}else{%>
-																<td></td>
-																<%}%>
-																	<td>
-																		<%=user.userName%>
-																	</td>
-																	<td>
-																		<%=user.name%>
-																	</td>
-																	<td>
-																		<%=user.is_banned%>
-																	</td>
-																	<td class="align-content-center">
-																		<a href="/admin/user/profile/<%=user._id%>">
-																			<button class="btn btn-sm btn-info">
-																				<i class="fas fa-id-badge w-100"></i>
-																			</button>
-																		</a>
-																		<% if(user.is_banned){%>
-																			<a href="/admin/users/report/<%=user._id%>">
-																				<button class="btn btn-sm btn-primary">
-																					<i class="fas fa-lock"></i>
-																				</button>
-																			</a>
-																			<% } else {%>
-																				<a href="/admin/users/report/<%=user._id%>">
-																					<button class="btn btn-sm btn-primary">
-																						<i class="fas fa-unlock-alt"></i>
-																					</button>
-																				</a>
-																				<%}%>
-																					<a href="/admin/users/delete/<%=user._id%>">
-																						<button class="btn btn-sm btn-danger">
-																							<i class="far fa-trash-alt"></i>
-																						</button>
-																					</a>
-																	</td>
+														<td>
+															<%=user.name%>
+														</td>
+														<td>
+															<%=user.email%>
+														</td>
+														<td>
+															<%=user.type%>
+														</td>
+														<td>
+															<a href="/admin/users/delete/<%=user._id%>">
+																<button class="btn btn-sm btn-danger">
+																	<i class="far fa-trash-alt"></i>
+																</button>
+															</a>
+														</td>
 													</tr>
 													<%}%>
 											</tbody>
