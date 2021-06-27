@@ -5,7 +5,6 @@ const SchemaTypes = mongoose.SchemaTypes;
 const userSchema = new Schema({
 	email: String,
 	password: String,
-	avatar: String,
 	role: {
 		type: Boolean,
 		default: false,
