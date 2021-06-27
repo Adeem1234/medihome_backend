@@ -3,25 +3,36 @@ import Login from './login/login';
 import SignUp from './login/signup'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Profile from './ProfileUpdate/profile';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       user: {},
-      token: ''
+      token: '',
+      stateUpdate: false
     }
   }
-  componentDidMount() {
+  async componentDidMount() {
     const user = JSON.parse(sessionStorage.getItem('user'));
     const token = JSON.parse(sessionStorage.getItem('authToken'));
-    this.setState({ user: user, token: token })
+    await this.setState({ user: user, token: token })
   }
-  toggleUpdate = () => {
+  async componentDidUpdate() {
+    if (this.state.stateUpdate) {
+      const user = JSON.parse(sessionStorage.getItem('user'));
+      const token = JSON.parse(sessionStorage.getItem('authToken'));
+      await this.setState({ user: user, token: token, stateUpdate: false })
+
+    }
+  }
+  toggleUpdate = async () => {
     const newUser = JSON.parse(sessionStorage.getItem('user'));
     const token = JSON.parse(sessionStorage.getItem('authToken'));
-    this.setState({ user: newUser, token: token })
-    console.log(this.state)
+    await this.setState({ user: newUser, token: token, stateUpdate: true })
+    console.log(this.state);
+
   };
   render() {
     const { token, user } = this.state;
@@ -30,14 +41,11 @@ class App extends Component {
         <React.Fragment>
           <Router>
             <Switch>
-              <Route path='/' exact component={(props) => <UpdateProfile token={token} user={user} />} />
-              <Route path='/welcome' component={(props) => <UpdateProfile token={token} user={user} />} />
-              <Route path='/surveys' component={(props) => <Survey token={token} user={user} />} />
-              <Route path='/dashboard' component={(props) => <Dashboard token={token} user={user} />} />
-              <Route path='/forms' component={(props) => <Forms token={token} user={user} />} />
-              <Route path='/login' component={(props) => <UpdateProfile token={token} user={user} />} />
-              <Route path='/sign-up' component={(props) => <UpdateProfile token={token} user={user} />} />
-              <Route path='*' component={NotFound} />
+              <Route path='/' exact component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/welcome' component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/login' component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/sign-up' component={(props) => <Profile token={token} user={user} />} />
+              {/* <Route path='*' component={NotFound} /> */}
             </Switch>
           </Router>
         </React.Fragment>

@@ -7,9 +7,11 @@ const verifyToken = async (req, res, next) => {
     try {
         let authHeader = req.headers.authorization;
         if (!authHeader) { return res.status(403).json({ message: 'Forbidden' }); }
-        let token = authHeader.split(' ')[1];
-        let user = await jwt.verify(token, SECRET_KEY);
-        const userCheck = await User.findById(user._id);
+        console.log(authHeader)
+        // let token = authHeader.split(' ')[1];
+        let token = await jwt.verify(authHeader, SECRET_KEY);
+        // console.log(user)
+        const userCheck = await User.findById(token.user._id);
         if (userCheck) {
             req.user = userCheck;
             next();
@@ -17,6 +19,7 @@ const verifyToken = async (req, res, next) => {
             return res.status(401).json({ message: 'Unauthorized' });
         }
     } catch (err) {
+        throw err;
         return res.status(401).json({ message: 'Unauthorized' });
     }
 };

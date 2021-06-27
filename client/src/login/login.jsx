@@ -68,6 +68,7 @@ const Login = ({ updateData }) => {
                       sessionStorage.setItem('authToken', JSON.stringify(authToken));
                       // await updateData(user, token)
                       document.getElementById('updateToken').click();
+                      document.getElementById('proceed').click();
                     }).catch((er) => {
                       if (er.response === 422) {
                         let errors = {};
@@ -112,7 +113,7 @@ const Login = ({ updateData }) => {
           </div>
         </div>
         <div className='card-footer'>
-          <Link to='/dashboard'>
+          <Link to='/welcome' id='proceed'>
             <Button variant="contained" color="primary" className="d-flex float-right" >Proceed </Button>
           </Link>
         </div>

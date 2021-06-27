@@ -7,15 +7,13 @@ const pharmaciesSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	location: {
-		type: String,
-		required: true,
+	city: {
+		type: SchemaTypes.ObjectId,
+		ref: 'cities'
 	},
-	longitude: {
-
-	},
-	latitude: {
-
+	area: {
+		type: SchemaTypes.ObjectId,
+		ref: 'areas'
 	},
 	manager: {
 		type: SchemaTypes.ObjectId,

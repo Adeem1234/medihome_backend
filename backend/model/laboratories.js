@@ -7,8 +7,8 @@ const laboratoriesSchema = new Schema({
     type: String,
     required: true,
   },
-  location: {
-    type: String,
+  city: {
+    type: SchemaTypes.ObjectId,
     required: true,
   },
   longitude: {

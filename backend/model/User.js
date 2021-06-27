@@ -29,9 +29,13 @@ const userSchema = new Schema({
 		type: String,
 		required: true
 	},
-	location: {
-		type: String,
-		default: ''
+	city: {
+		type: SchemaTypes.ObjectId,
+		ref: 'cities'
+	},
+	area: {
+		type: SchemaTypes.ObjectId,
+		ref: 'areas'
 	},
 	profileUpdated: {
 		type: Boolean,

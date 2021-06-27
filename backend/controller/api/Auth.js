@@ -21,7 +21,7 @@ module.exports = {
                     // console.log("validPass" + validPass);
                     if (!savedUser) { return res.status(401).send('Email is Incorrect '); }
                     if (!validPass) { return res.status(422).send('Password is Incorrect'); }
-                    const authToken = await jwt.sign({ savedUser: savedUser, type: savedUser.type }, process.env.TOKEN_SECRET);
+                    const authToken = await jwt.sign({ user: savedUser, type: savedUser.type }, process.env.TOKEN_SECRET);
                     // console.log("authToken " + authToken);
                     await res.send({ savedUser, authToken });
                 }
