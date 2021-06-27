@@ -9,13 +9,11 @@ const laboratoriesSchema = new Schema({
   },
   city: {
     type: SchemaTypes.ObjectId,
-    required: true,
+    ref: 'cities'
   },
-  longitude: {
-
-  },
-  latitude: {
-
+  area: {
+    type: SchemaTypes.ObjectId,
+    ref: 'areas'
   },
   manager: {
     type: SchemaTypes.ObjectId,
