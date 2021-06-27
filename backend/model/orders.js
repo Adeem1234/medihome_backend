@@ -23,6 +23,10 @@ const ordersSchema = new Schema({
     type: String,
     required: true,
   },
+  date: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 module.exports = mongoose.model('orders', ordersSchema);
