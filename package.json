@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "client": "cd frontend && npm start",
+    "client": "cd client && npm start",
     "server": "cd backend && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
@@ -12,5 +12,8 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^6.2.0"
+  },
+  "dependencies": {
+    "react-bootstrap": "^1.6.1"
   }
 }

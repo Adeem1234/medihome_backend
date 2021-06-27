@@ -32,6 +32,10 @@ const userSchema = new Schema({
 	location: {
 		type: String,
 		default: ''
+	},
+	profileUpdated: {
+		type: Boolean,
+		default: false
 	}
 });
 

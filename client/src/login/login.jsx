@@ -1,19 +1,22 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import axiosInstance from '../axios/axiosConfig';
 
 
 const Login = ({ updateData }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [type, setType] = useState('User');
-  const [showErrors, setShowErrors] = useState([]);
-  const [errors, setErrors] = useState({});
-  const [loginStatus, setLoginStatus] = useState(false);
-  const [user, setUser] = useState({});
-  const [token, setToken] = useState();
+  let [email, setEmail] = useState('');
+  let [password, setPassword] = useState('');
+  let [type, setType] = useState('User');
+  let [showErrors, setShowErrors] = useState([]);
+  let [errors, setErrors] = useState({});
+  let [loginStatus, setLoginStatus] = useState(false);
+  let [token, setToken] = useState('');
+  let [user, setUser] = useState({});
+
+
+
 
   return (!loginStatus
     ?
@@ -54,20 +57,16 @@ const Login = ({ updateData }) => {
                   e.preventDefault();
                   axiosInstance.post('/login', { email, password, type })
                     .then(async (res) => {
-                      console.log(res.data)
                       const { authToken, savedUser } = res.data;
-                      await setToken(authToken);
-                      await setUser(savedUser);
-                      sessionStorage.setItem('authToken', JSON.stringify(token));
+                      savedUser.token = authToken
+                      setUser(savedUser);
+                      setToken(authToken);
+                      setLoginStatus(true);
                       // localStorage.removeItem('user')
-                      localStorage.setItem('user', JSON.stringify(savedUser));
-                      // if (user.location) {
-                      //     localStorage.setItem('updateProfile', JSON.stringify(user.subscriptionId));
-                      // } else {
-                      //     localStorage.setItem('updateProfile', '');
-                      // }
-                      await setLoginStatus(true)
-                      updateData(user, token)
+                      console.log(loginStatus)
+                      sessionStorage.setItem('user', JSON.stringify(savedUser));
+                      sessionStorage.setItem('authToken', JSON.stringify(authToken));
+                      // await updateData(user, token)
                       document.getElementById('updateToken').click();
                     }).catch((er) => {
                       if (er.response === 422) {
@@ -79,8 +78,8 @@ const Login = ({ updateData }) => {
                         this.setState({ errors: errors, showError: er.response.data })
                       }
                       if (er.response === 401) {
-                        let errors = {};
-                        errors = er.response.data;
+                        // let errors = {};
+                        setErrors(er.response.data);
                         return errors;
                       }
                     });
