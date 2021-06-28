@@ -10,10 +10,4 @@ Router.route('/add-new/city').post(verifyToken, UserController.addCitynArea);
 Router.route('/update-profile').get(verifyToken, UserController.getUpdateProfile);
 Router.route('/update-profile').post(verifyToken, UserController.updateprofile);
 
-// Router.route('/check-username').post(userNameValidation, UserController.checkUserName);
-// Router.route('/is-searching/:id').get(verifyToken, UserController.isSearching);
-// Router.route('/details').get(verifyToken, UserController.mydetails);
-// Router.route('/user/details').post([verifyToken, blockedUserCheck], UserController.userDetails);
-// Router.route('/settings').get(UserController.settings);
-
 module.exports = Router;

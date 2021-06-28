@@ -15,13 +15,13 @@ module.exports = {
         res.render('pharmacyAdd', { cities });
     },
     add: async (req, res, next) => {
-        const { name, location } = req.body;
+        const { name, city } = req.body;
         try {
-            const oldPharmacies = await Pharmacies.findOne({ name: name, location: location });
+            const oldPharmacies = await Pharmacies.findOne({ name: name, city: city });
             if (oldPharmacies) {
                 res.status(400).send('Pharmacy already exists');
             } else {
-                const pharmacy = new Pharmacies({ name: name, location: location });
+                const pharmacy = new Pharmacies({ name: name, city: city });
                 await pharmacy.save();
                 res.redirect('/admin/pharmacies');
             }
@@ -40,9 +40,9 @@ module.exports = {
     },
     update: async (req, res, next) => {
         const { id } = req.params;
-        const { name, location } = req.body;
+        const { name, city } = req.body;
         try {
-            await Pharmacies.findByIdAndUpdate(id, { name: name, location: location });
+            await Pharmacies.findByIdAndUpdate(id, { name: name, city: city });
             return res.status(200).redirect('/admin/pharmacies');
         } catch (error) {
             // throw error

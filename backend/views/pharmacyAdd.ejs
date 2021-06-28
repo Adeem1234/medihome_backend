@@ -28,9 +28,10 @@
 										</div>
 										<div class="d-flex align-items-center">
 											<select name="city" id="" class="select2 ">
-												<%foreach(var cities as city) { <option value=<%=city._id%>><%= city.name%>
-														</option>
-														} %>
+												<%for (var city of cities) {%>
+													<option value=<%=city._id%>><%= city.name%>
+													</option>
+													<% } %>
 
 											</select>
 										</div>

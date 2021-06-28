@@ -13,13 +13,13 @@ module.exports = {
     res.render('laboratoryAdd');
   },
   add: async (req, res, next) => {
-    const { name, location } = req.body;
+    const { name, city } = req.body;
     try {
-      const oldLaboratories = await Laboratories.findOne({ name: name, location: location });
+      const oldLaboratories = await Laboratories.findOne({ name: name, city: city });
       if (oldLaboratories) {
-        res.status(400).send('Pharmacy already exists');
+        res.status(400).send('Laboratory already exists');
       } else {
-        const laboratory = new Laboratories({ name: name, location: location });
+        const laboratory = new Laboratories({ name: name, city: city });
         await laboratory.save();
         res.redirect('/admin/laboratories');
       }
@@ -38,9 +38,9 @@ module.exports = {
   },
   update: async (req, res, next) => {
     const { id } = req.params;
-    const { name, location } = req.body;
+    const { name, city } = req.body;
     try {
-      await Laboratories.findByIdAndUpdate(id, { name: name, location: location });
+      await Laboratories.findByIdAndUpdate(id, { name: name, city: city });
       return res.status(200).redirect('/admin/laboratories');
     } catch (error) {
       // throw error

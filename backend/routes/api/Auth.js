@@ -4,6 +4,5 @@ const { loginValidation, appleLoginValidation } = require('../../middlewares/ver
 
 Router.route('/login').post(AuthController.login);
 Router.route('/register').post(AuthController.register);
-// Router.route('/apple/login').post(appleLoginValidation, AuthController.AppleLogin)
 
 module.exports = Router;

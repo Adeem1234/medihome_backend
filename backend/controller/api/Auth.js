@@ -12,8 +12,6 @@ module.exports = {
                 return res.status(401).send(error.details[0].message);
             }
             const savedUser = await User.findOne({ email: req.body.email });
-            // console.log("user" + user);
-            // console.log(req.body)
             if (savedUser) {
                 if (savedUser.type === req.body.type) {
 
