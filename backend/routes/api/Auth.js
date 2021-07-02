@@ -1,5 +1,5 @@
 const Router = require('express-promise-router')();
-const AuthController = require('../../controller/api/Auth');
+const AuthController = require('../../controller/api/AuthController');
 const { loginValidation, appleLoginValidation } = require('../../middlewares/verification');
 
 Router.route('/login').post(AuthController.login);

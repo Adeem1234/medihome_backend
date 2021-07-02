@@ -1,4 +1,4 @@
-const Laboratories = require('../../../model/laboratories');
+const Laboratories = require('../../../model/LaboratoriesModel');
 
 module.exports = {
   get: async (req, res, next) => {

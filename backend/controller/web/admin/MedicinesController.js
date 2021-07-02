@@ -1,4 +1,4 @@
-const Medicines = require('../../../model/medicines')
+const Medicines = require('../../../model/MedicinesModel')
 module.export = {
   index: async (req, res, next) => {
     try {

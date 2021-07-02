@@ -25,9 +25,9 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                            Users</div>
+                            Orders Today</div>
                           <div class=" h5 mb-0 font-weight-bold text-gray-800">
-                            <%= userCount%>
+                            <%= ordersToday%>
                           </div>
                         </div>
                         <div class="col-auto">
@@ -44,10 +44,10 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                            Pharmacies
+                            Pending Orders
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <%=pharmacies%>
+                            <%=pendingOrders%>
                           </div>
                         </div>
 
@@ -64,10 +64,10 @@
                       <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                           <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                            Laboratories
+                            Total Orders
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <%= laboratories%>
+                            <%= orders.length%>
                           </div>
                         </div>
                         <div class="col-auto">
@@ -80,33 +80,45 @@
               </div>
               <div class="card shadow mb-4">
                 <div class="card-header py-3 bg-gradient-primary">
-                  <h6 class="m-0 font-weight-bold text-light"> All Users </h6>
+                  <h6 class="m-0 font-weight-bold text-light"> All Orders </h6>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
                       <thead>
                         <tr>
-                          <th class=" text-align-center"> Name </th>
-                          <th class=" text-align-center"> Emial </th>
-                          <th class=" text-align-center"> Type </th>
+                          <th class=" text-align-center"> Customer </th>
+                          <th class=" text-align-center"> City </th>
+                          <th class=" text-align-center"> Area </th>
+                          <th class=" text-align-center"> Date </th>
+                          <th class=" text-align-center"> Total </th>
+                          <th class=" text-align-center"> Status </th>
                           <th class="w-0 align-content-center"> Actions </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <% for (var user of users){ %>
+                        <% for (var order of orders){ %>
                           <tr>
                             <td>
-                              <%=user.name%>
+                              <%=order.name%>
                             </td>
                             <td>
-                              <%=user.email%>
+                              <%=order.email%>
                             </td>
                             <td>
-                              <%=user.type%>
+                              <%=order.type%>
                             </td>
                             <td>
-                              <a href="/admin/users/delete/<%=user._id%>">
+                              <%=order.date%>
+                            </td>
+                            <td>
+                              <%=order.total%>
+                            </td>
+                            <td>
+                              <%=order.status%>
+                            </td>
+                            <td>
+                              <a href="/admin/orders/status/pending/<%=order._id%>">
                                 <button class="btn btn-sm btn-danger">
                                   <i class="far fa-trash-alt"></i>
                                 </button>

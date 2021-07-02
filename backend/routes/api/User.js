@@ -1,5 +1,5 @@
 const Router = require('express-promise-router')();
-const UserController = require('../../controller/api/User');
+const UserController = require('../../controller/api/UserController');
 const { blockedUserCheck } = require('../../middlewares/userVerification');
 const { userNameValidation, callValidation } = require('../../middlewares/verification');
 

@@ -1,12 +1,10 @@
-const Router = require('express-promise-router')();
-const Dashboard = require('../../controller/web/dashboard');
-const {
-    ensureAuthenticated
-} = require('../../config/auth');
+const router = require('express').Router();
 
-// Home Page Dashboard Page
-Router.route('/').get(ensureAuthenticated, Dashboard.index);
-// Dashboard
-Router.route('/dashboard').get(ensureAuthenticated, Dashboard.index);
+router.use('/', require('./admin/admin'));
+router.use('/', require('./admin/doctor'));
+router.use('/', require('./admin/laboratory'));
+// router.use('/', require('./admin/location'));
+router.use('/', require('./admin/pharmacist'));
+// router.use('/', require('./admin/users'));
 
-module.exports = Router;
+module.exports = router;

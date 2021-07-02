@@ -6,8 +6,8 @@ const User = require('../../model/User');
 const fs = require('fs');
 // let url = './public/settings/setting.json';
 const moment = require('moment');
-const Cities = require('../../model/cities');
-const Areas = require('../../model/areas');
+const Cities = require('../../model/CitiesModel');
+const Areas = require('../../model/AreasModel');
 
 module.exports = {
     addCitynArea: async (req, res, next) => {

@@ -1,4 +1,4 @@
-const Doctors = require('../../../model/doctors');
+const Doctors = require('../../../model/DoctorsModel');
 
 module.exports = {
   get: async (req, res, next) => {

@@ -1,5 +1,5 @@
-const Pharmacies = require('../../../model/pharmacies');
-const Cities = require('../../../model/cities');
+const Pharmacies = require('../../../model/PharmaciesModel');
+const Cities = require('../../../model/CitiesModel');
 
 module.exports = {
     get: async (req, res, next) => {
