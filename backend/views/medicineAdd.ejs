@@ -1,6 +1,3 @@
-<head>
-  <title>Convo Staters</title>
-</head>
 <!-- Page Wrapper -->
 <div id="wrapper" class="w-auto">
   <!-- Sidebar -->
@@ -16,26 +13,36 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <form action="/admin/doctor/edit/<%=doctor._id%>" method="POST">
+            <form action="/admin/medicine/add" method="POST">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 bg-gradient-primary">
                   <h6 class="m-0 font-weight-bold text-light">
-                    Update doctor
+                    Add new Medicine
                   </h6>
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
                     <div class="d-flex align-items-center">
                       <input type="text" name="name" class="form-control border border-secondary w-100 m-1"
-                        placeholder="<%=doctor.name%>" />
-                      <input type="text" name="phoneNo" class="form-control border border-secondary w-100 m-1"
-                        placeholder="<%=doctor.phoneNo%>" />
+                        placeholder="Enter Name" />
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <input type="text" name="formula" class="form-control border border-secondary w-100 m-1"
+                        placeholder="Enter medicine formula" />
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <input type="text" name="manufacturer" class="form-control border border-secondary w-100 m-1"
+                        placeholder="Enter medicine manufacturer name" />
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <input type="text" name="price" class="form-control border border-secondary w-100 m-1"
+                        placeholder="Enter Price" />
                     </div>
                   </div>
                 </div>
                 <div class="card-footer">
                   <button class="btn bg-danger text-white px-3 py-2 float-right" type="submit">
-                    <span> Update </span>
+                    <span> Add </span>
                   </button>
                 </div>
               </div>

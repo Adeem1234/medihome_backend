@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 const SchemaTypes = mongoose.SchemaTypes;
 
 const ordersSchema = new Schema({
-  customerName: {
+  customer: {
     type: SchemaTypes.ObjectId,
     ref: 'users'
   },
@@ -19,13 +19,25 @@ const ordersSchema = new Schema({
     type: SchemaTypes.ObjectId,
     ref: 'laboratories'
   },
-  location: {
-    type: String,
-    required: true,
+  city: {
+    type: SchemaTypes.ObjectId,
+    ref: 'cities',
+  },
+  area: {
+    type: SchemaTypes.ObjectId,
+    ref: 'areas'
   },
   date: {
     type: Date,
     default: Date.now
+  },
+  total: {
+    type: Number,
+    default: 0,
+  },
+  status: {
+    type: String,
+    required: true
   }
 });
 

@@ -24,8 +24,14 @@ const pharmaciesSchema = new Schema({
 		require: true
 	},
 	medicines: [{
-		type: SchemaTypes.ObjectId,
-		ref: 'medicines'
+		medicine: {
+			type: SchemaTypes.ObjectId,
+			ref: 'medicines'
+		},
+		amount: {
+			type: Number,
+			required: true
+		}
 	}]
 });
 
