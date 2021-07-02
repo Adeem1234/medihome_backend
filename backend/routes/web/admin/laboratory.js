@@ -1,5 +1,5 @@
 const Router = require('express-promise-router')();
-const LaboratoryController = require('../../../controller/web/admin/LaboratoryController');
+const LaboratoryController = require('../../../controller/web/LaboratoryController');
 const {
   ensureAuthenticated
 } = require('../../../config/auth');

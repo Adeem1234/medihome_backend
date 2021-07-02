@@ -1,5 +1,5 @@
 const Router = require('express-promise-router')();
-const DocotorController = require('../../../controller/web/admin/DoctorController');
+const DocotorController = require('../../../controller/web/DoctorController');
 const {
   ensureAuthenticated
 } = require('../../../config/auth');

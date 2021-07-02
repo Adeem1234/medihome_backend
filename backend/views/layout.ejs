@@ -84,6 +84,43 @@
 			info: true,
 			paging: true,
 		});
+		$('#selectCity').on('change', () => {
+			let selectedCity = $('#selectCity').select2('data');
+			let id = selectedCity[0].id
+			console.log(selectedCity[0])
+			// let list = [];
+			// for (var city of selectCity) {
+			// 	list.push(city)
+			// };
+			// let form = new FormData();
+			// form.append('city[]', Array.from(list).map(e => e.id))
+			$.ajax(
+				{
+					type: 'GET',
+					url: '/admin/get-city-area/' + id,
+					processData: false,
+					contentType: false,
+					success: (res) => {
+						console.log(res)
+						$('#selectArea').empty().trigger("change");
+						let areas = res.areas;
+						let optGroup = document.createElement("optgroup");
+						optGroup.setAttribute('label', selectedCity[0].text);
+						for (let i = 0; i < areas.length; i++) {
+							let area = areas[i];
+							let newOption = new Option(area.name, area._id,);
+							newOption.setAttribute('value', area._id)
+							optGroup.appendChild(newOption)
+						}
+						console.log(optGroup)
+						$('#selectArea').append(optGroup).trigger('change');
+					},
+					error: (e) => {
+						console.error(e);
+					}
+				}
+			)
+		});
 	</script>
 </body>
 

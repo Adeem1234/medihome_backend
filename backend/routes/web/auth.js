@@ -2,7 +2,7 @@ const Router = require('express-promise-router')();
 const {
     forwardAuthenticated
 } = require('../../middlewares/auth');
-const Admin = require('../../controller/web/admin/admin');
+const Admin = require('../../controller/web/admin');
 
 //Login Page Route
 Router.route('/login').get(forwardAuthenticated, Admin.getLogin).post(forwardAuthenticated, Admin.postLogin);

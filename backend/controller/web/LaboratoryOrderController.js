@@ -1,7 +1,7 @@
-const OrdersModel = require("../../../model/OrdersModel");
+const OrdersModel = require("../../model/OrdersModel");
 
 
-module.export = {
+module.exports = {
   updateOrderStatusProcessing: async (req, res, next) => {
     try {
       const { id } = req.params;

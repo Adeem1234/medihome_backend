@@ -8,7 +8,7 @@ const citiesSchema = new Schema({
     type: String,
     required: true
   },
-  area: [{
+  areas: [{
     type: SchemaTypes.ObjectId,
     ref: 'areas'
   }]
