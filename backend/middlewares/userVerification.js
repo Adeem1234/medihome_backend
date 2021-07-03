@@ -1,7 +1,7 @@
-const User = require('../model/User');
+const User = require('../model/UsersModel');
 
 module.exports = {
-    blockedUserCheck: async(req, res, next) => {
+    blockedUserCheck: async (req, res, next) => {
         const id = req.body.id
         const otheruser = await User.findOne({ _id: id, bannedUsers: req.user._id })
         const userBannedList = req.user.bannedUsers.includes(id)

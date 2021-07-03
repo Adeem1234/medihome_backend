@@ -3,7 +3,7 @@
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
 //require User Model for the Database
-const User = require('../../model/User');
+const User = require('../../model/UsersModel');
 
 module.exports = {
 	getLogin: async (req, res) => {

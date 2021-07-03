@@ -11,6 +11,7 @@ module.exports = {
     show: async (req, res, next) => {
         try {
             const cities = await CitiesModel.find({}).populate('areas');
+            const users= await UsersMo
             return res.render('pharmacyAdd', { cities });
         } catch (error) { res.status(400).send({ data: { message: error } }); }
     },

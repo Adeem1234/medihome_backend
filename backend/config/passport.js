@@ -2,7 +2,7 @@ const LocalStrategy = require('passport-local').Strategy;
 // const mongoose = require ('mongoose');
 const bcrypt = require('bcryptjs');
 // Load User Model
-const Admin = require('../model/User');
+const Admin = require('../model/UsersModel');
 const passport = require('passport');
 const admin = require('../controller/web/admin');
 // Start a Session and asign aa session id
