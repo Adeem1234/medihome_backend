@@ -49,7 +49,15 @@ module.exports = {
       const city = await Cities.findByIdAndUpdate(cityId, { $push: { areas: newArea._id } })
       return res.redirect('/admin/locations')
     } catch (error) {
-      return res.status({ data: { message: error } })
+      return res.status(400).send({ data: { message: error } })
+    }
+  },
+  AddAreaGet: async (req, res) => {
+    try {
+      const cities = await CitiesModel.find({});
+      return res.status(200).render('addArea');
+    } catch (error) {
+      return res.status(400).send({ data: { message: error } })
     }
   }
 
