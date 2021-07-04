@@ -1,0 +1,41 @@
+
+#surveyList{
+    overflow-x: auto;
+}
+
+#formsList{
+	height: 45vh;
+	overflow-y: auto;
+}
+
+
+
+
+
+
+
+/* Scroll Bar Properties  */
+
+/* height */
+::-webkit-scrollbar {
+	height: 3px;
+	width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	/* box-shadow: inset 0 0 1px white;  */
+	background-color: rgb(235, 235, 235);
+	border-radius: 3vh;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #7446ca;
+	border-radius: 3vh;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #583499;
+}

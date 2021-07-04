@@ -64,7 +64,9 @@ class ProfileUpdate extends Component {
 
   addLocation = async () => {
     return (
-      <div></div>
+      <div>
+        Hello
+      </div>
     );
   }
   updateProfile = async () => {
@@ -132,10 +134,12 @@ class ProfileUpdate extends Component {
   }
 
   render() {
-    if (this.state.citiesAvailable) {
-      return this.updateProfile();
-    }
-    else return this.addLocation()
+    let x = this.updateProfile();
+    return (
+      <div>
+        {x}
+      </div>
+    )
   }
 }
 

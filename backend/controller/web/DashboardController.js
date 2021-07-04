@@ -15,7 +15,6 @@ module.exports = {
 				const date = new Date(Date.now());
 				const userCount = await User.find({ type: 'User' }).countDocuments();
 				const users = await User.find({});
-				console.log(users)
 				const pharmacies = await Pharmacies.countDocuments();
 				const laboratories = await Laboratories.countDocuments();
 				const OrdersToday = await Orders.find({ date: { $gte: moment(date).startOf('day'), $lte: moment(date).endOf('day') } }).countDocuments();

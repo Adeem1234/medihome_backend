@@ -37,37 +37,36 @@ class App extends Component {
 
   };
   render() {
-    // const { token, user } = this.state;
-    // if (token && user) {
-    return (
-      <React.Fragment>
-        <Router>
-          <Switch>
-            <Route path='/' exact component={(props) => <Profile token={token} user={user} />} />
-            <Route path='/welcome' component={(props) => <Profile token={token} user={user} />} />
-            <Route path='/login' component={(props) => <Profile token={token} user={user} />} />
-            <Route path='/sign-up' component={(props) => <Profile token={token} user={user} />} />
-            {/* <Route path='*' component={NotFound} /> */}
-          </Switch>
-        </Router>
-      </React.Fragment>
-    )
-    // } else {
-    //   return (
-    //   <React.Fragment>
-    //     <Router>
-    //       <Switch>
-    //         <Route path="/" exact component={(props) => <Login updateData={this.toggleUpdate} />} />
-    //         <Route path='/login' component={(props) => <Login updateData={this.toggleUpdate} />} />
-    //         <Route path='/sign-up' component={(props) => <SignUp updateData={this.toggleUpdate} />} />
-    //         <Route path='*' component={(props) => <Login updateData={this.toggleUpdate} />} />
-    //       </Switch>
-    //     </Router>
-    //   </React.Fragment>
-    // )
+    const { token, user } = this.state;
+    if (token && user) {
+      return (
+        <React.Fragment>
+          <Router>
+            <Switch>
+              <Route path='/' exact component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/welcome' component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/login' component={(props) => <Profile token={token} user={user} />} />
+              <Route path='/sign-up' component={(props) => <Profile token={token} user={user} />} />
+              {/* <Route path='*' component={NotFound} /> */}
+            </Switch>
+          </Router>
+        </React.Fragment>
+      )
+    } else {
+      return (
+        <React.Fragment>
+          <Router>
+            <Switch>
+              <Route path="/" exact component={(props) => <Login updateData={this.toggleUpdate} />} />
+              <Route path='/login' component={(props) => <Login updateData={this.toggleUpdate} />} />
+              <Route path='/sign-up' component={(props) => <SignUp updateData={this.toggleUpdate} />} />
+              <Route path='*' component={(props) => <Login updateData={this.toggleUpdate} />} />
+            </Switch>
+          </Router>
+        </React.Fragment>
+      )
+    }
   }
-
-
 }
 
 export default App;
