@@ -1,4 +1,6 @@
+const CitiesModel = require('../../model/CitiesModel');
 const Laboratories = require('../../model/LaboratoriesModel');
+const UsersModel = require('../../model/UsersModel');
 
 module.exports = {
   get: async (req, res, next) => {
@@ -12,7 +14,8 @@ module.exports = {
   show: async (req, res, next) => {
     try {
       const cities = await CitiesModel.find({}).populate('areas');
-      return res.render('laboratoryAdd');
+      const users = await UsersModel.find({ type: 'laboratorist' });
+      return res.render('laboratoryAdd', { cities, users });
     } catch (error) {
       res.status(400).send({ data: { message: error } });
     }
