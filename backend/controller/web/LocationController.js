@@ -55,7 +55,7 @@ module.exports = {
   AddAreaGet: async (req, res) => {
     try {
       const cities = await CitiesModel.find({});
-      return res.status(200).render('addArea');
+      return res.status(200).render('addArea', { cities });
     } catch (error) {
       return res.status(400).send({ data: { message: error } })
     }
