@@ -3,14 +3,19 @@ const Laboratories = require('../../model/LaboratoriesModel');
 module.exports = {
   get: async (req, res, next) => {
     try {
-      const laboratories = await Laboratories.find({});
+      const laboratories = await Laboratories.find({}).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: 'manager', model: 'users', select: 'name' });
       res.status(200).render('laboratoriesList', { laboratories });
     } catch (error) {
       res.status(400).send({ data: { message: error } });
     }
   },
   show: async (req, res, next) => {
-    res.render('laboratoryAdd');
+    try {
+      const cities = await CitiesModel.find({}).populate('areas');
+      return res.render('laboratoryAdd');
+    } catch (error) {
+      res.status(400).send({ data: { message: error } });
+    }
   },
   add: async (req, res, next) => {
     const { name, city } = req.body;

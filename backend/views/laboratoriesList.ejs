@@ -24,13 +24,16 @@
                   <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th class="w-100 text-align-center">
+                        <th class="w-auto text-align-center">
                           Name
                         </th>
-                        <th class="w-100 text-align-center">
-                          Location
+                        <th class="w-auto text-align-center">
+                          City
                         </th>
-                        <th class="w-50 align-content-center px-4">
+                        <th class="w-auto text-align-center">
+                          Manager
+                        </th>
+                        <th class="w-auto align-content-center px-4">
                           Actions
                         </th>
                       </tr>
@@ -42,7 +45,10 @@
                             <%=laboratory.name%>
                           </td>
                           <td>
-                            <%=laboratory.location%>
+                            <%=laboratory.city.name%>
+                          </td>
+                          <td>
+                            <%=laboratory.manager.name%>
                           </td>
                           <td class="align-content-center">
                             <a href="/admin/laboratory/edit/<%=laboratory._id%>">
