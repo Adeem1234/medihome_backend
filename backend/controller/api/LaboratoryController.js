@@ -5,7 +5,7 @@ module.exports = {
   getLaboratories: async (req, res, next) => {
     try {
       const laboratories = await LaboratoriesModel.find({});
-      return res.status(200).send({ data: { laboratories } })
+      return res.status(200).send({ laboratories })
     } catch (error) {
 
     }
@@ -14,7 +14,7 @@ module.exports = {
     try {
       const { id } = req.params;
       const laboratory = await LaboratoriesModel.findById(id).populate('tests');
-      return res.status(200).send({ data: { laboratory } })
+      return res.status(200).send({ laboratory })
     } catch (error) {
 
     }

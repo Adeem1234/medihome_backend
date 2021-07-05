@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import Login from './Login/login';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SignUp from './Login/signup';
-import Subscription from './Subscription/subscription'
-import Survey from './Surveys/Survey.jsx'
 import Laboratorist from './Laboratorist/Laboratorist';
 import Dashboard from './dashboard/dashboard.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Forms from './forms/Forms';
 import NotFound from './404';
 
 // import 'jquery/dist/jquery.min.js';

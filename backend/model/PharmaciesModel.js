@@ -32,6 +32,10 @@ const pharmaciesSchema = new Schema({
 			type: Number,
 			required: true
 		}
+	}],
+	orders: [{
+		type: SchemaTypes.ObjectId,
+		ref: 'orders'
 	}]
 });
 

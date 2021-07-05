@@ -38,7 +38,8 @@ const ordersSchema = new Schema({
   status: {
     type: String,
     required: true
-  }
+  },
+  
 });
 
 module.exports = mongoose.model('orders', ordersSchema);

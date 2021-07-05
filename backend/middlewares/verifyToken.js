@@ -10,7 +10,7 @@ const verifyToken = async (req, res, next) => {
         console.log(authHeader)
         // let token = authHeader.split(' ')[1];
         let token = await jwt.verify(authHeader, SECRET_KEY);
-        // console.log(user)
+        console.log(token)
         const userCheck = await User.findById(token.user._id);
         if (userCheck) {
             req.user = userCheck;
@@ -19,7 +19,6 @@ const verifyToken = async (req, res, next) => {
             return res.status(401).json({ message: 'Unauthorized' });
         }
     } catch (err) {
-        throw err;
         return res.status(401).json({ message: 'Unauthorized' });
     }
 };

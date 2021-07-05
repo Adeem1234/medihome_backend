@@ -20,7 +20,7 @@ module.exports = {
                 if (!savedUser) { return res.status(401).send('Email is Incorrect '); }
                 if (!validPass) { return res.status(422).send('Password is Incorrect'); }
                 let user = savedUser
-                const authToken = await jwt.sign(user, process.env.TOKEN_SECRET);
+                const authToken = await jwt.sign({ user }, process.env.TOKEN_SECRET);
                 // console.log("authToken " + authToken);
                 await res.send({ user: savedUser, token: authToken });
             }
@@ -28,7 +28,6 @@ module.exports = {
                 res.status(401).send({ message: 'Incorrect User Type' })
             }
         } catch (err) {
-            throw err;
             res.status(401).send({ message: err });
         }
     },
@@ -44,7 +43,7 @@ module.exports = {
                     let user = new User({ name: name, email: email, type: type, password: hashpassword, phoneNo: phoneNo });
                     user = await user.save();
                     tokenData = { user: user, type: type }
-                    const token = jwt.sign(user, process.env.JWT_SECRET_KEY);
+                    const token = jwt.sign({ user }, process.env.JWT_SECRET_KEY);
                     return res.json({ data: { token: token, user: user } });
                 }
                 else { return res.send(401).send({ data: { msg: 'This Email is Already Registered' } }) }

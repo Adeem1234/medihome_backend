@@ -12,19 +12,12 @@ class UserBoard extends Component {
 	state = {
 		token: '',
 		user: {},
-		survey: [],
-		surveyId: '',
-		surveyCat: '',
-		surveyQuestions: [],
+		pharmacies: [],
+		pharmacyId: '',
+		laboratories: [],
+		laboratoryId: '',
 		current: 0,
 		pages: 0,
-		performedSurveyCount: 0,
-		surveyCount: -1,
-		questionGet: false,
-		q: [],
-		forms: [],
-		activeFormCategory: {},
-		performedSurvey: [],
 
 		pageLoad: true,
 		activeForm: null,
@@ -47,15 +40,6 @@ class UserBoard extends Component {
 		axiosInstance.get('/posts/dashboard', { headers: { token: this.state.token } })
 			.then(async res => {
 				console.log(res.data)
-				const { survey, formAssigned, performedSurvey, performedSurveyCount, surveyCount } = res.data;
-				await this.setState({
-					survey: survey,
-					forms: formAssigned,
-					performedSurvey: performedSurvey,
-					performedSurveyCount: performedSurveyCount,
-					surveyCount: surveyCount
-				})
-
 			})
 			.catch(err => { console.error(err); })
 	}
@@ -63,8 +47,7 @@ class UserBoard extends Component {
 	componentDidUpdate() {
 		axiosInstance.get('/posts/dashboard', { headers: { token: this.state.token } })
 			.then(async res => {
-				const { survey, formAssigned, performedSurvey } = res.data;
-				await this.setState({ survey: survey, forms: formAssigned, performedSurvey: performedSurvey })
+				console.log(res.data)
 			})
 			.catch(err => { console.error(err); })
 	}
@@ -79,17 +62,17 @@ class UserBoard extends Component {
 	navButton() {
 		return (
 			<div className='d-flex align-items-left flex-wrap  justify-content-center mt-2 h-25'>
-				<Link to='/surveys' className='text-light'>
+				<Link to='/pharmacies' className='text-light'>
 					<div className='d-flex px-3 py-2 justify-content-space-between align-items-center mr-5 bg-warning border-1 rounded'>
 						<img src={navVector} className='navVector mr-2' alt='navVector' />
-						<span className='font-weight-bold'>Surveys</span>
+						<span className='font-weight-bold'>Pharmacies</span>
 					</div>
 				</Link>
 
-				<Link to='/forms' className='text-light'>
+				<Link to='/laboratories' className='text-light'>
 					<div className='d-flex px-3 py-2 justify-content-space-between align-items-center mr-5 bg-danger border-1 rounded'>
 						<img src={navVector} className='navVector mr-2' alt='navVector' />
-						<span className='font-weight-bold'>Forms</span>
+						<span className='font-weight-bold'>Laboratories</span>
 					</div>
 				</Link>
 			</div>
