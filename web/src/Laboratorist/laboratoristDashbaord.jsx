@@ -12,7 +12,7 @@ const LaboratoristDashboard = () => {
   const getLaboratories = async () => {
     await setToken(JSON.parse(sessionStorage.getItem('authToken')))
     await setUser(JSON.parse(sessionStorage.getItem('user')))
-    axiosInstance
+    axiosIn
       .get('/laboratories', { headers: { token: token } })
       .then(async (res) => {
         console.log(res.data)
