@@ -41,18 +41,19 @@ const Login = ({ updateData }) => {
                                     e.preventDefault();
                                     axiosInstance.post('/user/login', { email, password })
                                         .then(async (res) => {
+                                            console.log(res)
                                             const { token, user } = res.data;
                                             if (user.email === email) {
-                                                localStorage.setItem('authToken', JSON.stringify(token));
-                                                localStorage.removeItem('user')
-                                                localStorage.setItem('user', JSON.stringify(user));
-                                                if (user.subscriptionId) {
-                                                    localStorage.setItem('subscription', JSON.stringify(user.subscriptionId));
-                                                } else {
-                                                    localStorage.setItem('subscription', '');
-                                                }
+                                                sessionStorage.setItem('authToken', JSON.stringify(token));
+                                                sessionStorage.removeItem('user')
+                                                sessionStorage.setItem('user', JSON.stringify(user));
+                                                // if (user.subscriptionId) {
+                                                //     sessionStorage.setItem('subscription', JSON.stringify(user.subscriptionId));
+                                                // } else {
+                                                //     sessionStorage.setItem('subscription', '');
+                                                // }
                                                 await setLoginStatus(true)
-                                                // updateData(user, token)
+                                                updateData(user, token)
                                                 document.getElementById('updateToken').click();
                                             };
                                         }).catch((er) => {
@@ -80,7 +81,7 @@ const Login = ({ updateData }) => {
                             <button className="btn  btn-primary" onClick={(e) => {
                                 e.preventDefault()
                             }}>
-                                <Link to='/sign-up'><p className='text-white text-decoration-none p-0 m-0'>Sign up</p></Link>
+                                <Link to='/sign-up'><p className=' nav-item text-white text-decoration-none p-0 m-0'>Sign up</p></Link>
                             </button>
                         </div>
                     </div>

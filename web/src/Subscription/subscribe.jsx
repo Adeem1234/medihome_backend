@@ -22,8 +22,8 @@ const Subscribe = () => {
 	const [didChange, setDidChange] = useState(false);
 	const [didChange2, setDidChange2] = useState(false);
 	const [checksub, setchecksub] = useState(false)
-	const [token, setToken] = useState(JSON.parse(localStorage.getItem('authToken')))
-	const activeUser = JSON.parse(localStorage.getItem('user'));
+	const [token, setToken] = useState(JSON.parse(sessionStorage.getItem('authToken')))
+	const activeUser = JSON.parse(sessionStorage.getItem('user'));
 	const email = activeUser.email;
 	const name = activeUser.name;
 	const stripe = useStripe();
@@ -41,7 +41,7 @@ const Subscribe = () => {
 	// 				setSubscriptionDetails(subscriptionDetails)
 	// 				if (subscription) {
 	// 					if (subscription.id === subscription_id) {
-	// 						localStorage.setItem('subscription', JSON.stringify(subscription_id));
+	// 						sessionStorage.setItem('subscription', JSON.stringify(subscription_id));
 	// 						setchecksub(true)
 	// 					}
 	// 				}
@@ -51,7 +51,7 @@ const Subscribe = () => {
 	// 		setDidLoad(true);
 	// 	}
 	// 	if (subscription_id !== '') {
-	// 		localStorage.setItem('subscription', JSON.stringify(subscription_id));
+	// 		sessionStorage.setItem('subscription', JSON.stringify(subscription_id));
 	// 		setchecksub(true)
 	// 	}
 	// }, [activeUser, didLoad, subscription_id, token]);
@@ -153,18 +153,18 @@ const Subscribe = () => {
 																					// The card was declined (i.e. insufficient funds, card has expired, etc)
 																				} else {
 																					console.log('payment Confirmed')
-																					localStorage.setItem('subscription', JSON.stringify(subscription))
-																					localStorage.removeItem('user');
-																					localStorage.setItem('user', JSON.stringify(newUser))
+																					sessionStorage.setItem('subscription', JSON.stringify(subscription))
+																					sessionStorage.removeItem('user');
+																					sessionStorage.setItem('user', JSON.stringify(newUser))
 																					setchecksub(true)
 																					// Show a success message to your customer
 																				}
 																			});
 																		} else {
 																			console.log('status no action required')
-																			localStorage.setItem('subscription', JSON.stringify(subscription))
-																			localStorage.removeItem('user');
-																			localStorage.setItem('user', JSON.stringify(newUser));
+																			sessionStorage.setItem('subscription', JSON.stringify(subscription))
+																			sessionStorage.removeItem('user');
+																			sessionStorage.setItem('user', JSON.stringify(newUser));
 																			setchecksub(true)
 																			// No additional information was needed
 																			// Show a success message to your customer

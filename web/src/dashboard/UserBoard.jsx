@@ -41,8 +41,8 @@ class UserBoard extends Component {
 
 	async componentDidMount() {
 		await this.setState({
-			token: JSON.parse(localStorage.getItem('authToken')),
-			user: JSON.parse(localStorage.getItem('user'))
+			token: JSON.parse(sessionStorage.getItem('authToken')),
+			user: JSON.parse(sessionStorage.getItem('user'))
 		})
 		axiosInstance.get('/posts/dashboard', { headers: { token: this.state.token } })
 			.then(async res => {

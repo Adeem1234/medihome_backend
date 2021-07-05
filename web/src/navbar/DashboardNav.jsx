@@ -12,28 +12,31 @@ const DashboardNav = () => {
 				<Navbar.Collapse id='basic-navbar-nav'>
 					<Navbar.Brand>
 						<Link to='/home' >
-							<b className='text-dark'>Life Optimizer</b>
+							<b className='text-dark'>Medi Home</b>
 						</Link>
 					</Navbar.Brand>
 					<Nav className='mr-auto'>
 						<Link to='/dashboard'>
 							<li className='nav-item mx-2 text-dark '>Dashboard </li>
 						</Link>
-						<Link to='/surveys'>
+						<Link to='/pharmacies'>
 							<li className='nav-item text-dark mx-2'>
-								<span>Surveys</span>
+								<span>Pharmacies</span>
 							</li>
 						</Link>
-						<Link to='/forms'>
+						<Link to='/laboratories'>
 							<li className='nav-item text-dark mx-2'>
-								<span>Forms</span>
+								<span>Laboratories</span>
 							</li>
 						</Link>
 					</Nav>
 				</Navbar.Collapse>
 				<Nav>
+					<Link to='/login' className='nav-item text-dark align-self-center' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>
+						<span>Logout</span>
+					</Link>
 					<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='light' className='w-auto'>
-						<Link to='/login' className='nav-item text-dark mx-2' onClick={() => { localStorage.clear(); window.location.replace('/') }}>
+						<Link to='/login' className='nav-item text-dark mx-2' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>
 							<span>Logout</span>
 						</Link>
 					</DropdownButton>

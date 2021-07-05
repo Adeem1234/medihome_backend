@@ -22,7 +22,11 @@ const laboratoriesSchema = new Schema({
   phoneNumber: {
     type: String,
     require: true
-  }
+  },
+  tests: [{
+    type: SchemaTypes.ObjectId,
+    ref: 'tests'
+  }]
 });
 
 module.exports = mongoose.model('laboratories', laboratoriesSchema);

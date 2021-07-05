@@ -18,9 +18,9 @@ const SignUp = ({ updateData }) => {
         axiosInstance.post('/user/register', { name, email, password, confirmPassword }).then(async (res) => {
             const { savedUser, token } = res.data;
             if (savedUser) {
-                localStorage.setItem('authToken', JSON.stringify(token));
-                localStorage.setItem('user', JSON.stringify(savedUser));
-                localStorage.setItem('subscription', '');
+                sessionStorage.setItem('authToken', JSON.stringify(token));
+                sessionStorage.setItem('user', JSON.stringify(savedUser));
+                sessionStorage.setItem('subscription', '');
                 await updateData(savedUser, token);
                 // setTimeout(() => { document.getElementById('proceedBtn').click() }, 2500);
             }
@@ -92,9 +92,9 @@ const SignUp = ({ updateData }) => {
                                         axiosInstance.post('/user/register', { name, email, password, confirmPassword }).then(async (res) => {
                                             const { savedUser, token } = res.data;
                                             if (savedUser) {
-                                                localStorage.setItem('authToken', JSON.stringify(token));
-                                                localStorage.setItem('user', JSON.stringify(savedUser));
-                                                localStorage.setItem('subscription', '');
+                                                sessionStorage.setItem('authToken', JSON.stringify(token));
+                                                sessionStorage.setItem('user', JSON.stringify(savedUser));
+                                                sessionStorage.setItem('subscription', '');
                                                 await updateData(savedUser, token);
                                                 document.getElementById('updateToken').click();
                                             }
