@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DashboardNav from '../navbar/DashboardNav';
-import PharmacistDashboard from './pharmacistDashbaord';
+import PharmacistDashboard from './PharmacistDashboard';
 
 
 class Pharmacist extends Component {
