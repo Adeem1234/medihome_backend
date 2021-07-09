@@ -14,7 +14,7 @@
             <!-- Page Heading -->
             <!-- DataTable -->
             <div class="card shadow mb-4">
-              <div class="card-header py-3 bg-gradient-primary">
+              <div class="card-header py-3 bg-gradient-primary d-flex justify-content-between py-1">
                 <h6 class="m-0 font-weight-bold text-light p-0 m-0 "> All Users </h6>
                 <a href="/users/new">
                   <button class="btn btn-sm bg-danger py-0 m-0">
@@ -51,46 +51,49 @@
                     </thead>
                     <tbody>
                       <% for (var user of users){ %>
-                        <tr>
-                          <td>
-                            <% if(user.name){%>
-                              <%=user.name%>
-                                <%}%>
-                          </td>
-                          <td>
-                            <% if(user.email){%>
-                              <%=user.email%>
-                                <%}%>
-                          </td>
-                          <td>
-                            <% if(user.type){%>
-                              <%=user.type%>
-                                <%}%>
-                          </td>
-                          <td>
-                            <% if(user.city){%>
-                              <%=user.city.name%>
-                                <%}%>
-                          </td>
-                          <td>
-                            <% if(user.area){%>
-                              <%=user.area.name%>
-                                <%}%>
-                          </td>
-                          <td class="align-content-center">
-                            <a href="/admin/users/edit/<%=user._id%>">
-                              <button class="btn btn-sm btn-warning">
-                                <i class="far fa-edit"></i>
-                              </button>
-                            </a>
-                            <a href="/admin/users/delete/<%=user._id%>">
-                              <button class="btn btn-sm btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                              </button>
-                            </a>
-                          </td>
-                        </tr>
-                        <%}%>
+                        <% if( user.type !=='Admin' ){ %>
+
+                          <tr>
+                            <td>
+                              <% if(user.name){%>
+                                <%=user.name%>
+                                  <%}%>
+                            </td>
+                            <td>
+                              <% if(user.email){%>
+                                <%=user.email%>
+                                  <%}%>
+                            </td>
+                            <td>
+                              <% if(user.type){%>
+                                <%=user.type%>
+                                  <%}%>
+                            </td>
+                            <td>
+                              <% if(user.city){%>
+                                <%=user.city.name%>
+                                  <%}%>
+                            </td>
+                            <td>
+                              <% if(user.area){%>
+                                <%=user.area.name%>
+                                  <%}%>
+                            </td>
+                            <td class="align-content-center">
+                              <a href="/admin/users/edit/<%=user._id%>">
+                                <button class="btn btn-sm btn-warning">
+                                  <i class="far fa-edit"></i>
+                                </button>
+                              </a>
+                              <a href="/admin/users/delete/<%=user._id%>">
+                                <button class="btn btn-sm btn-danger">
+                                  <i class="far fa-trash-alt"></i>
+                                </button>
+                              </a>
+                            </td>
+                          </tr>
+                          <%}%>
+                            <%}%>
                     </tbody>
                   </table>
                 </div>

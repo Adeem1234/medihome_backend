@@ -1,0 +1,97 @@
+<!-- Page Wrapper -->
+<div id="wrapper" class="w-auto">
+  <!-- Sidebar -->
+  <%- include('./partials/dashboardNavSide.ejs') %>
+    <!-- End of Sidebar -->
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column w-100">
+      <!-- Main Content -->
+      <div id="content">
+        <%- include('./partials/Logout.ejs') %>
+
+          <!-- End of Topbar -->
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <form action="/admin/pharmacy/edit/<%=pharmacy._id%>" method="POST">
+              <div class="card shadow mb-4">
+                <div class="card-header py-3 bg-gradient-primary">
+                  <h6 class="m-0 font-weight-bold text-light">
+                    Update Pharmacy
+                  </h6>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive">
+                    <div class="d-flex align-items-center">
+                      <span class="text-nowrap mr-1">Pharmacy Name: </span>
+                      <input type="text" name="name" class="form-control border border-secondary w-100 m-1"
+                        placeholder="<%=pharmacy.name%>" />
+                    </div>
+                    <div class="d-flex mt-1 mb-2 ml-1 mr-1">
+                      <span class="text-nowrap mr-1">Select City: </span>
+                      <select name="city" id="selectCity" aria-placeholder="Select City"
+                        class="form-control select2 select2-selection select2-lg select2-selection w-100">
+                        <%for (var city of cities) {%>
+                          <% if (city._id==pharmacy.city._id) { %>
+                            <option selected value=<%=city._id%>><%= city.name%>
+                            </option>
+                            <% } else { %>
+                              <option value=<%=city._id%>><%= city.name%>
+                              </option>
+                              <%}%>
+                                <% } %>
+                      </select>
+                    </div>
+                    <div class="d-flex my-2 ml-1 mr-1">
+                      <span class="text-nowrap mr-1">Select Area: </span>
+
+                      <select name='area' id='selectArea'
+                        class="form-control select2 select2-selection select2-lg select2-selection w-100">
+                      </select>
+                    </div>
+                  </div>
+                  <div class="d-flex mt-1 mb-2 ml-1 mr-1">
+                    <span class="text-nowrap mr-1">Select Manager: </span>
+
+                    <select name="manager" id="selectManager"
+                      class="form-control select2 select2-selection select2-lg select2-selection w-100">
+                      <option></option>
+                      <%for (var user of users) {%>
+                        <% if (user.id==pharmacy.manager._id) { %>
+                          <option selected value=<%=user._id%>><%= user.name%>
+                          </option>
+                          <% } else { %>
+                            <option value=<%=user._id%>><%= user.name%>
+                            </option>
+                            <% } %>
+                              <% } %>
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button class="btn bg-danger text-white px-3 py-2 float-right" type="submit">
+                  <span> Update </span>
+                </button>
+              </div>
+          </div>
+          </form>
+          <!-- <h5 class="mt-4"> Projects</h5> -->
+
+          <!-- /.container-fluid -->
+          <!-- End of Main Content -->
+      </div>
+      <%- include('./partials/footer.ejs') %>
+    </div>
+    <!-- End of Content Wrapper -->
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<%- include('./partials/logoutModel.ejs') %>
