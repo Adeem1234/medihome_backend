@@ -3,9 +3,7 @@ import { Button, Card, Col, Nav, Row, Tab, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import axiosInstance from '../axios/axiosConfig';
 import Modal from 'react-modal';
-
 import navVector from '../images/navVector.svg';
-
 import './dashboard.css'
 
 class UserBoard extends Component {
@@ -37,7 +35,7 @@ class UserBoard extends Component {
 			token: JSON.parse(sessionStorage.getItem('authToken')),
 			user: JSON.parse(sessionStorage.getItem('user'))
 		})
-		axiosInstance.get('/posts/dashboard', { headers: { token: this.state.token } })
+		axiosInstance.get('/dashboard', { headers: { token: this.state.token } })
 			.then(async res => {
 				console.log(res.data)
 			})
@@ -45,7 +43,7 @@ class UserBoard extends Component {
 	}
 
 	componentDidUpdate() {
-		axiosInstance.get('/posts/dashboard', { headers: { token: this.state.token } })
+		axiosInstance.get('/dashboard', { headers: { token: this.state.token } })
 			.then(async res => {
 				console.log(res.data)
 			})
@@ -79,86 +77,17 @@ class UserBoard extends Component {
 		);
 	}
 
-	survey() {
-		const { survey, performedSurvey, user, surveyCount } = this.state;
-		let count = 0;
+	pharmacy() {
+		const { pharmacies } = this.state;
+		console.log(pharmacies)
+
 		return (
 			<div className='mt-2 d-flex align-items-flex-start flex-column '>
 				<div>
-					<h4>Latest Surveys</h4>
+					<h4>Latest Pharmacies</h4>
 				</div>
-				<div className='d-flex align-items-center justify-content-space-between mb-3' id='surveyList'>
-					{survey.map((survey, index) => {
-						if (survey.user.length === 0) {
-							return (
-								<div key={index} className=' bg-danger border rounded-lg w-auto d-flex pt-3 px-2
-										mx-5 mb-5 d-flex align-items-center'>
-									<div className='d-flex flex-column mr-5'>
-										<p className='surveyName text-light font-weight-bold test-nowrap'>
-											{survey.title}
-										</p>
-										<p className='surveyInfo text-light text-nowrap'>
-											{survey.description}
-										</p>
-									</div>
-									<div className='surveyStatus ml-2 mb-4 d-flex  align-content-center'>
-										<button className='btn btn-success text-light font-weight-bold' id='PerformBtn' onClick={async () => {
-											await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
-											this.getQuestion();
-										}}>
-											<span>Perform</span>
-										</button>
-									</div>
-								</div>
-							)
-						} else {
-							return (
-								performedSurvey.map((performedSurvey) => {
-									return performedSurvey.surveyId === survey._id
-										?
-										performedSurvey.performed.map((performed, index, next) => {
-											return (
-												performed.user !== user._id ?
-													<div key={index} className=' bg-danger rounded-lg w-auto d-flex pt-3 px-2 mr-2 mb-2 d-flex align-items-center'>
-														<div className='d-flex flex-column mr-4'>
-															<p className='surveyName text-light font-weight-bold'>
-																{survey.title}
-															</p>
-															<p className='surveyInfo text-light'>
-																{survey.description}
-															</p>
-														</div>
-														<div className='surveyStatus ml-2 d-flex  align-content-center'>
-															<button className='btn btn-success text-light font-weight-bold' id='PerformBtn' onClick={async () => {
-																await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
-																this.getQuestion();
-															}}>
-																<span>Perform</span>
-															</button>
-														</div>
-													</div>
-													:
-													performed.user === user._id ?
-														<div className='d-none'>
-															{count++}
-														</div>
-														:
-														<div></div>
-											)
-										})
-										:
-										<div></div>
-								})
-							)
-						}
-					})}
+				<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
 
-					{count === surveyCount
-						?
-						<div className='ml-3 my-3'>No New Survey Available</div>
-						:
-						<div></div>
-					}
 				</div>
 			</div>
 		)
@@ -494,19 +423,26 @@ class UserBoard extends Component {
 				<div className='mx-3' >
 					{this.navButton()}
 					{this.survey()}
-					{this.forms()}
+					{/* {this.forms()} */}
 				</div>
 			)
 		}
 		else if (surveyId !== '' && activeForm === null) {
-			return this.showQuestions()
+			// return this.showQuestions()
 		}
 		else if (surveyId === '' && activeForm !== null) {
-			return this.formDetails()
+			// return this.formDetails()
 		}
 		else {
 			return <div>Hello</div>
 		}
+		return (
+			<div className='mx-3' >
+				{this.navButton()}
+				{this.pharmacy()}
+				{/* {this.forms()} */}
+			</div>
+		)
 	}
 }
 

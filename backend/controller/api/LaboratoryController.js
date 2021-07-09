@@ -4,7 +4,8 @@ const LaboratoriesModel = require('../../model/LaboratoriesModel');
 module.exports = {
   getLaboratories: async (req, res, next) => {
     try {
-      const laboratories = await LaboratoriesModel.find({});
+      const { city } = req.user;
+      const laboratories = await LaboratoriesModel.find({ city: city });
       return res.status(200).send({ laboratories })
     } catch (error) {
 

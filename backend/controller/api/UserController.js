@@ -8,6 +8,7 @@ const fs = require('fs');
 const moment = require('moment');
 const Cities = require('../../model/CitiesModel');
 const Areas = require('../../model/AreasModel');
+const PharmaciesModel = require('../../model/PharmaciesModel');
 
 module.exports = {
     addCitynArea: async (req, res, next) => {
@@ -43,5 +44,15 @@ module.exports = {
     },
     updateprofile: async (req, res, next) => {
 
+    },
+    Dashboard: async (req, res) => {
+        try {
+            const { city, area } = req.user
+            const pharmacies = await PharmaciesModel.find({ city: city, area: area });
+            const laboratories = await LaboratoriesModel.find({ city: city })
+            return res.status(200).send({ pharmacies, laboratories })
+        } catch (err) {
+            return res.status(400).send({ msg: err })
+        }
     }
 };

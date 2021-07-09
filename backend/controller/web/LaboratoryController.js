@@ -21,9 +21,9 @@ module.exports = {
     }
   },
   add: async (req, res, next) => {
-    const { name, city } = req.body;
+    const { name, city, manager } = req.body;
     try {
-      const oldLaboratories = await Laboratories.findOne({ name: name, city: city });
+      const oldLaboratories = await Laboratories.findOne({ name: name, city: city, manager: manager });
       if (oldLaboratories) {
         res.status(400).send('Laboratory already exists');
       } else {
@@ -46,9 +46,9 @@ module.exports = {
   },
   update: async (req, res, next) => {
     const { id } = req.params;
-    const { name, city } = req.body;
+    const { name, city, manager } = req.body;
     try {
-      await Laboratories.findByIdAndUpdate(id, { name: name, city: city });
+      await Laboratories.findByIdAndUpdate(id, { name: name, city: city, manager: manager });
       return res.status(200).redirect('/admin/laboratories');
     } catch (error) {
       // throw error

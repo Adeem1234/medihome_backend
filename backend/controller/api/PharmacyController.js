@@ -4,7 +4,8 @@ const MedicinesModel = require('../../model/MedicinesModel');
 module.exports = {
   getPharmacies: async (req, res, next) => {
     try {
-      const pharmacies = await PharmaciesModel.find({});
+      const { city, area } = req.user;
+      const pharmacies = await PharmaciesModel.find({ city: city, area: area });
       return res.status(200).send({ data: { pharmacies } })
     } catch (error) {
 

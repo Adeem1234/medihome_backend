@@ -6,6 +6,7 @@ import Laboratorist from './Laboratorist/Laboratorist';
 import Dashboard from './dashboard/dashboard.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NotFound from './404';
+import Pharmacist from './Pharmacists/pharmacist';
 
 // import 'jquery/dist/jquery.min.js';
 // import 'popper.js/dist/popper.js';
@@ -37,7 +38,7 @@ class App extends Component {
 						<Switch>
 							<Route path='/' exact component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/welcome' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
-							<Route path='/pharmacies' component={(props) => <Laboratorist token={this.state.token} user={this.state.user} />} />
+							<Route path='/pharmacies' component={(props) => <Pharmacist token={this.state.token} user={this.state.user} />} />
 							<Route path='/dashboard' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/laboratories' component={(props) => <Laboratorist token={this.state.token} user={this.state.user} />} />
 							<Route path='/login' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
