@@ -13,7 +13,7 @@
           <!-- Begin Page Content -->
           <div class="container-fluid">
             <!-- Page Heading -->
-            <form action="/admin/users/add" method="POST">
+            <form action="/admin/users/new" method="POST">
               <div class="card shadow mb-4">
                 <div class="card-header py-3 bg-gradient-primary">
                   <h6 class="m-0 font-weight-bold text-light">
@@ -28,9 +28,20 @@
                         class="form-control border border-secondary w-100 m-1" placeholder="Enter Name" />
                     </div>
                     <div class="d-flex align-items-center" autocomplete="off">
+                      <span class="text-nowrap mr-1">Email: </span>
+                      <input autocomplete="false" type="email" name="email"
+                        class="form-control border border-secondary w-100 m-1" placeholder="Enter Email" />
+                    </div>
+                    <div class="d-flex align-items-center" autocomplete="off">
                       <span class="text-nowrap mr-1">Password: </span>
                       <input autocomplete="false" type="password" name="password"
-                        class="form-control border border-secondary w-100 m-1" placeholder="Enter Name" />
+                        class="form-control border border-secondary w-100 m-1" placeholder="Enter password" />
+                    </div>
+                    <div class="d-flex align-items-center" autocomplete="off">
+                      <span class="text-nowrap mr-1">Phone No: </span>
+                      <input autocomplete="false" type="text" name="phoneNo"
+                        class="form-control border border-secondary w-100 m-1"
+                        placeholder="Enter phone No   ex: +923123456789" />
                     </div>
                     <div class="d-flex mt-1 mb-2 ml-1 mr-1">
                       <span class="text-nowrap mr-1">City: </span>

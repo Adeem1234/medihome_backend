@@ -27,7 +27,7 @@ module.exports = {
       if (oldLaboratories) {
         res.status(400).send('Laboratory already exists');
       } else {
-        const laboratory = new Laboratories({ name: name, city: city });
+        const laboratory = new Laboratories({ name: name, city: city, manager: manager });
         await laboratory.save();
         res.redirect('/admin/laboratories');
       }

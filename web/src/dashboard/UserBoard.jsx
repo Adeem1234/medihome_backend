@@ -67,44 +67,83 @@ class UserBoard extends Component {
 
 	pharmacy() {
 		return (
-			<div className='mt-2 d-flex align-items-flex-start flex-column mx-5 '>
-				<div className="mb-3">
-					<h4>Latest Pharmacies</h4>
-				</div>
-				<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
-					{this.state.pharmacies ?
-						this.state.pharmacies.map((pharmacy, index) => {
-							return (
-								<div key={index} className=' bg-light border rounded-lg w-auto d-flex pt-3 px-2
-										mx-5 mb-5 d-flex align-items-center'>
-									<div className='d-flex flex-column mr-5'>
-										<p className='text-dark font-weight-bold test-nowrap font-italic'>
-											{pharmacy.name}
-										</p>
-										<p className='text-dark text-nowrap'>
-											{pharmacy.city.name}
-										</p>
-										<p className='text-dark text-nowrap'>
-											{pharmacy.area.name}
-										</p>
+			<div>
+				<div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
+					<div className="mb-3">
+						<h4>Latest Pharmacies</h4>
+					</div>
+					<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
+						{this.state.pharmacies ?
+							this.state.pharmacies.map((pharmacy, index) => {
+								return (
+									<div key={index} className=' bg-light border rounded-lg w-auto d-flex pt-3 px-2
+										mx-2 d-flex align-items-center'>
+										<div className='d-flex flex-column mr-5'>
+											<p className='text-dark font-weight-bold test-nowrap font-italic'>
+												{pharmacy.name}
+											</p>
+											<p className='text-dark text-nowrap'>
+												{pharmacy.city.name}
+											</p>
+											<p className='text-dark text-nowrap'>
+												{pharmacy.area.name}
+											</p>
+										</div>
+										<div className='ml-2 mb-4 d-flex  align-content-center'>
+											<button className='btn btn-success text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
+												// await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
+												// this.getQuestion();
+											}}>
+												<span>Buy Medicines</span>
+											</button>
+										</div>
 									</div>
-									<div className='ml-2 mb-4 d-flex  align-content-center'>
-										<button className='btn btn-success text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
-											// await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
-											// this.getQuestion();
-										}}>
-											<span>Buy Medicines</span>
-										</button>
-									</div>
-								</div>
 
-							)
-						})
-						:
-						<div>No Pharmacies</div>
-					}
-				</div>
-			</div >
+								)
+							})
+							:
+							<div>No Pharmacies</div>
+						}
+					</div>
+				</div >
+			
+				<div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
+					<div className="mb-3">
+						<h4>Latest Laboratories</h4>
+					</div>
+					<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
+						{this.state.laboratories ?
+							this.state.laboratories.map((laboratory, index) => {
+								return (
+									<div key={index} className=' bg-light border rounded-lg w-auto d-flex pt-3 px-2
+										mx-2 d-flex align-items-center'>
+										<div className='d-flex flex-column mr-5'>
+											<p className='text-dark font-weight-bold test-nowrap font-italic'>
+												{laboratory.name}
+											</p>
+											<p className='text-dark text-nowrap'>
+												{laboratory.city.name}
+											</p>
+										</div>
+										<div className='ml-2 mb-4 d-flex  align-content-center'>
+											<button className='btn btn-success text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
+												// await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
+												// this.getQuestion();
+											}}>
+												<span>Register test</span>
+											</button>
+										</div>
+									</div>
+
+								)
+							})
+							:
+							<div>No Laboratories</div>
+						}
+					</div>
+				</div >
+			</div>
+
 		)
 	}
 
