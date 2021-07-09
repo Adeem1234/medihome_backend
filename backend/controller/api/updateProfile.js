@@ -68,7 +68,6 @@ module.exports = {
     //         const { userId, review } = req.body;
     //         const reviews = new Reviews({ from: req.user._id, to: userId, review: review });
     //         await reviews.save();
-    //         console.log(reviews)
     //         const user = await User.findByIdAndUpdate(userId, { $push: { reviews: reviews._id } }, { new: true }).select('reviews');
     //         return res.status(200).send({ data: { reviews, user } });
     //     } catch (err) {
@@ -79,7 +78,6 @@ module.exports = {
     // GetReviews: async (req, res) => {
     //     try {
     //         let pages, Id;
-    //         console.log(req.body.userId)
     //         if (req.body.userId !== undefined || req.body.userId === '') {
     //             Id = req.body.userId;
     //         } else {
@@ -87,14 +85,11 @@ module.exports = {
     //         }
     //         perPage = 10;
     //         let page = req.body.page || 1;
-    //         console.log('user Id' + req.user._id)
-    //         console.log('id: ' + Id)
     //         Reviews.find({ to: Id }).countDocuments().exec((err, count) => {
     //             pages = Math.ceil(count / perPage);
     //         });
     //         Reviews.find({ to: Id }).sort({ date: -1 }).skip(perPage * page - perPage).limit(perPage).select('-to').populate({ path: 'from', select: 'userName name avatar unique_id', model: 'users' })
     //             .exec(async (err, reviews) => {
-    //                 console.log(reviews.to)
     //                 if (err) return res.status(400).send({ data: { error: err } });
     //                 return res.status(200).send({ data: { reviews, pages } });
     //             });
@@ -107,9 +102,7 @@ module.exports = {
     // settings: async (req, res, next) => {
     //     try {
     //         let rawdata = fs.readFileSync(url);
-    //         console.log(rawdata)
     //         let settings = JSON.parse(rawdata);
-    //         console.log(settings)
     //         return res.status(200).send({ data: { settings } });
     //     } catch (err) { return res.status(400).send({ data: { message: err } }); }
     // },

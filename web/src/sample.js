@@ -14,7 +14,6 @@ class Sample extends Component {
     }
 
     handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
         this.setState({ activePage: pageNumber });
         return (pageNumber)
     }

@@ -28,7 +28,6 @@ class App extends Component {
 		const newUser = JSON.parse(sessionStorage.getItem('user'));
 		const newtoken = JSON.parse(sessionStorage.getItem('authToken'));
 		await this.setState({ user: newUser, token: newtoken })
-		console.log(this.state.user)
 	};
 	render() {
 		if (this.state.token && this.state.user) {

@@ -1,6 +1,16 @@
 const UsersModel = require('../../model/UsersModel');
+const CitiesModel = require('../../model/CitiesModel');
 
 module.exports = {
+	addNew: async (req, res) => {
+		const cities = await CitiesModel.find({}).select('name')
+		return res.render('usersAdd', { cities })
+	},
+	saveNew: async (req, res) => {
+		console.log(req.data)
+		// return res.render(req.headers.referer);
+
+	},
 
 	showBlocked: async (req, res, next) => {
 		const users = await UsersModel.find({}).populate('bannedUsers');

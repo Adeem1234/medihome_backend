@@ -9,6 +9,7 @@ const {
 // Router.route('/users/all-reported').get(ensureAuthenticated, User.showReported);
 
 Router.route('/users').get(ensureAuthenticated, User.showAll);
+Router.route('/users/new').get(ensureAuthenticated, User.addNew).post(ensureAuthenticated, User.saveNew);
 
 // Router.route('/users/report/:id').get(ensureAuthenticated, User.reportUser);
 

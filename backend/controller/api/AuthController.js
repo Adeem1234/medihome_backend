@@ -6,7 +6,6 @@ const { loginValidation } = require('../../middlewares/verification');
 module.exports = {
     login: async (req, res, next) => {
         try {
-            console.log(req.body);
             const error = loginValidation(req.body);
             if (error) {
                 return res.status(401).send(error.details[0].message);
@@ -16,12 +15,10 @@ module.exports = {
                 // if (savedUser.type === req.body.type) {
 
                 const validPass = await bcrypt.compare(req.body.password, savedUser.password);
-                // console.log("validPass" + validPass);
                 if (!savedUser) { return res.status(401).send('Email is Incorrect '); }
                 if (!validPass) { return res.status(422).send('Password is Incorrect'); }
                 let user = savedUser
                 const authToken = await jwt.sign({ user }, process.env.TOKEN_SECRET);
-                // console.log("authToken " + authToken);
                 await res.send({ user: savedUser, token: authToken });
             }
             else {
@@ -33,7 +30,6 @@ module.exports = {
     },
     register: async (req, res) => {
         try {
-            console.log(req.body)
             if (req.body !== {}) {
                 const { email, type, password, name, phoneNo } = req.body;
                 const oldUser = await User.findOne({ email: email });

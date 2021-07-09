@@ -54,7 +54,6 @@ module.exports = {
             const laboratories = await LaboratoriesModel.find({}).populate({ path: 'city', model: 'cities' })
             return res.status(200).send({ pharmacies, laboratories })
         } catch (err) {
-            console.log(err)
             return res.status(400).send({ msg: err })
         }
     }

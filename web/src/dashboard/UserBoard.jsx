@@ -32,7 +32,6 @@ class UserBoard extends Component {
 			.then(async res => {
 				const { pharmacies, laboratories } = res.data
 				await this.setState({ pharmacies: pharmacies, laboratories: laboratories })
-				console.log(this.state)
 			})
 			.catch(err => { console.error(err); })
 	}
@@ -42,7 +41,6 @@ class UserBoard extends Component {
 	// 		.then(async res => {
 	// 			const { pharmacies, laboratories } = res.data
 	// 			await this.setState({ pharmacies: pharmacies, laboratories: laboratories })
-	// 			console.log(this.state)
 	// 		})
 	// 		.catch(err => { console.error(err); })
 	// }
@@ -84,10 +82,10 @@ class UserBoard extends Component {
 											{pharmacy.name}
 										</p>
 										<p className='text-dark text-nowrap'>
-											{pharmacy.city}
+											{pharmacy.city.name}
 										</p>
 										<p className='text-dark text-nowrap'>
-											{pharmacy.area}
+											{pharmacy.area.name}
 										</p>
 									</div>
 									<div className='ml-2 mb-4 d-flex  align-content-center'>

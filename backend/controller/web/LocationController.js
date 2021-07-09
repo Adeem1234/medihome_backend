@@ -15,7 +15,6 @@ module.exports = {
   getLocations: async (req, res, next) => {
     try {
       const cities = await CitiesModel.find({}).populate('areas');
-      console.log(cities)
       return res.render('locations', { cities });
     } catch (error) {
       return res.status(400).send({ data: { message: error } })
