@@ -40,21 +40,21 @@ class PharmacistDashboard extends Component {
             {this.state.pharmacies ?
               this.state.pharmacies.map((pharmacy, index) => {
                 return (
-                  <div key={index} className=' bg-light border rounded-lg w-auto d-flex pt-3 px-2
-										mx-2 d-flex align-items-center'>
+                  <div key={index} className=' bg-warning border rounded-lg w-auto d-flex pt-3 px-2
+										mx-2 d-flex align-items-center w-100'>
                     <div className='d-flex flex-column mr-5'>
-                      <p className='text-dark font-weight-bold test-nowrap font-italic'>
+                      <p className='text-light font-weight-bold test-nowrap font-italic'>
                         {pharmacy.name}
                       </p>
-                      <p className='text-dark text-nowrap'>
+                      <p className='text-light text-nowrap'>
                         {pharmacy.city.name}
                       </p>
-                      <p className='text-dark text-nowrap'>
+                      <p className='text-light text-nowrap'>
                         {pharmacy.area.name}
                       </p>
                     </div>
                     <div className='ml-2 mb-4 d-flex  align-content-center'>
-                      <button className='btn btn-success text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
+                      <button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
                         // await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
                         // this.getQuestion();
                       }}>

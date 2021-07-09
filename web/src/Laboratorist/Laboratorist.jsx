@@ -9,7 +9,7 @@ class Laboratorist extends Component {
     return (
       <div>
         <DashboardNav />
-        <LaboratoristDashboard />
+        <LaboratoristDashboard token={this.props.token} user={this.props.user} />
       </div>
     );
   }
