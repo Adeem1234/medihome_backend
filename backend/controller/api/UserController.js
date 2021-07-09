@@ -9,6 +9,8 @@ const moment = require('moment');
 const Cities = require('../../model/CitiesModel');
 const Areas = require('../../model/AreasModel');
 const PharmaciesModel = require('../../model/PharmaciesModel');
+const LaboratoriesModel = require('../../model/LaboratoriesModel');
+
 
 module.exports = {
     addCitynArea: async (req, res, next) => {
@@ -47,11 +49,12 @@ module.exports = {
     },
     Dashboard: async (req, res) => {
         try {
-            const { city, area } = req.user
-            const pharmacies = await PharmaciesModel.find({ city: city, area: area });
-            const laboratories = await LaboratoriesModel.find({ city: city })
+            // const { city, area } = req.user
+            const pharmacies = await PharmaciesModel.find({}).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: 'area', model: 'areas' });
+            const laboratories = await LaboratoriesModel.find({}).populate({ path: 'city', model: 'cities' })
             return res.status(200).send({ pharmacies, laboratories })
         } catch (err) {
+            console.log(err)
             return res.status(400).send({ msg: err })
         }
     }

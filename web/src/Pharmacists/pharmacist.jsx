@@ -2,14 +2,17 @@ import React, { Component } from 'react';
 import DashboardNav from '../navbar/DashboardNav';
 import PharmacistDashboard from './PharmacistDashboard';
 
-
 class Pharmacist extends Component {
-  state = {}
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
   render() {
+    const { token, user } = this.props
     return (
       <div>
         <DashboardNav />
-        <PharmacistDashboard />
+        <PharmacistDashboard token={token} user={user} />
       </div>
     );
   }

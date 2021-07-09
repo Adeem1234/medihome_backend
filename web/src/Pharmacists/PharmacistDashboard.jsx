@@ -1,21 +1,23 @@
 import React, { Component } from 'react';
 import axiosInstance from '../axios/axiosConfig';
+
 class PharmacistDashboard extends Component {
-  state = {
-    user: {},
-    token: '',
-    pharmacies: [],
-    pharmacy: {},
-    cart: {}
+  constructor(props) {
+    super(props);
+    this.state = {
+      user: {},
+      token: '',
+      pharmacies: [],
+      pharmacy: {},
+      cart: {}
+    }
   }
   async componentDidMount() {
-    const authToken = JSON.parse(sessionStorage.getItem('authToken'))
-    const authUser = JSON.parse(sessionStorage.getItem('user'))
-    await this.setState({ user: authUser, token: authToken })
+    await this.setState({ user: this.props.user, token: this.props.token })
     axiosInstance
       .get('/get/pharmacies', {
         headers: {
-          authorization: authToken
+          authorization: this.props.token
         }
       })
       .then(async (res) => {
@@ -28,38 +30,10 @@ class PharmacistDashboard extends Component {
       });
   }
   render() {
-    const pharmacies = async () => {
-      return (
-        <div className="d-flex mx-5 flex-column w-auto">
-          <div className="d-flex flex-column justify-content-between">
-            <div className='mb-3'>
-              <h2>Pharmacies</h2>
-
-
-            </div>
-          </div>
-        </div>
-      )
-    }
-    const pharmacy = async () => {
-      const { pharmacy } = this.state
-      return (
-        <div className="d-flex mx-5 flex-column w-auto">
-          <div className="d-flex flex-column justify-content-between">
-            <div className='mb-3'>
-              <h2>{pharmacy.name}</h2>
-
-
-            </div>
-          </div>
-        </div>
-      )
-    }
     return (
-      !pharmacy ?
-        this.pharmacies()
-        :
-        this.pharmacy()
+      <div>
+
+      </div>
     );
   }
 }
