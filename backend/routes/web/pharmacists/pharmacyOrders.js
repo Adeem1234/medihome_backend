@@ -6,5 +6,6 @@ const {
 
 Router.route('/pharmacy/orders/status/processing/:id').get(ensureAuthenticated, PharmacyOrderController.updateOrderStatusProcessing)
 Router.route('/pharmacy/orders/status/completed/:id').get(ensureAuthenticated, PharmacyOrderController.updateOrderStatusCompleted)
+Router.route('/pharmacy/orders').get(ensureAuthenticated, PharmacyOrderController.getOrders)
 
 module.exports = Router;

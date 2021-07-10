@@ -1,4 +1,5 @@
 const OrdersModel = require("../../model/OrdersModel");
+const PharmaciesModel = require("../../model/PharmaciesModel");
 
 
 module.exports = {
@@ -20,6 +21,17 @@ module.exports = {
       return res.redirect(req.headers.referer);
     } catch (error) {
       return error;
+    }
+  },
+  getOrders: async (req, res) => {
+    try {
+      const user = await User.findById(JSON.parse(req.sessionStore.sessions[req.sessionID]).passport.user);
+      const pharmacy = await PharmaciesModel.findOne({ manager: user._id }).populate('orders');
+      const orders = await pharmacy.orders;
+      return res.renders('pharmacyOrders', { orders })
+    }
+    catch (error) {
+      return err;
     }
   }
 }
