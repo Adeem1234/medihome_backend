@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import PhoneInput from 'react-phone-number-input';
+import 'react-phone-number-input/style.css';
 import axiosInstance from '../axios/axiosConfig';
 
 
@@ -9,6 +11,9 @@ const SignUp = ({ updateData }) => {
 
     const [email, setEmail] = useState('');
     const [password, setpassword] = useState('');
+    const [phoneNo, setPhoneNo] = useState();
+    const [city, setCity] = useState();
+    const [area, setArea] = useState();
     const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
     const [showError, setShowError] = useState([]);
@@ -22,7 +27,7 @@ const SignUp = ({ updateData }) => {
                 sessionStorage.setItem('user', JSON.stringify(savedUser));
                 sessionStorage.setItem('subscription', '');
                 await updateData(savedUser, token);
-                // setTimeout(() => { document.getElementById('proceedBtn').click() }, 2500);
+                document.getElementById('updateToken').click();
             }
         }).catch((error) => {
             console.error(error)
@@ -31,6 +36,9 @@ const SignUp = ({ updateData }) => {
                 error.response.data.map((error) => { errors[error.path[0]] = error.message; return null });
                 setErrors(errors);
                 setShowError(error.response.data);
+            }
+            else {
+                console.error(error)
             }
         })
     };
@@ -89,27 +97,7 @@ const SignUp = ({ updateData }) => {
                                 <button className="btn  btn-success float-right Signup_btn" type='submit'
                                     onClick={e => {
                                         e.preventDefault()
-                                        axiosInstance.post('/user/register', { name, email, password, confirmPassword }).then(async (res) => {
-                                            const { savedUser, token } = res.data;
-                                            if (savedUser) {
-                                                sessionStorage.setItem('authToken', JSON.stringify(token));
-                                                sessionStorage.setItem('user', JSON.stringify(savedUser));
-                                                sessionStorage.setItem('subscription', '');
-                                                await updateData(savedUser, token);
-                                                document.getElementById('updateToken').click();
-                                            }
-                                        }).catch((error) => {
-                                            console.error(error)
-                                            if (error.response.status === 422) {
-                                                let errors = [];
-                                                error.response.data.map((error) => { errors[error.path[0]] = error.message; return null });
-                                                setErrors(errors);
-                                                setShowError(error.response.data);
-                                            }
-                                            else {
-                                                console.error(error)
-                                            }
-                                        })
+                                        this.handleSignUp()
                                     }}> Sign Up</button>
                                 <button onClick={updateData} type="button" id='updateToken' className='d-none'> </button>
                             </div>
