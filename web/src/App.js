@@ -7,6 +7,8 @@ import Dashboard from './dashboard/dashboard.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import NotFound from './404';
 import Pharmacist from './Pharmacists/pharmacist';
+import Doctors from './Doctors/Doctors';
+
 
 // import 'jquery/dist/jquery.min.js';
 // import 'popper.js/dist/popper.js';
@@ -40,6 +42,7 @@ class App extends Component {
 							<Route path='/pharmacies' component={(props) => <Pharmacist token={this.state.token} user={this.state.user} />} />
 							<Route path='/dashboard' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/laboratories' component={(props) => <Laboratorist token={this.state.token} user={this.state.user} />} />
+							<Route path='/doctors' component={(props) => <Doctors token={this.state.token} />} />
 							<Route path='/login' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/sign-up' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='*' component={NotFound} />

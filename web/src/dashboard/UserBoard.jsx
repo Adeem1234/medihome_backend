@@ -13,14 +13,14 @@ class UserBoard extends Component {
 			token: '',
 			user: {},
 			pharmacies: [],
-			pharmacyId: '',
+			pharmacy: {},
 			laboratories: [],
-			laboratoryId: '',
+			laboratory: {},
 			errors: {},
 			showError: null,
 		};
 		this.navButton = this.navButton.bind(this);
-		this.pharmacy = this.pharmacy.bind(this)
+		this.list = this.list.bind(this)
 	}
 
 	async componentDidMount() {
@@ -65,7 +65,7 @@ class UserBoard extends Component {
 		);
 	}
 
-	pharmacy() {
+	list() {
 		return (
 			<div>
 				<div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
@@ -91,7 +91,7 @@ class UserBoard extends Component {
 										</div>
 										<div className='ml-2 mb-4 d-flex  align-content-center'>
 											<button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
-												// await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
+												await this.setState({ pharmacy: pharmacy });
 												// this.getQuestion();
 											}}>
 												<span>Buy Medicines</span>
@@ -127,7 +127,7 @@ class UserBoard extends Component {
 										</div>
 										<div className='ml-2 mb-4 d-flex  align-content-center'>
 											<button className='btn btn-warning text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
-												// await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
+												await this.setState({ laboratory: laboratory });
 												// this.getQuestion();
 											}}>
 												<span className='text-light'>Register test</span>
@@ -152,7 +152,7 @@ class UserBoard extends Component {
 		return (
 			<div className='mx-3' >
 				{this.navButton()}
-				{this.pharmacy()}
+				{this.list()}
 				{/* {this.forms()} */}
 			</div>
 		)

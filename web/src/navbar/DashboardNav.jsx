@@ -29,6 +29,11 @@ const DashboardNav = () => {
 								<span>Laboratories</span>
 							</li>
 						</Link>
+						<Link to='/doctors'>
+							<li className='nav-item text-dark mx-2'>
+								<span>Doctors</span>
+							</li>
+						</Link>
 					</Nav>
 				</Navbar.Collapse>
 				<Nav>
