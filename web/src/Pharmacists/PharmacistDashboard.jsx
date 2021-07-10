@@ -9,8 +9,12 @@ class PharmacistDashboard extends Component {
       token: '',
       pharmacies: [],
       pharmacy: {},
+      medicines: [],
+      didChange: false,
       cart: {}
     }
+    this.list = this.list.bind(this)
+    this.MedicineList = this.MedicineList.bind(this)
   }
   async componentDidMount() {
     axiosInstance
@@ -29,7 +33,15 @@ class PharmacistDashboard extends Component {
         console.error(error);
       });
   }
-  render() {
+  // async componentDidUpdate() {
+  //   if (this.state.pharmacy !== null && this.state.didChange === false) {
+  //     await this.setState({ didChange: true })
+  //   }
+  // }
+  async componentWillUnmount() {
+    await this.setState({ pharmacies: [], pharmacy: {} })
+  }
+  list = () => {
     return (
       <div>
         <div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
@@ -41,7 +53,7 @@ class PharmacistDashboard extends Component {
               this.state.pharmacies.map((pharmacy, index) => {
                 return (
                   <div key={index} className=' bg-warning border rounded-lg w-auto d-flex pt-3 px-2
-										mx-2 d-flex align-items-center w-100'>
+                  mx-2 d-flex align-items-center w-100'>
                     <div className='d-flex flex-column mr-5'>
                       <p className='text-light font-weight-bold test-nowrap font-italic'>
                         {pharmacy.name}
@@ -55,7 +67,8 @@ class PharmacistDashboard extends Component {
                     </div>
                     <div className='ml-2 mb-4 d-flex  align-content-center'>
                       <button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
-                        // await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
+                        await this.setState({ pharmacy: pharmacy, didChange: true });
+                        console.log(this.state.pharmacy)
                         // this.getQuestion();
                       }}>
                         <span>Buy Medicines</span>
@@ -73,6 +86,32 @@ class PharmacistDashboard extends Component {
 
       </div>
     );
+  }
+  MedicineList = () => {
+    return (
+      <div>
+
+      </div>
+    )
+  }
+
+
+  render() {
+    const { didChange } = this.state;
+    if (!didChange) {
+      return (
+        <div>
+          {this.list()}
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+          {this.MedicineList()}
+        </div>
+      )
+    }
   }
 }
 

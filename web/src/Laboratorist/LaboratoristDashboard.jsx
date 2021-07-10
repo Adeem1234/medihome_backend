@@ -34,9 +34,9 @@ class LaboratoristDashboard extends Component {
           {this.state.laboratories ?
             this.state.laboratories.map((laboratory, index) => {
               return (
-                <div key={index} className=' bg-danger border rounded-lg w-auto d-flex pt-3 px-2
+                <div key={index} className=' bg-danger border rounded-lg w-auto d-flex pt-3 px-2  w-100
 										mx-2 mb-4 d-flex align-items-center w-100'>
-                  <div className='d-flex flex-column mr-5'>
+                  <div className='d-flex flex-column mr-5 px-2 '>
                     <p className='text-light font-weight-bold test-nowrap font-italic'>
                       {laboratory.name}
                     </p>
@@ -44,7 +44,7 @@ class LaboratoristDashboard extends Component {
                       {laboratory.city.name}
                     </p>
                   </div>
-                  <div className='ml-2 mb-4 d-flex  align-content-center'>
+                  <div className='mx-3  mb-4 d-flex  align-content-center'>
                     <button className='btn btn-warning text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
                       // await this.setState({ surveyId: survey._id, surveyCat: survey.category, questionGet: true });
                       // this.getQuestion();

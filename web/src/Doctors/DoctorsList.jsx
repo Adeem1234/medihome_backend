@@ -9,10 +9,7 @@ class DoctorsList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      doctors: [{
-        name: 'ahmed',
-        phoneNo: '+923123456789'
-      }]
+      doctors: []
     }
   }
   componentDidMount() {
@@ -53,8 +50,9 @@ class DoctorsList extends Component {
 
                       </Link>
                       <a
+                        href={link}
                         target="_blank"
-                        rel="noopener noreferrer" href='{link}'>
+                        rel="noopener noreferrer"  >
 
                         <button className='btn btn-lg bg-success text-light'> Whatsapp</button>
                         <i class="fab fa-whatsapp"></i>

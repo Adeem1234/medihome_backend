@@ -50,7 +50,10 @@ module.exports = {
     Dashboard: async (req, res) => {
         try {
             // const { city, area } = req.user
-            const pharmacies = await PharmaciesModel.find({}).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: 'area', model: 'areas' });
+            const pharmacies = await PharmaciesModel.find({})
+                .populate({ path: 'city', model: 'cities', select: 'name' })
+                .populate({ path: 'area', model: 'areas' })
+                .populate({ path: 'medicines.medicine', model: 'medcines' });
             const laboratories = await LaboratoriesModel.find({}).populate({ path: 'city', model: 'cities' })
             return res.status(200).send({ pharmacies, laboratories })
         } catch (err) {

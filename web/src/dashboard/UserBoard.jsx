@@ -72,13 +72,13 @@ class UserBoard extends Component {
 					<div className="mb-3">
 						<h4>Latest Pharmacies</h4>
 					</div>
-					<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
+					<div className='d-flex align-items-center justify-content-between mb-3' id='pharmacyList'>
 						{this.state.pharmacies ?
 							this.state.pharmacies.map((pharmacy, index) => {
 								return (
 									<div key={index} className=' bg-warning border rounded-lg w-auto d-flex pt-3 px-2
-										mx-2 d-flex align-items-center'>
-										<div className='d-flex flex-column mr-5'>
+										mx-2 d-flex align-items-center '>
+										<div className='d-flex flex-column mr-5 px-3 '>
 											<p className='text-light font-weight-bold test-nowrap font-italic'>
 												{pharmacy.name}
 											</p>
@@ -89,7 +89,7 @@ class UserBoard extends Component {
 												{pharmacy.area.name}
 											</p>
 										</div>
-										<div className='ml-2 mb-4 d-flex  align-content-center'>
+										<div className='mx-2 mb-4 d-flex  align-content-center'>
 											<button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
 												await this.setState({ pharmacy: pharmacy });
 												// this.getQuestion();
@@ -111,13 +111,13 @@ class UserBoard extends Component {
 					<div className="mb-3">
 						<h4>Latest Laboratories</h4>
 					</div>
-					<div className='d-flex align-items-center justify-content-space-between mb-3' id='pharmacyList'>
+					<div className='d-flex align-items-center justify-content-between mb-3' id='pharmacyList'>
 						{this.state.laboratories ?
 							this.state.laboratories.map((laboratory, index) => {
 								return (
 									<div key={index} className=' bg-danger border rounded-lg w-auto d-flex pt-3 px-2
 										mx-2 d-flex align-items-center'>
-										<div className='d-flex flex-column mr-5'>
+										<div className='d-flex flex-column mr-5 px-3 '>
 											<p className='text-light font-weight-bold test-nowrap font-italic'>
 												{laboratory.name}
 											</p>
