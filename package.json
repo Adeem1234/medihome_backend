@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "client": "cd client && npm test",
+    "client": "cd web && npm test",
     "server": "cd backend && npm run dev",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
