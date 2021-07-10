@@ -81,10 +81,8 @@ const SignUp = ({ updateData }) => {
                     console.error(error);
                 });
         }
-        return function cleanup() {
-            setCities([])
-        }
-    }, [getCities])
+
+    })
 
     return (
         <div className='d-flex justify-content-center align-items-center mt-5 h-100' >

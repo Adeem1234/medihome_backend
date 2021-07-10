@@ -48,14 +48,14 @@ class UserBoard extends Component {
 	navButton() {
 		return (
 			<div className='d-flex align-items-left flex-wrap  justify-content-center mt-2 h-25'>
-				<Link to='/pharmacies' className='text-light'>
+				<Link to='/pharmacies' className='text-light mx-5 mb-2'>
 					<div className='d-flex px-3 py-2 justify-content-space-between align-items-center mr-5 bg-warning border-1 rounded'>
 						<img src={navVector} className='navVector mr-2' alt='navVector' />
 						<span className='font-weight-bold'>Pharmacies</span>
 					</div>
 				</Link>
 
-				<Link to='/laboratories' className='text-light'>
+				<Link to='/laboratories' className='text-light mx-5 mb-2'>
 					<div className='d-flex px-3 py-2 justify-content-space-between align-items-center mr-5 bg-danger border-1 rounded'>
 						<img src={navVector} className='navVector mr-2' alt='navVector' />
 						<span className='font-weight-bold'>Laboratories</span>

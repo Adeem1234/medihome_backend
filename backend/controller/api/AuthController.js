@@ -31,12 +31,13 @@ module.exports = {
     register: async (req, res) => {
         try {
             if (req.body !== {}) {
-                const { email, type, password, name, phoneNo } = req.body;
+                const { email, password, name, phoneNo, city, area } = req.body;
+                let type = 'User'
                 const oldUser = await User.findOne({ email: email });
                 if (!oldUser) {
                     const salt = await bcrypt.genSalt(10);
                     const hashpassword = await bcrypt.hash(password, salt);
-                    let user = new User({ name: name, email: email, type: type, password: hashpassword, phoneNo: phoneNo });
+                    let user = new User({ name: name, email: email, type: type, password: hashpassword, phoneNo: phoneNo, city: city, area: area });
                     user = await user.save();
                     tokenData = { user: user, type: type }
                     const token = jwt.sign({ user }, process.env.JWT_SECRET_KEY);
