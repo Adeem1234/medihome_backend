@@ -56,5 +56,13 @@ module.exports = {
         } catch (err) {
             return res.status(400).send({ msg: err })
         }
+    },
+    getCities: async (req, res) => {
+        try {
+            const cities = await Cities.find({}).populate('areas');
+            return res.status(200).send({ cities })
+        } catch (error) {
+            return res.status(400).send({ error })
+        }
     }
 };
