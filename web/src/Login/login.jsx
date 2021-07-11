@@ -47,6 +47,7 @@ const Login = ({ updateData }) => {
                                                 sessionStorage.setItem('authToken', JSON.stringify(token));
                                                 sessionStorage.removeItem('user')
                                                 sessionStorage.setItem('user', JSON.stringify(user));
+                                                sessionStorage.setItem('cart', '[]');
                                                 // if (user.subscriptionId) {
                                                 //     sessionStorage.setItem('subscription', JSON.stringify(user.subscriptionId));
                                                 // } else {

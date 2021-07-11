@@ -11,17 +11,18 @@ class DashboardNav extends Component {
 	state = {
 		cartItems: 0
 	}
-	componentDidMount() {
+	async componentDidMount() {
 		let cartItems = JSON.parse(sessionStorage.getItem('cart'))
-		let length
-		if (cartItems) {
+		let length = 0
+		if (cartItems.length) {
 			length = cartItems.lenght
 		}
-		this.setState({ cartItems: length })
+		await this.setState({ cartItems: length })
 		console.log('cartItems' + cartItems)
 	}
 
 	render() {
+		const { cartItems } = this.state
 		return (
 			<div className='bg-gradient-primary w-100 d-flex justify-content-center h-0'>
 				<Navbar bg='gradient-primary' expand='lg' className=' w-75'>
@@ -57,8 +58,7 @@ class DashboardNav extends Component {
 						<div >
 							{/* <FontAwesomeIcon icon={["fas", "coffee"]} />	 */}
 							<i className="fas fa-shopping-cart fa-2x mr-2" id='cart-icon'></i>
-							<span id='cart-count'>{this.state.cartItems}</span>
-							<span id='cart-count'>{this.state.cartItems}</span>
+							<span id='cart-count' className='text-danger font-weight-bolder'><b>{cartItems}</b></span>
 						</div>
 						<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='gradient-primary' className=' p-0 mx-2 w-auto border border-light bg-gradient-primary text-light'>
 							<Link to='/login' className='nav-item text-dark mx-2' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>

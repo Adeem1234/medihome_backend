@@ -24,8 +24,9 @@ class PharmacistDashboard extends Component {
     this.MedicineList = this.MedicineList.bind(this)
   }
   async componentDidMount() {
-    const cart = sessionStorage.getItem('cart');
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
     if (cart) {
+      this.setState({ cart: cart })
       sessionStorage.removeItem('cart')
     }
     sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
@@ -143,7 +144,7 @@ class PharmacistDashboard extends Component {
                             }
                             const cart = this.state.cart;
                             cart.push(drug);
-                            await this.setState({ cart: cart })
+                            this.setState({ cart: cart })
                             console.log(cart)
                           }}>Add to Cart</Button>
                         </div>

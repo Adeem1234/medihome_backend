@@ -24,7 +24,7 @@ class Pharmacist extends Component {
     this.MedicineList = this.MedicineList.bind(this)
   }
   async componentDidMount() {
-    const cart = sessionStorage.getItem('cart');
+    const cart = JSON.parse(sessionStorage.getItem('cart'));
     if (cart) {
       // sessionStorage.removeItem('cart')
       this.setState({ cart: cart })
@@ -47,6 +47,7 @@ class Pharmacist extends Component {
       });
   }
   async componentDidUpdate() {
+    JSON.parse(sessionStorage.getItem('cart'))
     await sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
   }
   async componentWillUnmount() {
