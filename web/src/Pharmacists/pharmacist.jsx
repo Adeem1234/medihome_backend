@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import DashboardNav from '../navbar/DashboardNav';
-import PharmacistDashboard from './PharmacistDashboard';
+// import PharmacistDashboard from './PharmacistDashboard';
 import { axiosInstance, baseURL } from '../axios/axiosConfig';
 import {
   Card, CardImg, CardText, CardBody,
@@ -26,9 +26,10 @@ class Pharmacist extends Component {
   async componentDidMount() {
     const cart = sessionStorage.getItem('cart');
     if (cart) {
-      sessionStorage.removeItem('cart')
+      // sessionStorage.removeItem('cart')
+      this.setState({ cart: cart })
     }
-    sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
+    // sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
     axiosInstance
       .get('/get/pharmacies', {
         headers: {
