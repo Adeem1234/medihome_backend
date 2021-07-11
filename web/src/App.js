@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import SignUp from './Login/signup';
 import Laboratorist from './Laboratorist/Laboratorist';
 import Dashboard from './dashboard/dashboard.jsx'
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 import NotFound from './404';
 import Pharmacist from './Pharmacists/pharmacist';
 import Doctors from './Doctors/Doctors';

@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance } from '../axios/axiosConfig';
 
 
 const Login = ({ updateData }) => {

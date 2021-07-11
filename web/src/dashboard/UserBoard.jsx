@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // import { Button, Card, Col, Nav, Row, Tab, ListGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance } from '../axios/axiosConfig';
 // import Modal from 'react-modal';
 import navVector from '../images/navVector.svg';
 import './dashboard.css'

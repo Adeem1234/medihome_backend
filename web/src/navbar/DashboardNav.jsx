@@ -6,8 +6,8 @@ import { DropdownButton, Navbar } from 'react-bootstrap';
 
 const DashboardNav = () => {
 	return (
-		<div className='bg-light w-100 d-flex justify-content-center h-0'>
-			<Navbar bg='light' expand='lg' className=' w-75'>
+		<div className='bg-gradient-primary w-100 d-flex justify-content-center h-0'>
+			<Navbar bg='gradient-primary' expand='lg' className=' w-75'>
 				<Navbar.Toggle aria-controls='basic-navbar-nav' />
 				<Navbar.Collapse id='basic-navbar-nav'>
 					<Navbar.Brand>
@@ -40,7 +40,7 @@ const DashboardNav = () => {
 					<Link to='/login' className='nav-item text-dark align-self-center' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>
 						<span>Logout</span>
 					</Link>
-					<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='light' className='w-auto'>
+					<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='gradient-primary' className='w-auto border border-secondary bg-gradient-primary'>
 						<Link to='/login' className='nav-item text-dark mx-2' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>
 							<span>Logout</span>
 						</Link>

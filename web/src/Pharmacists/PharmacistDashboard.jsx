@@ -1,5 +1,12 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance, baseURL } from '../axios/axiosConfig';
+import {
+  Card, CardImg, CardText, CardBody,
+  CardTitle, CardSubtitle, Button, Container, Row, Col
+
+} from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 class PharmacistDashboard extends Component {
   constructor(props) {
@@ -67,7 +74,7 @@ class PharmacistDashboard extends Component {
                     </div>
                     <div className='ml-2 mb-4 d-flex  align-content-center'>
                       <button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
-                        await this.setState({ pharmacy: pharmacy, didChange: true });
+                        await this.setState({ pharmacy: pharmacy, didChange: true, medicines: pharmacy.medicines });
                         console.log(this.state.pharmacy)
                         // this.getQuestion();
                       }}>
@@ -88,10 +95,56 @@ class PharmacistDashboard extends Component {
     );
   }
   MedicineList = () => {
+    console.log(this.state.pharmacy)
+    console.log(this.state.medicines)
     return (
       <div>
+        <div className='mt-2 d-flex align-items-flex-start mx-5 h-25 overflow-auto '>
+          {this.state.medicines ?
+            this.state.medicines.map((medicines, index) => {
+              const medicine = medicines.medicine;
+              const quantity = medicines.quantiy;
+              const logo = medicine.logo.name;
+              let count = 1;
+              console.log(medicine.logo)
+              return (
+                <div key={index} className=' mx-3'>
 
-      </div>
+                  <Card style={{ height: "400px", width: "fit-content" }}>
+                    <div></div>
+                    <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" />
+                    <CardBody>
+                      <CardTitle tag="h5" className="mt-3">{medicine.name}</CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.formula} </CardSubtitle>
+                      <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.manufacturer} </CardSubtitle>
+                      <h5 > Rs. {medicine.price}</h5>
+                      <div className="mt-4">
+                        <Button onClick={() => {
+                          if (count > 1) {
+                            count = count - 1
+                          }
+                        }}>-</Button>
+                        <input type='number' style={{ width: '10%' }} defaultValue={count} min='1' className='mx-2 py-1 px-1' max={quantity} onChange={(e) => {
+                          count = e.target.value;
+                          console.log(count)
+                        }} ></input>
+                        <Button onClick={() => {
+                          if (count > quantity)
+                            count--;
+                        }}>+</Button>
+                      </div>
+                    </CardBody>
+                  </Card>
+                </div>
+
+              )
+            })
+            :
+            <div></div>
+          }
+
+        </div>
+      </div >
     )
   }
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance } from '../axios/axiosConfig';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
@@ -41,6 +41,8 @@ class DoctorsList extends Component {
                       </p>
                       <p className='text-dark text-nowrap'>
                         {doctor.phoneNo}
+                      </p><p className='text-dark text-nowrap'>
+                        {doctor.specilization}
                       </p>
                     </div>
                     <div className='ml-2 mb-4 d-flex  align-content-center'>

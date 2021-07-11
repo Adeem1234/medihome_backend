@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import PhoneInput from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance } from '../axios/axiosConfig';
 import Select from 'react-select'
 import { useEffect } from 'react';
 

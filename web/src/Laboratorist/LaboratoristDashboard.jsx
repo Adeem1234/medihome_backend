@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axiosInstance from '../axios/axiosConfig';
+import { axiosInstance } from '../axios/axiosConfig';
 class LaboratoristDashboard extends Component {
   state = {
     user: {},

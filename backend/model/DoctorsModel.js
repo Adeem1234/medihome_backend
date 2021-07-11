@@ -11,7 +11,14 @@ const doctorsSchema = new Schema({
   phoneNo: {
     type: String,
     required: true
-  }
+  },
+  specialization: {
+    type: String,
+    required: true
+  },
+  Diplomas: [{
+    type: String,
+  }]
 });
 
 module.exports = mongoose.model('doctors', doctorsSchema);
