@@ -45,6 +45,7 @@ class App extends Component {
 							<Route path='/doctors' component={(props) => <Doctors token={this.state.token} />} />
 							<Route path='/login' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/sign-up' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
+							{/* <Route path='/cart' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} /> */}
 							<Route path='*' component={NotFound} />
 						</Switch>
 					</Router>

@@ -18,12 +18,17 @@ class PharmacistDashboard extends Component {
       pharmacy: {},
       medicines: [],
       didChange: false,
-      cart: {}
+      cart: []
     }
     this.list = this.list.bind(this)
     this.MedicineList = this.MedicineList.bind(this)
   }
   async componentDidMount() {
+    const cart = sessionStorage.getItem('cart');
+    if (cart) {
+      sessionStorage.removeItem('cart')
+    }
+    sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
     axiosInstance
       .get('/get/pharmacies', {
         headers: {
@@ -40,13 +45,19 @@ class PharmacistDashboard extends Component {
         console.error(error);
       });
   }
-  // async componentDidUpdate() {
-  //   if (this.state.pharmacy !== null && this.state.didChange === false) {
-  //     await this.setState({ didChange: true })
-  //   }
-  // }
+  async componentDidUpdate() {
+    await sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
+  }
   async componentWillUnmount() {
-    await this.setState({ pharmacies: [], pharmacy: {} })
+    await this.setState({
+      user: {},
+      token: '',
+      pharmacies: [],
+      pharmacy: {},
+      medicines: [],
+      didChange: false,
+      cart: []
+    })
   }
   list = () => {
     return (
@@ -105,12 +116,11 @@ class PharmacistDashboard extends Component {
               const medicine = medicines.medicine;
               const quantity = medicines.quantiy;
               const logo = medicine.logo.name;
-              let count = 1;
               console.log(medicine.logo)
               return (
                 <div key={index} className=' mx-3'>
 
-                  <Card style={{ height: "400px", width: "fit-content" }}>
+                  <Card style={{ width: "fit-content", height: 'auto' }}>
                     <div></div>
                     <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" />
                     <CardBody>
@@ -118,20 +128,27 @@ class PharmacistDashboard extends Component {
                       <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.formula} </CardSubtitle>
                       <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.manufacturer} </CardSubtitle>
                       <h5 > Rs. {medicine.price}</h5>
-                      <div className="mt-4">
-                        <Button onClick={() => {
-                          if (count > 1) {
-                            count = count - 1
-                          }
-                        }}>-</Button>
-                        <input type='number' style={{ width: '10%' }} defaultValue={count} min='1' className='mx-2 py-1 px-1' max={quantity} onChange={(e) => {
-                          count = e.target.value;
-                          console.log(count)
-                        }} ></input>
-                        <Button onClick={() => {
-                          if (count > quantity)
-                            count--;
-                        }}>+</Button>
+                      <div className="mt-4 d-flex justify-content-between">
+                        <div className='d-flex'>
+                          <h5>Quantity</h5>
+                          <input type='number' min='1' id={medicine._id} className='mx-2 py-1 px-1 w-0' max={quantity} onChange={(e) => {
+                          }} ></input>
+                        </div>
+                        <div>
+                          <Button onClick={async () => {
+                            let count = document.getElementById(`${medicine._id}`).value
+                            let drug = {
+                              medicine: medicine._id,
+                              quantity: count
+                            }
+                            const cart = this.state.cart;
+                            cart.push(drug);
+                            await this.setState({ cart: cart })
+                            console.log(cart)
+                          }}>Add to Cart</Button>
+                        </div>
+
+
                       </div>
                     </CardBody>
                   </Card>
