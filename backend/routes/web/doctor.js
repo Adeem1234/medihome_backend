@@ -1,8 +1,8 @@
 const Router = require('express-promise-router')();
-const DocotorController = require('../../../controller/web/DoctorController');
+const DocotorController = require('../../controller/web/DoctorController');
 const {
   ensureAuthenticated
-} = require('../../../config/auth');
+} = require('../../config/auth');
 
 Router.route('/doctors').get(ensureAuthenticated, DocotorController.get);
 Router.route('/doctor/add').get(ensureAuthenticated, DocotorController.show).post(ensureAuthenticated, DocotorController.add);

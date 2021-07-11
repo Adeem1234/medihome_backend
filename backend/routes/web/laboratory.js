@@ -1,8 +1,8 @@
 const Router = require('express-promise-router')();
-const LaboratoryController = require('../../../controller/web/LaboratoryController');
+const LaboratoryController = require('../../controller/web/LaboratoryController');
 const {
   ensureAuthenticated
-} = require('../../../config/auth');
+} = require('../../config/auth');
 
 Router.route('/laboratories').get(ensureAuthenticated, LaboratoryController.get);
 Router.route('/laboratory/add').get(ensureAuthenticated, LaboratoryController.show).post(ensureAuthenticated, LaboratoryController.add);

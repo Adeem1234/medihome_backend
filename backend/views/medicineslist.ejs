@@ -24,7 +24,7 @@
                   <table class="table table-bordered" id="datatable" width="100%" cellspacing="0">
                     <thead>
                       <tr>
-                        <th class="w-100 text-align-center">
+                        <th class="w-100 ">
                           Name
                         </th>
                         <th class="w-100 text-align-center">
@@ -45,8 +45,10 @@
                       <% for (var medicine of medicines){ %>
                         <tr>
                           <td>
-                            <img src="" alt="">
-                            <%=medicine.logo.path%>
+                            <img src='/medicines/<%=medicine.logo.name%>' alt=<%=medicine.logo.path%> width='100'
+                            height='100'>
+                            <!-- <%=medicine.logo.path%> -->
+
                           </td>
                           <td>
                             <%=medicine.formula%>

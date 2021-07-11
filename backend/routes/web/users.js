@@ -1,8 +1,8 @@
 const Router = require('express-promise-router')();
-const User = require('../../../controller/web/usersData');
+const User = require('../../controller/web/usersData');
 const {
   ensureAuthenticated
-} = require('../../../config/auth');
+} = require('../../config/auth');
 
 // Router.route('/users/all-blocked').get(ensureAuthenticated, User.showBlocked);
 
