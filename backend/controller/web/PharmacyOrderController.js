@@ -31,7 +31,7 @@ module.exports = {
       return res.renders('pharmacyOrders', { orders })
     }
     catch (error) {
-      return err;
+      return error;
     }
   }
 }

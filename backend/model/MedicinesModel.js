@@ -19,6 +19,14 @@ const medicinesSchema = new Schema({
     type: String,
     required: true
   },
+  logo: {
+    name: {
+      type: String,
+    },
+    path: {
+      type: String
+    }
+  }
 });
 
 module.exports = mongoose.model('medicines', medicinesSchema);
