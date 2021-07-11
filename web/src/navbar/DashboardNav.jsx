@@ -12,8 +12,12 @@ class DashboardNav extends Component {
 		cartItems: 0
 	}
 	componentDidMount() {
-		let cartItems = JSON.parse(sessionStorage.getItem('cart')).length
-		this.setState({ cartItems: cartItems })
+		let cartItems = JSON.parse(sessionStorage.getItem('cart'))
+		let length
+		if (cartItems) {
+			length = cartItems.lenght
+		}
+		this.setState({ cartItems: length })
 		console.log('cartItems' + cartItems)
 	}
 
