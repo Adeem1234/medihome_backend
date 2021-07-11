@@ -18,7 +18,7 @@ module.exports = {
   getPharmacy: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const pharmacy = await PharmaciesModel.findById(id).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: area, model: 'areas' });
+      const pharmacy = await PharmaciesModel.findById(id).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: area, model: 'areas' }).populate({ path: 'medicines.medicine', model: 'medicines' });
       return res.status(200).send({ pharmacy })
     } catch (error) {
 

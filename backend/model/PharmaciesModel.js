@@ -28,7 +28,7 @@ const pharmaciesSchema = new Schema({
 			type: SchemaTypes.ObjectId,
 			ref: 'medicines'
 		},
-		amount: {
+		quantity: {
 			type: Number,
 			required: true
 		}

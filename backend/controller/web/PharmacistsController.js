@@ -1,6 +1,7 @@
 const Pharmacies = require('../../model/PharmaciesModel');
 const CitiesModel = require('../../model/CitiesModel');
 const UsersModel = require('../../model/UsersModel');
+const MedicinesModel = require('../../model/MedicinesModel');
 
 module.exports = {
     get: async (req, res, next) => {
@@ -20,7 +21,7 @@ module.exports = {
         try {
             const { name, city, area, manager } = req.body;
             const oldPharmacies = await Pharmacies.findOne({ name: name, city: city, area: area, manager: manager });
-            if (oldPharmacies) {    
+            if (oldPharmacies) {
                 res.status(400).send('Pharmacy already exists');
             } else {
                 const pharmacy = new Pharmacies({ name: name, city: city, area: area });
@@ -62,5 +63,29 @@ module.exports = {
             res.status(400).send({ data: { message: error } });
         }
     },
+    medicines: async (req, res) => {
+        try {
+            const user = await UsersModel.findById(JSON.parse(req.sessionStore.sessions[req.sessionID]).passport.user);
+            const pharmacy = await Pharmacies.findOne({ manager: user._id }).populate({ path: 'medicines.medicine', model: 'medicines' })
+            const medicines = await MedicinesModel.find({})
+            return res.render('pharmacyMedicines', { pharmacy, medicines })
+        } catch (error) {
+            throw error
+            res.status(400).send({ data: { message: error } });
+        }
+    },
+    updateStock: async (req, res) => {
+        try {
+            const user = await UsersModel.findById(JSON.parse(req.sessionStore.sessions[req.sessionID]).passport.user);
+            const { medicine, quantity } = req.body;
+            const pharmacy = await Pharmacies.findOneAndUpdate({ manager: user._id }, { $push: { medicines: { ...req.body } } })
+            await pharmacy.save()
+            return res.redirect('/admin/pharmacy/add/medicine')
+        }
+        catch (error) {
+            res.status(400).send({ data: { message: error } });
+
+        }
+    }
 
 };
