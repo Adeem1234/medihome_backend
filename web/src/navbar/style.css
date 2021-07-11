@@ -5,3 +5,9 @@
   left: -0.2em;
   text-overflow: clip;
 }
+
+.bg-gradient-primary {
+	background-color: #4e73df;
+	background-image: linear-gradient(180deg, #4e73df 10%, #021b66 100%);
+	background-size: cover;
+}
