@@ -6,5 +6,6 @@ router.use('/', require('./admin/laboratory'));
 router.use('/', require('./admin/location'));
 router.use('/', require('./admin/pharmacist'));
 router.use('/', require('./admin/users'));
+router.use('/', require('./admin/medicines'));
 
 module.exports = router;

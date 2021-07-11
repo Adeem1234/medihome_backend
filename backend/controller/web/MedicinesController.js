@@ -1,5 +1,5 @@
-const Medicines = require('../../../model/MedicinesModel')
-module.export = {
+const Medicines = require('../../model/MedicinesModel')
+module.exports = {
   index: async (req, res, next) => {
     try {
       const medicines = await Medicines.find({});
@@ -14,18 +14,19 @@ module.export = {
   create: async (req, res, next) => {
     try {
       const { name, formula, manufacturer, price } = req.body;
-      const checkMedicine = await Medicines.find({ name: name, formula: formula, manufacturer: manufacturer });
-      if (checkMedicine) { return res.render('medicineAdd', error); }
-      else {
-        const medicine = new Medicines({
-          name: name,
-          formula: formula,
-          manufacturer: manufacturer,
-          price: price
-        });
-        await medicine.save();
-        res.redirect(req.headers.referer);
-      }
+      console.log(req.body)
+      // const checkMedicine = await Medicines.find({ name: name, formula: formula, manufacturer: manufacturer });
+      // if (checkMedicine) { return res.render('medicineAdd', error); }
+      // else {
+      const medicine = new Medicines({
+        name: name,
+        formula: formula,
+        manufacturer: manufacturer,
+        price: price
+      });
+      await medicine.save();
+      res.redirect('/admin/medicines');
+      // }
     } catch (error) { return error; }
   },
   edit: async (req, res, next) => {

@@ -20,7 +20,7 @@ module.exports = {
         try {
             const { name, city, area, manager } = req.body;
             const oldPharmacies = await Pharmacies.findOne({ name: name, city: city, area: area, manager: manager });
-            if (oldPharmacies) {
+            if (oldPharmacies) {    
                 res.status(400).send('Pharmacy already exists');
             } else {
                 const pharmacy = new Pharmacies({ name: name, city: city, area: area });

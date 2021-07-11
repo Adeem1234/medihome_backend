@@ -1,5 +1,11 @@
-const router = require('express').Router();
+const Router = require('express-promise-router')();
+const LaboratoryOrderController = require('../../controller/web/LaboratoryOrderController');
+const {
+  ensureAuthenticated
+} = require('../../config/auth');
 
-router.use('/', require('./laboratories/laboratoryOrders'));
+Router.route('/laboratory/orders/status/processing/:id').get(ensureAuthenticated, LaboratoryOrderController.updateOrderStatusProcessing)
+Router.route('/laboratory/orders/status/completed/:id').get(ensureAuthenticated, LaboratoryOrderController.updateOrderStatusCompleted)
+Router.route('/laboratory/orders').get(ensureAuthenticated, LaboratoryOrderController.getOrders)
 
-module.exports = router;
+module.exports = Router;
