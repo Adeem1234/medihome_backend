@@ -56,10 +56,11 @@ class DashboardNav extends Component {
 					<Nav className='text-light'>
 						<div >
 							{/* <FontAwesomeIcon icon={["fas", "coffee"]} />	 */}
-							<i className="fas fa-shopping-cart fa-2x" id='cart-icon'></i>
+							<i className="fas fa-shopping-cart fa-2x mr-2" id='cart-icon'></i>
+							<span id='cart-count'>{this.state.cartItems}</span>
 							<span id='cart-count'>{this.state.cartItems}</span>
 						</div>
-						<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='gradient-primary' className=' p-0 w-auto border border-light bg-gradient-primary text-light'>
+						<DropdownButton menuAlign={{ lg: 'down' }} title='User' key='down' id={`dropdown-button-drop-down`} drop='down' variant='gradient-primary' className=' p-0 mx-2 w-auto border border-light bg-gradient-primary text-light'>
 							<Link to='/login' className='nav-item text-dark mx-2' onClick={() => { sessionStorage.clear(); window.location.replace('/') }}>
 								<span>Logout</span>
 							</Link>
