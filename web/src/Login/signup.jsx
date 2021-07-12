@@ -23,6 +23,8 @@ const SignUp = ({ updateData }) => {
     const [showError, setShowError] = useState([]);
     const [errors, setErrors] = useState([]);
     const [getCities, setGetCities] = useState(false);
+    const [signUpStatus, setSignUpStatus] = useState(false);
+
 
     const handleSignUp = () => {
         axiosInstance.post('/user/register', { name, email, password, confirmPassword, city, area, phoneNo }).then(async (res) => {
@@ -32,9 +34,9 @@ const SignUp = ({ updateData }) => {
                 sessionStorage.setItem('user', JSON.stringify(savedUser));
                 sessionStorage.setItem('cart', '[]');
                 sessionStorage.setItem('pharmacy', '{}');
-
-                await updateData(savedUser, token);
-                document.getElementById('updateToken').click();
+                setSignUpStatus(true)
+                // await updateData(savedUser, token);
+                // document.getElementById('updateToken').click();
             }
         }).catch((error) => {
             console.error(error)
@@ -86,7 +88,8 @@ const SignUp = ({ updateData }) => {
 
     })
 
-    return (
+    return (!signUpStatus
+        ?
         <div className='d-flex justify-content-center align-items-center mt-5 h-100' >
             <div className="">
                 <div className="card">
@@ -198,14 +201,27 @@ const SignUp = ({ updateData }) => {
                             }}>
                                 <Link to='/login'><p className='text-white text-decoration-none p-0 m-0'>Login</p></Link>
                             </button>
-                            <Link to='/welcome'>
-                                <Button variant="contained" color="primary" className="d-none float-right" id='proceedBtn'>Proceed </Button>
-                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
         </div >
+        :
+        <div className='d-flex justify-content-center align-items-center py-5 '>
+            <div className=' card border border-black w-25'>
+                <div className='card-header bg-gradient-primary d-flex justify-content-center'>
+                    <p className='my-0 py-0 text-light'>Welcome</p>
+                </div>
+                <div className='card-body d-flex justify-content-center'>
+                    <div>
+                        <p className='font-italic font-weight-bold'>SignUp Successfull</p>
+                    </div>
+                </div>
+                <div className='card-footer bg-gradient-primary d-flex justify-content-center'>
+                    <Button variant="contained" color="primary" className="d-flex float-right text-light border border-light" onClick={updateData} >Proceed </Button>
+                </div>
+            </div>
+        </div>
     );
 }
 
