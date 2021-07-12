@@ -7,17 +7,9 @@ const ordersSchema = new Schema({
     type: SchemaTypes.ObjectId,
     ref: 'users'
   },
-  rider: {
-    type: SchemaTypes.ObjectId,
-    ref: 'users'
-  },
   pharmacy: {
     type: SchemaTypes.ObjectId,
     ref: 'pharmacies'
-  },
-  laboratory: {
-    type: SchemaTypes.ObjectId,
-    ref: 'laboratories'
   },
   city: {
     type: SchemaTypes.ObjectId,
@@ -37,9 +29,14 @@ const ordersSchema = new Schema({
   },
   status: {
     type: String,
+    default: 'pending',
     required: true
   },
-  
+  medicines: [{
+    type: SchemaTypes.ObjectId,
+    ref: 'medicines'
+  }]
+
 });
 
 module.exports = mongoose.model('orders', ordersSchema);

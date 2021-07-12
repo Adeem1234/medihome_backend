@@ -9,7 +9,6 @@ module.exports = {
         .populate({ path: 'city', model: 'cities', select: 'name' })
         .populate({ path: 'area', model: 'areas' })
         .populate({ path: 'medicines.medicine', model: 'medicines' });
-      console.log(pharmacies)
       return res.status(200).send({ pharmacies })
     } catch (error) {
       console.log(error)
@@ -18,9 +17,10 @@ module.exports = {
   getPharmacy: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const pharmacy = await PharmaciesModel.findById(id).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: area, model: 'areas' }).populate({ path: 'medicines.medicine', model: 'medicines' });
+      const pharmacy = await PharmaciesModel.findById(id).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: 'area', model: 'areas' }).populate({ path: 'medicines.medicine', model: 'medicines' });
       return res.status(200).send({ pharmacy })
     } catch (error) {
+      console.log(error)
       return res.status(400).send(error)
     }
   }

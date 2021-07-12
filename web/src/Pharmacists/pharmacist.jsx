@@ -40,7 +40,7 @@ class Pharmacist extends Component {
       .then(async (res) => {
         const response = res.data
         await this.setState({ pharmacies: response.pharmacies, user: this.props.user, token: this.props.token })
-        console.log(res.data)
+        // console.log(res.data)
 
       })
       .catch((error) => {
@@ -48,8 +48,8 @@ class Pharmacist extends Component {
       });
   }
   async componentDidUpdate() {
-    await sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
-    await sessionStorage.setItem('pharmacy', JSON.stringify(this.state.pharmacy))
+    sessionStorage.setItem('pharmacy', JSON.stringify(this.state.pharmacy))
+     sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
   }
   async componentWillUnmount() {
     await this.setState({
@@ -89,8 +89,7 @@ class Pharmacist extends Component {
                     <div className='ml-2 mb-4 d-flex  align-content-center'>
                       <button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
                         await this.setState({ pharmacy: pharmacy, didChange: true, medicines: pharmacy.medicines });
-                        console.log(this.state.pharmacy)
-                        // this.getQuestion();
+                        // console.log(this.state.pharmacy)
                       }}>
                         <span>Buy Medicines</span>
                       </button>
@@ -109,8 +108,8 @@ class Pharmacist extends Component {
     );
   }
   MedicineList = () => {
-    console.log(this.state.pharmacy)
-    console.log(this.state.medicines)
+    // console.log(this.state.pharmacy)
+    // console.log(this.state.medicines)
     return (
       <div>
         <div className='mt-2 d-flex align-items-flex-start mx-5 h-25 overflow-auto '>
@@ -119,7 +118,7 @@ class Pharmacist extends Component {
               const medicine = medicines.medicine;
               const quantity = medicines.quantiy;
               const logo = medicine.logo.name;
-              console.log(medicine.logo)
+              // console.log(medicine.logo)
               return (
                 <div key={index} className=' mx-3'>
 
@@ -147,16 +146,21 @@ class Pharmacist extends Component {
                               if (JSON.stringify(cart.medicine) === JSON.stringify(medicine._id)) {
                                 count = parseInt(cart.quantity) + parseInt(medCount)
                                 cartData.splice(cart)
-                                console.log(count)
+                                // console.log(count)
                               }
+                              return null
                             })
+                            console.log('medicine')
+                            console.log(medicine)
+                            let total = medicine.price * parseInt(count)
                             let drug = {
                               medicine: medicine._id,
-                              quantity: count
+                              quantity: count,
+                              total: total
                             }
                             cartData.push(drug);
                             await this.setState({ cart: cartData })
-                            console.log(cartData)
+                            // console.log(cartData)
                           }}>Add to Cart</Button>
                         </div>
 

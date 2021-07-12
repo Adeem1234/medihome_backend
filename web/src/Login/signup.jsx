@@ -31,7 +31,7 @@ const SignUp = ({ updateData }) => {
                 sessionStorage.setItem('authToken', JSON.stringify(token));
                 sessionStorage.setItem('user', JSON.stringify(savedUser));
                 sessionStorage.setItem('cart', '[]');
-                sessionStorage.setItem('pharmacy', '');
+                sessionStorage.setItem('pharmacy', '{}');
 
                 await updateData(savedUser, token);
                 document.getElementById('updateToken').click();
