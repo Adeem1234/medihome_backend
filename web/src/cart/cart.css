@@ -1,6 +1,5 @@
 #placeOrder{
   position: fixed;
   bottom: 2em;
-  right: 2em;
-  left: auto;
+  background-color: 'bg-gradient';
 }

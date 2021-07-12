@@ -26,9 +26,10 @@ class Pharmacist extends Component {
   }
   async componentDidMount() {
     const cart = JSON.parse(sessionStorage.getItem('cart'));
+    const pharmacy = JSON.parse(sessionStorage.getItem('pharmacy'));
     if (cart) {
       // sessionStorage.removeItem('cart')
-      this.setState({ cart: cart })
+      this.setState({ cart: cart, pharmacy: pharmacy })
     }
     // sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
     axiosInstance

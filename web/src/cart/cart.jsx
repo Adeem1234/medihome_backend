@@ -8,6 +8,7 @@ import {
 
 } from 'reactstrap';
 import './cart.css'
+import { Modal } from 'react-bootstrap';
 
 
 class MedCart extends Component {
@@ -17,7 +18,8 @@ class MedCart extends Component {
       cart: [],
       pharmacy: {},
       medicines: [],
-      pharmacyId: ''
+      pharmacyId: '',
+      show: false
     }
   }
   componentDidMount() {
@@ -28,42 +30,31 @@ class MedCart extends Component {
     this.setState({ cart: cart, pharmacy: pharmacy, user: user, token: token })
     if (pharmacy._id) {
       axiosInstance.get('/get/pharmacy/' + pharmacy._id,
-        {
-          headers: {
-            authorization: this.props.token
-          }
-        })
+        { headers: { authorization: this.props.token } })
         .then(async (res) => {
           this.setState({ pharmacy: res.data.pharmacy })
           const { cart } = this.state
           res.data.pharmacy.medicines.forEach(pharmacyMedicine => {
             cart.forEach(cartItem => {
-              if (cartItem.medicine === pharmacyMedicine.medicine._id) {
-                cartItem.medicine = pharmacyMedicine.medicine
-              }
+              if (cartItem.medicine === pharmacyMedicine.medicine._id) { cartItem.medicine = pharmacyMedicine.medicine }
             })
-
           });
           await this.setState({ cart: cart })
           console.log('cart medicine')
           console.log(this.state.cart[0])
         })
-
     }
   }
-  componentDidUpdate() {
-
-  }
-
   render() {
     let pharmacy
     if (this.state.pharmacy) {
       pharmacy = this.state.pharmacy
     }
+    const handleClose = () => this.setState({ show: false });
     return (
       <div>
         <DashboardNav />
-        <div className='mt-2 d-flex align-items-flex-start mx-5 h-25 overflow-auto '>
+        <div className='mt-2 d-flex justify-content-center mx-5 h-25 overflow-auto '>
           {this.state.cart ?
             this.state.cart.map((cart, index) => {
               const medicine = cart.medicine;
@@ -72,8 +63,7 @@ class MedCart extends Component {
               let total = cart.total;
               // const logo = medicine.logo.name;
               return (
-                <div key={index} className=' mx-3'>
-
+                <div key={index} className=' mx-3 d-flex justify-content-center w-100'>
                   <Card style={{ width: "fit-content", height: 'auto' }}>
                     <div></div>
                     {/* <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" /> */}
@@ -84,43 +74,42 @@ class MedCart extends Component {
                       <h5 > Rs. {medicine.price}</h5>
                       <div className="mt-4 d-flex justify-content-between">
                         <div className='d-flex'>
-                          <h5>Totol: {cart.total}</h5>
+                          <h5>Total: {cart.total}</h5>
                         </div>
                         <div>
-
                         </div>
                       </div>
                     </CardBody>
                   </Card>
-
-                  <Button id='placeOrder' onClick={async () => {
-                    axiosInstance.post('/place/order', { cart: this.state.cart, pharmacy: this.state.pharmacy },
-                      {
-                        headers: {
-                          authorization: this.props.token
-                        }
-                      })
-                      .then(async (res) => {
-                        this.setState({ cart: [], pharmacy: {} })
-                        sessionStorage.setItem('cart', '[]')
-                        sessionStorage.setItem('pharmacy', '{}')
-                      }).catch(error => {
-                        return error
-                      })
-                  }}>Place Order</Button>
                 </div>
-
-
-
-
               )
             })
             :
             <div>No medicines Available</div>
           }
-
+          <Button id='placeOrder' className='bg-gradient-primary ' onClick={async () => {
+            axiosInstance.post('/place/order', { cart: this.state.cart, pharmacy: this.state.pharmacy },
+              { headers: { authorization: this.props.token } })
+              .then(async (res) => {
+                this.setState({ cart: [], pharmacy: {}, show: true })
+                sessionStorage.setItem('cart', '[]')
+                sessionStorage.setItem('pharmacy', '{}')
+              }).catch(error => {
+                return error
+              })
+          }}>Place Order</Button>
         </div>
-
+        <Modal show={this.state.show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>Order Placed</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Your Order is placed and will be Delivered by Pharmacist Rider or TCS service</Modal.Body>
+          <Modal.Footer>
+            <Button variant="gradient-primary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     );
   }
