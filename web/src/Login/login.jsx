@@ -48,6 +48,7 @@ const Login = ({ updateData }) => {
                                                 sessionStorage.removeItem('user')
                                                 sessionStorage.setItem('user', JSON.stringify(user));
                                                 sessionStorage.setItem('cart', '[]');
+                                                sessionStorage.setItem('pharmacy', '');
                                                 // if (user.subscriptionId) {
                                                 //     sessionStorage.setItem('subscription', JSON.stringify(user.subscriptionId));
                                                 // } else {

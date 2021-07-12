@@ -5,5 +5,7 @@ const verifyToken = require('../../middlewares/verifyToken');
 
 
 Router.route('/get/pharmacies').get(verifyToken, PharmacyController.getPharmacies);
+Router.route('/get/pharmacy/:id').get(verifyToken, PharmacyController.getPharmacy);
+
 
 module.exports = Router;

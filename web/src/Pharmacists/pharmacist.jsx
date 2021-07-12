@@ -47,8 +47,8 @@ class Pharmacist extends Component {
       });
   }
   async componentDidUpdate() {
-    JSON.parse(sessionStorage.getItem('cart'))
     await sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
+    await sessionStorage.setItem('pharmacy', JSON.stringify(this.state.pharmacy))
   }
   async componentWillUnmount() {
     await this.setState({
@@ -138,15 +138,24 @@ class Pharmacist extends Component {
                         </div>
                         <div>
                           <Button onClick={async () => {
-                            let count = document.getElementById(`${medicine._id}`).value
+                            let count = 0
+                            let medCount = document.getElementById(`${medicine._id}`).value
+                            const cartData = this.state.cart;
+
+                            cartData.map(cart => {
+                              if (JSON.stringify(cart.medicine) === JSON.stringify(medicine._id)) {
+                                count = parseInt(cart.quantity) + parseInt(medCount)
+                                cartData.splice(cart)
+                                console.log(count)
+                              }
+                            })
                             let drug = {
                               medicine: medicine._id,
                               quantity: count
                             }
-                            const cart = this.state.cart;
-                            cart.push(drug);
-                            await this.setState({ cart: cart })
-                            console.log(cart)
+                            cartData.push(drug);
+                            await this.setState({ cart: cartData })
+                            console.log(cartData)
                           }}>Add to Cart</Button>
                         </div>
 
@@ -159,7 +168,7 @@ class Pharmacist extends Component {
               )
             })
             :
-            <div></div>
+            <div>No medicines Available</div>
           }
 
         </div>
