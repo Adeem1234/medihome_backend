@@ -54,9 +54,9 @@ const Login = ({ updateData }) => {
                                                 // } else {
                                                 //     sessionStorage.setItem('subscription', '');
                                                 // }
-                                                await setLoginStatus(true)
-                                                updateData(user, token)
-                                                document.getElementById('updateToken').click();
+                                                // document.getElementById('updateToken').click();
+                                                setLoginStatus(true)
+                                                // updateData() 
                                             };
                                         }).catch((er) => {
                                             if (er.response === 422) {
@@ -92,19 +92,19 @@ const Login = ({ updateData }) => {
         </div>
         :
         <div className='d-flex justify-content-center align-items-center py-5 '>
-            <div className=' card border border-black w-auto'>
-                <div className='card-header'>
-                    <p className='my-0 py-0'>Welcome</p>
+            <div className=' card border border-black w-25'>
+                <div className='card-header bg-gradient-primary d-flex justify-content-center'>
+                    <p className='my-0 py-0 text-light'>Welcome</p>
                 </div>
-                <div className='card-body'>
+                <div className='card-body d-flex justify-content-center'>
                     <div>
-                        <p>Login Successfull</p>
+                        <p className='font-italic font-weight-bold'>Login Successfull</p>
                     </div>
                 </div>
-                <div className='card-footer'>
-                    <Link to='/dashboard'>
-                        <Button variant="contained" color="primary" className="d-flex float-right" >Proceed </Button>
-                    </Link>
+                <div className='card-footer bg-gradient-primary d-flex justify-content-center'>
+                    {/* <Link to='/dashboard'> */}
+                    <Button variant="contained" color="primary" className="d-flex float-right text-light border border-light" onClick={updateData} >Proceed </Button>
+                    {/* </Link> */}
                 </div>
             </div>
         </div>

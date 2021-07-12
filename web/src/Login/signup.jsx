@@ -116,15 +116,22 @@ const SignUp = ({ updateData }) => {
                                 {errors.hasOwnProperty('confirmPassword') && (<p className='err'>{errors.confirmPassword}</p>)}
                             </div>
                             <div className="input-group form-group mb-2">
-                                <select name="city" id="selectCity" className='select2 form-control' onChange={async (e) => {
-                                    document.getElementById('NullCity').style.display = 'none'
-                                    let index = e.target.value
-                                    await setCity(cities[index]._id)
-                                    await setAreas(cities[index].areas)
-                                    await setArea()
-                                    console.log(cities[index])
-                                }}>
-                                    <option defaultValue id='NullCity' ></option>
+                                <select name="city" id="selectCity" className='select2 form-control'
+                                    onClick={e => {
+                                        if (cities) {
+                                            document.getElementById('NullCity').style.display = 'none'
+                                        }
+                                    }}
+                                    onChange={async (e) => {
+                                        document.getElementById('NullArea').textContent = 'Select Area'
+                                        document.getElementById('NullCity').style.display = 'none'
+                                        let index = e.target.value
+                                        await setCity(cities[index]._id)
+                                        await setAreas(cities[index].areas)
+                                        await setArea()
+                                        console.log(cities[index])
+                                    }}>
+                                    <option defaultValue id='NullCity' >Select City</option>
                                     {cities ?
                                         cities.map((selectCity, index) => {
                                             console.log(areas)
@@ -139,12 +146,20 @@ const SignUp = ({ updateData }) => {
                                 {errors.hasOwnProperty('city') && (<p className='err'>{errors.city}</p>)}
                             </div>
                             <div className="input-group form-group mb-2">
-                                <select name="area" id="selectAreaa" className='select2 form-control' onChange={async (e) => {
-                                    document.getElementById('NullArea').style.display = 'none'
-                                    let index = e.target.value
-                                    await setArea(areas[index]._id)
-                                }}>
-                                    <option defaultValue id='NullArea' ></option>
+                                <select name="area" id="selectAreaa" className='select2 form-control' aria-details='Select City' placeholder='Select City'
+                                    onClick={e => {
+                                        if (areas.length) {
+                                            document.getElementById('NullArea').style.display = 'none'
+                                        } else {
+                                            document.getElementById('NullArea').textContent = 'No Areas In This City'
+                                        }
+                                    }}
+                                    onChange={async (e) => {
+                                        document.getElementById('NullArea').style.display = 'none'
+                                        let index = e.target.value
+                                        await setArea(areas[index]._id)
+                                    }}>
+                                    <option defaultValue id='NullArea' className='text-light'>Select Area</option>
                                     {areas ?
                                         areas.map((selectArea, index) => {
                                             return (
@@ -152,7 +167,7 @@ const SignUp = ({ updateData }) => {
                                             )
                                         })
                                         :
-                                        <option>No Cities Available</option>
+                                        <option>No Areas Available</option>
                                     }
                                 </select>
                                 {errors.hasOwnProperty('area') && (<p className='err'>{errors.area}</p>)}
