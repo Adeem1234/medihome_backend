@@ -63,19 +63,22 @@ class MedCart extends Component {
               let total = cart.total;
               // const logo = medicine.logo.name;
               return (
-                <div key={index} className=' mx-3 d-flex justify-content-center w-100 text-light '>
-                  <Card style={{ width: "fit-content" }} className='h-auto p-0 bg-gradient-primary '>
+                <div key={index} className=' mx-3 mt-5 d-flex justify-content-center w-100 text-light '>
+                  <Card className='h-auto w-25 p-0 bg-gradient-primary rounded'>
+
                     {/* <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" /> */}
-                    <CardBody className='border border-secondary m-0 p-0'>
-                      <CardTitle tag="h5" className="mt-3 border-top border-bottom border-secondary px-2">{medicine.name}</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2  px-2"><sm>{medicine.formula}</sm> </CardSubtitle>
-                      <CardSubtitle tag="h6" className="mb-2 px-2"><sm>{medicine.manufacturer}</sm> </CardSubtitle>
-                      <h5 className='px-2'> Rs. {medicine.price}</h5>
-                      <div className="mt-4 d-flex justify-content-between border-top border-bottom border-secondary px-2">
-                        <div className='d-flex'>
-                          <h5>Total: {cart.total}</h5>
-                        </div>
-                        <div>
+                    <CardBody className='border border-secondary m-0 px-0 py-1'>
+                      <div className='px-5 d-flex flex-column align-items-center'>
+                        <CardTitle tag="h5" className="mt-3 border-top border-bottom border-light py-2">{medicine.name}</CardTitle>
+                        <CardSubtitle tag="h6" className="mb-2  py-1"><sm>{medicine.formula}</sm> </CardSubtitle>
+                        <CardSubtitle tag="h6" className="mb-2 py-1"><sm>{medicine.manufacturer}</sm> </CardSubtitle>
+                        <h5 className='py-1'> Rs. {medicine.price}</h5>
+                        <div className="mt-4 d-flex justify-content-between border-top border-bottom border-light py-2">
+                          <div className='d-flex'>
+                            <h5>Total: {cart.total}</h5>
+                          </div>
+                          <div>
+                          </div>
                         </div>
                       </div>
                     </CardBody>
@@ -86,7 +89,7 @@ class MedCart extends Component {
             :
             <div>No medicines Available</div>
           }
-          <Button id='placeOrder' className='bg-gradient-primary ' onClick={async () => {
+          <Button id='placeOrder' className='bg-gradient-primary px-4 py-2 border border-light rounded-pill ' onClick={async () => {
             axiosInstance.post('/place/order', { cart: this.state.cart, pharmacy: this.state.pharmacy },
               { headers: { authorization: this.props.token } })
               .then(async (res) => {
