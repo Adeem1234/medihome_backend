@@ -21,12 +21,12 @@ class MedCart extends Component {
   }
   componentDidMount() {
     const cart = JSON.parse(sessionStorage.getItem('cart'))
-    const pharmacyId = JSON.parse(sessionStorage.getItem('pharmacy'))
+    const pharmacy = JSON.parse(sessionStorage.getItem('pharmacy'))
     const user = JSON.parse(sessionStorage.getItem('user'));
     const token = JSON.parse(sessionStorage.getItem('authToken'))
-    this.setState({ cart: cart, pharmacyId: pharmacyId, user: user, token: token })
-    if (pharmacyId !== '') {
-      axiosInstance.get('/get/pharmacy/' + pharmacyId,
+    this.setState({ cart: cart, pharmacy: pharmacy, user: user, token: token })
+    if (pharmacy._id) {
+      axiosInstance.get('/get/pharmacy/' + pharmacy._id,
         {
           headers: {
             authorization: this.props.token

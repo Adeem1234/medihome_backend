@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { Component } from 'react';
 import DashboardNav from '../navbar/DashboardNav';
 // import PharmacistDashboard from './PharmacistDashboard';
