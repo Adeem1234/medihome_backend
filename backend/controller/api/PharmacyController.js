@@ -21,7 +21,7 @@ module.exports = {
       const pharmacy = await PharmaciesModel.findById(id).populate({ path: 'city', model: 'cities', select: 'name' }).populate({ path: area, model: 'areas' }).populate({ path: 'medicines.medicine', model: 'medicines' });
       return res.status(200).send({ pharmacy })
     } catch (error) {
-
+      return res.status(400).send(error)
     }
   }
 };
