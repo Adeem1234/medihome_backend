@@ -63,16 +63,15 @@ class MedCart extends Component {
               let total = cart.total;
               // const logo = medicine.logo.name;
               return (
-                <div key={index} className=' mx-3 d-flex justify-content-center w-100'>
-                  <Card style={{ width: "fit-content", height: 'auto' }}>
-                    <div></div>
+                <div key={index} className=' mx-3 d-flex justify-content-center w-100 text-light '>
+                  <Card style={{ width: "fit-content" }} className='h-auto p-0 bg-gradient-primary '>
                     {/* <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" /> */}
-                    <CardBody>
-                      <CardTitle tag="h5" className="mt-3">{medicine.name}</CardTitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.formula} </CardSubtitle>
-                      <CardSubtitle tag="h6" className="mb-2 text-muted">{medicine.manufacturer} </CardSubtitle>
-                      <h5 > Rs. {medicine.price}</h5>
-                      <div className="mt-4 d-flex justify-content-between">
+                    <CardBody className='border border-secondary m-0 p-0'>
+                      <CardTitle tag="h5" className="mt-3 border-top border-bottom border-secondary px-2">{medicine.name}</CardTitle>
+                      <CardSubtitle tag="h6" className="mb-2  px-2"><sm>{medicine.formula}</sm> </CardSubtitle>
+                      <CardSubtitle tag="h6" className="mb-2 px-2"><sm>{medicine.manufacturer}</sm> </CardSubtitle>
+                      <h5 className='px-2'> Rs. {medicine.price}</h5>
+                      <div className="mt-4 d-flex justify-content-between border-top border-bottom border-secondary px-2">
                         <div className='d-flex'>
                           <h5>Total: {cart.total}</h5>
                         </div>
