@@ -49,7 +49,7 @@ class Pharmacist extends Component {
   }
   async componentDidUpdate() {
     sessionStorage.setItem('pharmacy', JSON.stringify(this.state.pharmacy))
-     sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
+    sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
   }
   async componentWillUnmount() {
     await this.setState({
@@ -160,6 +160,8 @@ class Pharmacist extends Component {
                             }
                             cartData.push(drug);
                             await this.setState({ cart: cartData })
+                            sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
+                            this.props.updateData()
                             // console.log(cartData)
                           }}>Add to Cart</Button>
                         </div>

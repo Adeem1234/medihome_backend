@@ -51,6 +51,9 @@ class MedCart extends Component {
 
     }
   }
+  componentDidUpdate() {
+
+  }
 
   render() {
     let pharmacy
@@ -98,8 +101,9 @@ class MedCart extends Component {
                         }
                       })
                       .then(async (res) => {
-                        console.log('response')
-                        console.log(res.data)
+                        this.setState({ cart: [], pharmacy: {} })
+                        sessionStorage.setItem('cart', '[]')
+                        sessionStorage.setItem('pharmacy', '{}')
                       }).catch(error => {
                         return error
                       })

@@ -19,18 +19,25 @@ class App extends Component {
 		super(props);
 		this.state = {
 			user: {},
-			token: ''
+			token: '',
+			cart: [],
+			pharmacy: {}
 		}
 	}
 	componentDidMount() {
 		const user = JSON.parse(sessionStorage.getItem('user'));
 		const token = JSON.parse(sessionStorage.getItem('authToken'));
-		this.setState({ user: user, token: token })
+		const cart = JSON.parse(sessionStorage.getItem('cart'))
+		const pharmacy = JSON.parse(sessionStorage.getItem('pharmacy'))
+		this.setState({ user: user, token: token, cart: cart, pharmacy: pharmacy })
 	}
 	toggleUpdate = async () => {
+		console.log('update Data')
 		const newUser = JSON.parse(sessionStorage.getItem('user'));
 		const newtoken = JSON.parse(sessionStorage.getItem('authToken'));
-		await this.setState({ user: newUser, token: newtoken })
+		const cart = JSON.parse(sessionStorage.getItem('cart'))
+		const pharmacy = JSON.parse(sessionStorage.getItem('pharmacy'))
+		await this.setState({ user: newUser, token: newtoken, cart: cart, pharmacy: pharmacy })
 	};
 	render() {
 		if (this.state.token && this.state.user) {
@@ -40,13 +47,13 @@ class App extends Component {
 						<Switch>
 							<Route path='/' exact component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/welcome' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
-							<Route path='/pharmacies' component={(props) => <Pharmacist token={this.state.token} user={this.state.user} />} />
+							<Route path='/pharmacies' component={(props) => <Pharmacist token={this.state.token} user={this.state.user} updateData={this.toggleUpdate} />} />
 							<Route path='/dashboard' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/laboratories' component={(props) => <Laboratorist token={this.state.token} user={this.state.user} />} />
 							<Route path='/doctors' component={(props) => <Doctors token={this.state.token} />} />
 							<Route path='/login' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
 							<Route path='/sign-up' component={(props) => <Dashboard token={this.state.token} user={this.state.user} />} />
-							<Route path='/cart' component={(props) => <MedCart token={this.state.token} user={this.state.user} />} />
+							<Route path='/cart' component={(props) => <MedCart token={this.state.token} user={this.state.user} cart={ this.state.cart}/>} />
 							<Route path='*' component={NotFound} />
 						</Switch>
 					</Router>
