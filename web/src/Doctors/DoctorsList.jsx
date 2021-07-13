@@ -35,36 +35,20 @@ class DoctorsList extends Component {
                 let link = `https://wa.me/${doctor.phoneNo}`
                 return (
                   <>
-                    <div key={index} className='  border rounded-lg w-50 d-flex pt-3 px-2
-										mx-2 my-1 d-flex align-items-center justify-content-between' id='doctors'>
-                      <div className='d-flex flex-column mr-5'>
+                    <div key={index} className='  border rounded-lg w-50 d-flex py-3 px-5
+										mx-2 my-1 d-flex align-items-center justify-content-between rounded-pill' id='doctors'>
+                      <div className='d-flex flex-column mx-5'>
                         <p className='text-dark font-weight-bold test-nowrap font-italic'>
                           {doctor.name}
                         </p>
                         <p className='text-dark text-nowrap'>
-                          {doctor.phoneNo}
-                        </p><p className='text-dark text-nowrap'>
-                          {doctor.specilization}
+                          {doctor.specialization}
                         </p>
-                      </div>
-                      <div className='ml-2 mb-4 d-flex  align-content-center'>
-                        <a
-                          href={link}
-                          target="_blank"
-                          rel="noopener noreferrer"  >
-                          <i class="fab fa-whatsapp fa-3x"></i>
-                        </a>
-                      </div>
-                    </div> <div key={index} className='  border rounded-lg w-50 d-flex pt-3 px-2
-										mx-2 my-1 d-flex align-items-center justify-content-between' id='doctors'>
-                      <div className='d-flex flex-column mr-5'>
-                        <p className='text-dark font-weight-bold test-nowrap font-italic'>
-                          {doctor.name}
+                        <p className='text-dark text-nowrap'>
+                          {doctor.diploma}
                         </p>
                         <p className='text-dark text-nowrap'>
                           {doctor.phoneNo}
-                        </p><p className='text-dark text-nowrap'>
-                          {doctor.specilization}
                         </p>
                       </div>
                       <div className='ml-2 mb-4 d-flex  align-content-center'>
@@ -76,7 +60,6 @@ class DoctorsList extends Component {
                         </a>
                       </div>
                     </div>
-
                   </>
                 )
               })
