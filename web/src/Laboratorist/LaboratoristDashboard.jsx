@@ -273,25 +273,22 @@ class LaboratoristDashboard extends Component {
         </div>
         <div>
 
-          <h4 style={{ color: "darkblue", textAlign: "center" }} className=",mt-3">
+          <h4 style={{ color: "darkblue", textAlign: "center" }} className="mt-3">
             Get in Touch with Lab
+            
           </h4>
           <h6 className="mt-3" style={{ textAlign: "center" }}>
 
             For more information please email us at ali.arifbhatti98@gmail.com or  / Whatsapp
-          </h6>
-          <Row>
-            {/* WhatsApp icon */}
             <a
               href="https://wa.me/03486678511"
-              class="whatsapp_float"
+              class="whatsapp_float mx-1"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i class="fa fa-whatsapp whatsapp-icon" ></i>
+              <i class="fa fa-whatsapp whatsapp-icon fa-2x" ></i>
             </a>
-
-          </Row>
+          </h6>
         </div>
       </Container>
     );
