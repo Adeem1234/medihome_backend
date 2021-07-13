@@ -68,20 +68,20 @@ class LaboratoristDashboard extends Component {
           <h3 className="mt-3" style={{ color: "darkblue", textAlign: "left" }} >
             Most Common Lab Tests and Rates:
           </h3>
-          <Table bordered className="mt-3" style={{ width: "140%" }}>
+          <Table bordered className="mt-3" style={{ width: "100%" }}>
             <thead style={{ backgroundColor: "darkblue", color: "white" }}>
               <tr>
-                <th>#</th>
-                <th>Test Name</th>
-                <th>Sample Required</th>
-                <th>Performed</th>
-                <th>Reporting Day</th>
-                <th>Rates</th>
+                <th className='w-auto'>#</th>
+                <th className='w-auto'>Test Name</th>
+                <th className='w-auto'>Sample Required</th>
+                <th className='w-auto'>Performed</th>
+                <th className='w-auto'>Reporting Day</th>
+                <th className='w-auto'>Rates</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <td>1</td>
                 <td>25-Hydroxy Vitamin-D</td>
                 <td>3-5cc Clotted Blood or Serum</td>
                 <td>DAILY</td>
@@ -89,7 +89,7 @@ class LaboratoristDashboard extends Component {
                 <td>3200</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <td>2</td>
                 <td>ANTI HCV</td>
                 <td>3-5cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
@@ -97,7 +97,7 @@ class LaboratoristDashboard extends Component {
                 <td>	3200</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <td>3</td>
                 <td>ANTI HIV - 1&2</td>
                 <td>	3-5cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
@@ -105,7 +105,7 @@ class LaboratoristDashboard extends Component {
                 <td>	2500</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
+                <td>4</td>
                 <td>Blood C/E (Complete, CBC)</td>
                 <td>		3cc EDTA BLOOD (CBC VIAL)</td>
                 <td>	DAILY</td>
@@ -113,7 +113,7 @@ class LaboratoristDashboard extends Component {
                 <td>	680</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
+                <td>5</td>
                 <td>Blood Glucose Random</td>
                 <td>	Sodium Fluoride Vial (Sugar Vial)</td>
                 <td>	DAILY</td>
@@ -121,7 +121,7 @@ class LaboratoristDashboard extends Component {
                 <td>	300</td>
               </tr>
               <tr>
-                <th scope="row">6</th>
+                <td>6</td>
                 <td>CHOLESTEROL / HDL CHOLESTEROL RATIO</td>
                 <td>		3-5cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
@@ -129,7 +129,7 @@ class LaboratoristDashboard extends Component {
                 <td>	700</td>
               </tr>
               <tr>
-                <th scope="row">7</th>
+                <td>7</td>
                 <td>HbA1C (Glycosylated Hemoglobin)</td>
                 <td>	3cc EDTA BLOOD (CBC VIAL)</td>
                 <td>	DAILY</td>
@@ -138,7 +138,7 @@ class LaboratoristDashboard extends Component {
               </tr>
 
               <tr>
-                <th scope="row">8</th>
+                <td>8</td>
                 <td>HBsAg (Quantitative)</td>
                 <td>	3-5cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
@@ -146,7 +146,7 @@ class LaboratoristDashboard extends Component {
                 <td>	3000</td>
               </tr>
               <tr>
-                <th scope="row">9</th>
+                <td>9</td>
                 <td>HBV BY PCR (Qualitative)</td>
                 <td>	10cc EDTA Whole Blood</td>
                 <td>	DAILY</td>
@@ -154,7 +154,7 @@ class LaboratoristDashboard extends Component {
                 <td>	7000</td>
               </tr>
               <tr>
-                <th scope="row">10</th>
+                <td>10</td>
                 <td>HBV BY PCR (Viral Load / Quantitation)</td>
                 <td>	10cc EDTA Whole Blood</td>
                 <td>	DAILY</td>
@@ -173,20 +173,20 @@ class LaboratoristDashboard extends Component {
 
             All Lab Tests Information and Test Rates:
           </h3>
-          <Table bordered className="mt-3" style={{ width: "140%" }}>
+          <Table bordered className="mt-3" style={{ width: "100%" }}>
             <thead style={{ backgroundColor: "darkblue", color: "white" }}>
               <tr>
-                <th>#</th>
-                <th>Test Name</th>
-                <th>Sample Required</th>
-                <th>Performed</th>
-                <th>Reporting Day</th>
-                <th>Rates</th>
+                <th className='w-auto'>#</th>
+                <th className='w-auto'>Test Name</th>
+                <th className='w-auto'>Sample Required</th>
+                <th className='w-auto'>Performed</th>
+                <th className='w-auto'>Reporting Day</th>
+                <th className='w-auto'>Rates</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <td>1</td>
                 <td>17-OH Progesterone</td>
                 <td>3-5cc Clotted Blood or Serum</td>
                 <td>Next Day</td>
@@ -194,7 +194,7 @@ class LaboratoristDashboard extends Component {
                 <td>3650</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <td>2</td>
                 <td>ANTI HCV</td>
                 <td>3-5cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
@@ -202,7 +202,7 @@ class LaboratoristDashboard extends Component {
                 <td>	3200</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <td>3</td>
                 <td>3D Hematology (From NIBD)</td>
                 <td>	3cc EDTA Blood & 2 Stain Smear & 1 Unstain</td>
                 <td>	DAILY</td>
@@ -210,7 +210,7 @@ class LaboratoristDashboard extends Component {
                 <td>	2250</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
+                <td>4</td>
                 <td>33gAllergy Specific IgE Universal Food Allergens Profile)</td>
                 <td>		8cc Clotted Blood or Serum</td>
                 <td>	  After Three Days</td>
@@ -218,7 +218,7 @@ class LaboratoristDashboard extends Component {
                 <td>	6050</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
+                <td>5</td>
                 <td>3gAllergy Specific IgE Universal Inhalant Allergens Profile</td>
                 <td>		8cc Clotted Blood or Serum</td>
                 <td>	DAILY</td>
