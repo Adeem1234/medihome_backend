@@ -27,7 +27,8 @@ module.exports = {
 	deleteUser: async (req, res, next) => {
 		const { id } = req.params;
 		const user = await UsersModel.findByIdAndRemove(id);
-		res.render(req.headers.referer);
+		console.log(req.headers)
+		res.redirect(req.headers.referer);
 	},
 
 };
