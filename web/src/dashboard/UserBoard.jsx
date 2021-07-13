@@ -72,20 +72,20 @@ class UserBoard extends Component {
 					<div className="mb-3">
 						<h4>Latest Pharmacies</h4>
 					</div>
-					<div className='d-flex align-items-center justify-content-between mb-3' id='pharmacyList'>
+					<div className='d-flex align-items-center justify-content-around mb-3' id='pharmacyList'>
 						{this.state.pharmacies ?
 							this.state.pharmacies.map((pharmacy, index) => {
 								return (
-									<div key={index} className=' bg-warning border rounded-lg w-auto d-flex pt-3 px-2
+									<div key={index} className=' bg-gradient-primary border rounded-lg w-auto d-flex pt-3 px-2
 										mx-2 d-flex align-items-center '>
 										<div className='d-flex flex-column mr-5 px-3 '>
-											<p className='text-light font-weight-bold test-nowrap font-italic'>
+											<p className='text-light font-weight-bold test-nowrap font-italic text-uppercase'>
 												{pharmacy.name}
 											</p>
-											<p className='text-light text-nowrap'>
+											<p className='text-light text-nowrap text-uppercase'>
 												{pharmacy.city.name}
 											</p>
-											<p className='text-light text-nowrap'>
+											<p className='text-light text-nowrap text-uppercase'>
 												{pharmacy.area.name}
 											</p>
 										</div>
