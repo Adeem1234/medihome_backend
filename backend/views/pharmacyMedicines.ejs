@@ -61,27 +61,43 @@
                     <thead>
                       <tr>
                         <th class="w-auto text-align-center">
+                          Logo
+                        </th>
+                        <th class="w-auto text-align-center">
                           Name
                         </th>
                         <th class="w-auto text-align-center">
-                          City
+                          Formula
                         </th>
                         <th class="w-auto text-align-center">
-                          Area
+                          Manufacturer
                         </th>
                         <th class="w-auto text-align-center">
-                          Manager
-                        </th>
-                        <th class="w-auto align-content-center px-4">
-                          Actions
+                          Price
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                      <td>
-                        <%=pharmacy%>
-                      </td>
+                      <%for (var medicine of pharmacy.medicines) {%>
+                        <tr>
+                          <td>
+                            <img src=<%=medicine.medicine.logo.path%> width='15' />
 
+                          </td>
+                          <td>
+                            <%=medicine.medicine.name%>
+                          </td>
+                          <td>
+                            <%=medicine.medicine.formula%>
+                          </td>
+                          <td>
+                            <%=medicine.medicine.manufacturer%>
+                          </td>
+                          <td>
+                            <%=medicine.medicine.price%>
+                          </td>
+                        </tr>
+                        <% } %>
                     </tbody>
                   </table>
                 </div>

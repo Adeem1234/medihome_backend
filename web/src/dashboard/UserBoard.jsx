@@ -89,14 +89,14 @@ class UserBoard extends Component {
 												{pharmacy.area.name}
 											</p>
 										</div>
-										<div className='mx-2 mb-4 d-flex  align-content-center'>
+										{/* <div className='mx-2 mb-4 d-flex  align-content-center'>
 											<button className='btn btn-danger text-daek font-weight-bold' id='BuyBtn' onClick={async () => {
 												await this.setState({ pharmacy: pharmacy });
 												// this.getQuestion();
 											}}>
 												<span>Buy Medicines</span>
 											</button>
-										</div>
+										</div> */}
 									</div>
 
 								)
@@ -107,7 +107,7 @@ class UserBoard extends Component {
 					</div>
 				</div >
 
-				<div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
+				{/* <div className='mt-2 d-flex align-items-flex-start flex-column mx-5 h-25 '>
 					<div className="mb-3">
 						<h4>Latest Laboratories</h4>
 					</div>
@@ -142,6 +142,7 @@ class UserBoard extends Component {
 						}
 					</div>
 				</div >
+			 */}
 			</div>
 
 		)
