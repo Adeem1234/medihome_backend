@@ -13,7 +13,7 @@ Router.route('/users/new').get(ensureAuthenticated, User.addNew).post(ensureAuth
 
 // Router.route('/users/report/:id').get(ensureAuthenticated, User.reportUser);
 
-// Router.route('/users/delete/:id').get(ensureAuthenticated, User.deleteUser);
+Router.route('/users/delete/:id').get(ensureAuthenticated, User.deleteUser);
 
 // Router.route('/user/profile/:id').get(ensureAuthenticated, User.viewProfile);
 
