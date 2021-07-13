@@ -188,7 +188,29 @@ const SignUp = ({ updateData }) => {
                                 <button className="btn  btn-success float-right Signup_btn" type='submit'
                                     onClick={e => {
                                         e.preventDefault()
-                                        handleSignUp()
+                                        axiosInstance.post('/user/register', { name, email, password, confirmPassword, city, area, phoneNo }).then(async (res) => {
+                                            const { user, token } = res.data;
+                                            console.log(res.data)
+                                            sessionStorage.setItem('authToken', JSON.stringify(res.datatoken));
+                                            sessionStorage.setItem('user', JSON.stringify(user));
+                                            sessionStorage.setItem('cart', '[]');
+                                            sessionStorage.setItem('pharmacy', '{}');
+                                            setSignUpStatus(true)
+                                            // await updateData(user, token);
+                                            // document.getElementById('updateToken').click();
+
+                                        }).catch((error) => {
+                                            console.error(error)
+                                            if (error.response.status === 422) {
+                                                let errors = [];
+                                                error.response.data.map((error) => { errors[error.path[0]] = error.message; return null });
+                                                setErrors(errors);
+                                                setShowError(error.response.data);
+                                            }
+                                            else {
+                                                console.error(error)
+                                            }
+                                        })
                                     }}> Sign Up</button>
                                 <button onClick={updateData} type="button" id='updateToken' className='d-none'> </button>
                             </div>

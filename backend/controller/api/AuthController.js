@@ -25,7 +25,7 @@ module.exports = {
                 res.status(401).send({ message: 'Incorrect User Type' })
             }
         } catch (err) {
-            res.status(401).send({ message: err });
+            res.status(422).send({ message: err });
         }
     },
     register: async (req, res) => {
