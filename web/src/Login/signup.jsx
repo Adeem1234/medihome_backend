@@ -23,8 +23,6 @@ const SignUp = ({ updateData }) => {
     const [showError, setShowError] = useState([]);
     const [errors, setErrors] = useState([]);
     const [getCities, setGetCities] = useState(false);
-    const [signUpStatus, setSignUpStatus] = useState(false);
-
 
     const handleSignUp = () => {
         axiosInstance.post('/user/register', { name, email, password, confirmPassword, city, area, phoneNo }).then(async (res) => {
@@ -34,9 +32,9 @@ const SignUp = ({ updateData }) => {
                 sessionStorage.setItem('user', JSON.stringify(savedUser));
                 sessionStorage.setItem('cart', '[]');
                 sessionStorage.setItem('pharmacy', '{}');
-                setSignUpStatus(true)
-                // await updateData(savedUser, token);
-                // document.getElementById('updateToken').click();
+
+                await updateData(savedUser, token);
+                document.getElementById('updateToken').click();
             }
         }).catch((error) => {
             console.error(error)
@@ -88,8 +86,7 @@ const SignUp = ({ updateData }) => {
 
     })
 
-    return (!signUpStatus
-        ?
+    return (
         <div className='d-flex justify-content-center align-items-center mt-5 h-100' >
             <div className="">
                 <div className="card">
@@ -119,22 +116,15 @@ const SignUp = ({ updateData }) => {
                                 {errors.hasOwnProperty('confirmPassword') && (<p className='err'>{errors.confirmPassword}</p>)}
                             </div>
                             <div className="input-group form-group mb-2">
-                                <select name="city" id="selectCity" className='select2 form-control'
-                                    onClick={e => {
-                                        if (cities) {
-                                            document.getElementById('NullCity').style.display = 'none'
-                                        }
-                                    }}
-                                    onChange={async (e) => {
-                                        document.getElementById('NullArea').textContent = 'Select Area'
-                                        document.getElementById('NullCity').style.display = 'none'
-                                        let index = e.target.value
-                                        await setCity(cities[index]._id)
-                                        await setAreas(cities[index].areas)
-                                        await setArea()
-                                        console.log(cities[index])
-                                    }}>
-                                    <option defaultValue id='NullCity' >Select City</option>
+                                <select name="city" id="selectCity" className='select2 form-control' onChange={async (e) => {
+                                    document.getElementById('NullCity').style.display = 'none'
+                                    let index = e.target.value
+                                    await setCity(cities[index]._id)
+                                    await setAreas(cities[index].areas)
+                                    await setArea()
+                                    console.log(cities[index])
+                                }}>
+                                    <option defaultValue id='NullCity' ></option>
                                     {cities ?
                                         cities.map((selectCity, index) => {
                                             console.log(areas)
@@ -149,20 +139,12 @@ const SignUp = ({ updateData }) => {
                                 {errors.hasOwnProperty('city') && (<p className='err'>{errors.city}</p>)}
                             </div>
                             <div className="input-group form-group mb-2">
-                                <select name="area" id="selectAreaa" className='select2 form-control' aria-details='Select City' placeholder='Select City'
-                                    onClick={e => {
-                                        if (areas.length) {
-                                            document.getElementById('NullArea').style.display = 'none'
-                                        } else {
-                                            document.getElementById('NullArea').textContent = 'No Areas In This City'
-                                        }
-                                    }}
-                                    onChange={async (e) => {
-                                        document.getElementById('NullArea').style.display = 'none'
-                                        let index = e.target.value
-                                        await setArea(areas[index]._id)
-                                    }}>
-                                    <option defaultValue id='NullArea' className='text-light'>Select Area</option>
+                                <select name="area" id="selectAreaa" className='select2 form-control' placeholder='select' onChange={async (e) => {
+                                    document.getElementById('NullArea').style.display = 'none'
+                                    let index = e.target.value
+                                    await setArea(areas[index]._id)
+                                }}>
+                                    <option defaultValue id='NullArea' ></option>
                                     {areas ?
                                         areas.map((selectArea, index) => {
                                             return (
@@ -188,29 +170,7 @@ const SignUp = ({ updateData }) => {
                                 <button className="btn  btn-success float-right Signup_btn" type='submit'
                                     onClick={e => {
                                         e.preventDefault()
-                                        axiosInstance.post('/user/register', { name, email, password, confirmPassword, city, area, phoneNo }).then(async (res) => {
-                                            const { user, token } = res.data;
-                                            console.log(res.data)
-                                            sessionStorage.setItem('authToken', JSON.stringify(res.datatoken));
-                                            sessionStorage.setItem('user', JSON.stringify(user));
-                                            sessionStorage.setItem('cart', '[]');
-                                            sessionStorage.setItem('pharmacy', '{}');
-                                            setSignUpStatus(true)
-                                            // await updateData(user, token);
-                                            // document.getElementById('updateToken').click();
-
-                                        }).catch((error) => {
-                                            console.error(error)
-                                            if (error.response.status === 422) {
-                                                let errors = [];
-                                                error.response.data.map((error) => { errors[error.path[0]] = error.message; return null });
-                                                setErrors(errors);
-                                                setShowError(error.response.data);
-                                            }
-                                            else {
-                                                console.error(error)
-                                            }
-                                        })
+                                        handleSignUp()
                                     }}> Sign Up</button>
                                 <button onClick={updateData} type="button" id='updateToken' className='d-none'> </button>
                             </div>
@@ -223,27 +183,14 @@ const SignUp = ({ updateData }) => {
                             }}>
                                 <Link to='/login'><p className='text-white text-decoration-none p-0 m-0'>Login</p></Link>
                             </button>
+                            <Link to='/welcome'>
+                                <Button variant="contained" color="primary" className="d-none float-right" id='proceedBtn'>Proceed </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
             </div>
         </div >
-        :
-        <div className='d-flex justify-content-center align-items-center py-5 '>
-            <div className=' card border border-black w-25'>
-                <div className='card-header bg-gradient-primary d-flex justify-content-center'>
-                    <p className='my-0 py-0 text-light'>Welcome</p>
-                </div>
-                <div className='card-body d-flex justify-content-center'>
-                    <div>
-                        <p className='font-italic font-weight-bold'>SignUp Successfull</p>
-                    </div>
-                </div>
-                <div className='card-footer bg-gradient-primary d-flex justify-content-center'>
-                    <Button variant="contained" color="primary" className="d-flex float-right text-light border border-light" onClick={updateData} >Proceed </Button>
-                </div>
-            </div>
-        </div>
     );
 }
 

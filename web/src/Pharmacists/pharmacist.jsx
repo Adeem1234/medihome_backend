@@ -160,9 +160,9 @@ class Pharmacist extends Component {
                               total: total
                             }
                             cartData.push(drug);
-                            await this.setState({ cart: cartData })
-                            sessionStorage.setItem('cart', JSON.stringify(this.state.cart))
-                            this.props.updateData()
+                            this.setState({ cart: cartData })
+                            // sessionStorage.setItem('cart', JSON.stringify())
+                            // this.props.updateData()
                             // console.log(cartData)
                           }}>Add to Cart</Button>
                         </div>

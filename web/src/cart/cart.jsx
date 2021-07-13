@@ -63,7 +63,7 @@ class MedCart extends Component {
               let total = cart.total;
               // const logo = medicine.logo.name;
               return (
-                <div key={index} className=' mx-3 mt-5 d-flex justify-content-center w-100 text-light '>
+                <div key={index} className=' mx-3 mt-4 d-flex justify-content-center w-100 text-light '>
                   <Card className='h-auto w-25 p-0 bg-gradient-primary rounded'>
 
                     {/* <CardImg top width="100%" height='200' src={baseURL + 'medicines/' + logo} alt="Card image cap" /> */}
