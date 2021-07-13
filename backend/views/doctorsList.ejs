@@ -30,6 +30,12 @@
                         <th class="w-100 text-align-center">
                           Phone No.
                         </th>
+                        <th class="w-100 text-align-center">
+                          Specialization
+                        </th>
+                        <th class="w-100 text-align-center">
+                          Diploma
+                        </th>
                         <th class="w-50 align-content-center px-4">
                           Actions
                         </th>
@@ -43,6 +49,12 @@
                           </td>
                           <td>
                             <%=doctor.phoneNo%>
+                          </td>
+                          <td>
+                            <%=doctor.specialization%>
+                          </td>
+                          <td>
+                            <%=doctor.diploma%>
                           </td>
                           <td class="align-content-center">
                             <a href="/admin/doctor/edit/<%=doctor._id%>">
@@ -64,12 +76,12 @@
               </div>
             </div>
           </div>
-        <!-- /.container-fluid -->
+          <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
       <!-- Footer -->
       <%- include('./partials/footer.ejs') %>
-      <!-- End of Footer -->
+        <!-- End of Footer -->
     </div>
 </div>
 <% include('./partials/Logout.ejs')%>
