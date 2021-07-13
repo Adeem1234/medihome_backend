@@ -16,9 +16,10 @@ const doctorsSchema = new Schema({
     type: String,
     required: true
   },
-  Diplomas: [{
+  diploma: {
     type: String,
-  }]
+    reuired: true
+  }
 });
 
 module.exports = mongoose.model('doctors', doctorsSchema);
