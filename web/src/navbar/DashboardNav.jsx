@@ -29,7 +29,7 @@ class DashboardNav extends Component {
 					<Navbar.Toggle aria-controls='basic-navbar-nav text-light' />
 					<Navbar.Collapse id='basic-navbar-nav'>
 						<Navbar.Brand>
-							<Link to='/home' >
+							<Link to='/dashboard' >
 								<b className='text-light'>Medi Home</b>
 							</Link>
 						</Navbar.Brand>
