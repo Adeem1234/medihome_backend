@@ -25,7 +25,7 @@ module.exports = {
 				const pharmacy = await Pharmacies.find({ manager: user._id }).populate('orders')
 				const ordersToday = await Orders.find({ date: { $gte: moment(date).startOf('day'), $lte: moment(date).endOf('day') } }).countDocuments();
 				const pendingOrders = await Orders.find({ status: 'pending' }).countDocuments();
-				const orders = await Orders.find({ pharmacy: pharmacy._id })
+				const orders = pharmacy.orders
 				return res.render('pharmacistDashboard', { user, pharmacy, ordersToday, pendingOrders, orders });
 			}
 		}

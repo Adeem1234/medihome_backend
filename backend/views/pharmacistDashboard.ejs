@@ -64,7 +64,7 @@
                             Total Orders
                           </div>
                           <div class="h5 mb-0 font-weight-bold text-gray-800">
-                            <%= orders.length%>
+
                           </div>
                         </div>
                         <div class="col-auto">
@@ -94,39 +94,12 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <% for (var order of orders){ %>
-                          <tr>
-                            <td>
-                              <%=order.name%>
-                            </td>
-                            <td>
-                              <%=order.email%>
-                            </td>
-                            <td>
-                              <%=order.type%>
-                            </td>
-                            <td>
-                              <%=order.date%>
-                            </td>
-                            <td>
-                              <%=order.total%>
-                            </td>
-                            <td>
-                              <%=order.status%>
-                            </td>
-                            <td>
-                              <a href="/admin/orders/status/processing/<%=order._id%>">
-                                <button class="btn btn-sm btn-danger">
-                                  <i class="far fa-trash-alt"></i>
-                                </button>
-                              </a><a href="/admin/orders/status/completed/<%=order._id%>">
-                                <button class="btn btn-sm btn-danger">
-                                  <i class="far fa-trash-alt"></i>
-                                </button>
-                              </a>
-                            </td>
-                          </tr>
-                          <%}%>
+                        <tr>
+                          <td>
+                            <%=pharmacy%>
+                          </td>
+                          </td>
+                        </tr>
                       </tbody>
                     </table>
                   </div>
