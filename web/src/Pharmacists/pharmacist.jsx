@@ -133,7 +133,7 @@ class Pharmacist extends Component {
                       <div className="mt-4 d-flex justify-content-between">
                         <div className='d-flex mx-5'>
                           <h5>Quantity</h5>
-                          <input type='number' min='1' id={medicine._id} className='mx-2 py-1 px-1 ' style={{width:'3rem', height: '2rem'}} max={quantity} onChange={(e) => {
+                          <input type='number' min='1' id={medicine._id} className='mx-2 py-1 px-1 ' style={{ width: '3rem', height: '2rem' }} max={quantity} onChange={(e) => {
                           }} ></input>
                         </div>
                         <div className='mx-5 text-nowrap'>
